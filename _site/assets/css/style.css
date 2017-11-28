@@ -316,3 +316,9 @@ a:hover { text-decoration: underline; }
 .site-footer-owner { display: block; font-weight: bold; }
 
 .site-footer-credits { color: #819198; }
+
+body { font-family: Overpass; color: #333; }
+
+.main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6 { color: #333; }
+
+.page-header { background-color: #333; background-image: none; }

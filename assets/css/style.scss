@@ -2,3 +2,26 @@
 ---
 
 @import 'jekyll-theme-cayman';
+
+$body-text-color: #333;
+
+body {
+  font-family: Overpass;
+  color: $body-text-color;
+}
+
+.main-content {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $body-text-color;
+  }
+}
+
+.page-header {
+  background-color: #333;
+  background-image: none;
+}
