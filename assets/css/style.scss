@@ -10,6 +10,22 @@ body {
   color: $body-text-color;
 }
 
+nav {
+  height: 60px;
+  background: #333;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+
+  a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+  }
+}
+
 .main-content {
   h1,
   h2,
