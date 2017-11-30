@@ -242,7 +242,6 @@ layout: component
   <cp-accordion-heading>Is Hogwarts the only wizarding school?</cp-accordion-heading>
   <cp-accordion-panel>
     <p>No! It has been revealed that there are actually 11 long established and prestigious schools around the globe. These include Castelobruxo in the rainforest of Brazil, Durmstrang Institute (whereas nobody is certain of it’s whereabouts), and Ilvermorny, right here in the United States.</p>
-    <a href="#">Read more about them</a>
   </cp-accordion-panel>
   <cp-accordion-heading>Which book has the most pages?</cp-accordion-heading>
   <cp-accordion-panel>
@@ -287,5 +286,6 @@ layout: component
   <cp-accordion-heading>Where do the main characters work as adults?</cp-accordion-heading>
   <cp-accordion-panel>
     <p>Harry and Hermione are at the Ministry: he ends up leading the Auror department. Ron helps George at the joke shop and does very well. Ginny becomes a professional Quidditch player and then sportswriter for the Daily Prophet.</p>
+    <a href="https://www.pottermore.com/collection/characters" target="blank">Read more about the characters</a>
   </cp-accordion-panel>
 </cp-accordion>
