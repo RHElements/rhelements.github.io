@@ -222,7 +222,7 @@ layout: component
   </style>
 </noscript>
 
-# CP Accordion
+# Harry Potter <abbr title="Frequently Asked Questions">FAQs</abbr>
 
 <script>require(['/assets/node_modules/@rhelements/cp-accordion/cp-accordion.compiled.js'])</script>
 
