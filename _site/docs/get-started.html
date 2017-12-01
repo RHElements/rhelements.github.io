@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>Get Started | RHElements</title>
+<meta property="og:title" content="Get Started" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="RHElements is a set of web components" />
+<meta property="og:description" content="RHElements is a set of web components" />
+<link rel="canonical" href="http://localhost:4000/docs/get-started.html" />
+<meta property="og:url" content="http://localhost:4000/docs/get-started.html" />
+<meta property="og:site_name" content="RHElements" />
+<script type="application/ld+json">
+{"name":null,"description":"RHElements is a set of web components","url":"http://localhost:4000/docs/get-started.html","headline":"Get Started","dateModified":null,"datePublished":null,"sameAs":null,"@type":"WebPage","author":null,"image":null,"publisher":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link href='https://overpass-30e2.kxcdn.com/overpass.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/assets/css/style.css?v=6a78f16df61024d5c01a2f62f01660a10aff4bf3">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">RHElements</h1>
+      <h2 class="project-tagline">RHElements is a set of web components</h2>
+      
+        <a href="http://github.com/RHElements/rhelements.github.io" class="btn">View on GitHub</a>
+      
+      
+    </section>
+
+    <section class="main-content">
+      <h1 id="get-started">Get Started</h1>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>The easiest way to get started is install <code class="highlighter-rouge">generator-rhelement</code> to scaffold out
+a new RHElement. The generator requires that you have <a href="http://yeoman.io/">Yeoman</a> installed. In addition to Yeoman, you’ll want to install <a href="https://github.com/Polymer/web-component-tester">Web Component Tester</a> globally for running tests on your element.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install -g yo wct
+</code></pre></div></div>
+
+<p>Once you have Yeoman and Web Component Tester installed, install the RHElement generator.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install -g generator-rhelement
+</code></pre></div></div>
+
+<h2 id="generate-a-rhelement">Generate a RHElement</h2>
+
+<p>Using the generator-rhelement, the generator will ask you a few questions that will help with the scaffolding.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yo rhelement
+</code></pre></div></div>
+
+<h2 id="scaffolding-structure">Scaffolding Structure</h2>
+
+<p>The generator will scaffold out a new RHElement that will include a ES6 module version of your element as well as a version compiled to ES5 code. These two files will live at the root of your new element. <strong>DO NOT EDIT THESE TWO FILES</strong>. These two files are the files that will be used when your element is distributed and they’ll be overwritten during development and your build.</p>
+
+<p>Instead, do your development in the <code class="highlighter-rouge">/src</code> directory of your element. In the <code class="highlighter-rouge">/src</code> directory you’ll find a Javascript file that extends the Rhelement class that takes care of setting up a shadow root and ShadyCSS. The HTML file is where you’ll add the HTML that will be cloned into the shadow root. And the CSS or SCSS file (depending on if you’re using Sass) is where you’ll add your styles. During the development and build tasks, a Gulp task will merge these three files together into the root of your element and will update the ES6 and ES5 versions.</p>
+
+<h2 id="develop">Develop</h2>
+
+<p>Run the start script in the package.json file at the root of your element and Gulp will start watching the files in your <code class="highlighter-rouge">/src</code> directory and will run a build each time you edit one of those files. The start script will also open a browser to the demo page of the element.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm start
+</code></pre></div></div>
+
+<h2 id="test">Test</h2>
+
+<p>Run the test script in the package.json file and Web Component Tester will use Mocha and Chai to execute your tests in the browser using both Chrome and Firefox. Be sure to add your tests to the *_test.html file in the <code class="highlighter-rouge">/test</code> directory. We’ve also added a .travis.yml file with everything that’s needed to run your tests on <a href="https://travis-ci.org/">Travis CI</a>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm test
+</code></pre></div></div>
+
+<h2 id="build">Build</h2>
+
+<p>Prepare your element for distribution by running the build script in the package.json file. If you’ve been running <code class="highlighter-rouge">npm start</code>, the start script runs the build script every time you save a file in the <code class="highlighter-rouge">/src</code> directory so running the build script might be redundant, but better safe than sorry.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run build
+</code></pre></div></div>
+
+<p>The build script will merge the files in the <code class="highlighter-rouge">/src</code> directory and update the ES6 and ES5 versions of your element in the root of the element. These two files are the files that your applications will either require or import for use.</p>
+
+<h2 id="publish">Publish</h2>
+
+<p>We’ve been publishing our RHElements to npm under the <a href="https://www.npmjs.com/org/rhelements">RHElements organization</a>, but you should feel free to update the package.json file and change the name of your element to point to an organization of your choice.</p>
+
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="http://github.com/RHElements/rhelements.github.io">rhelements.github.io</a> is maintained by <a href="http://github.com/RHElements">RHElements</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </section>
+
+    
+  </body>
+</html>
