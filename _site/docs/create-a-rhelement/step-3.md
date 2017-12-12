@@ -4,7 +4,7 @@ To test the `rh-cool-element` that we've been working on, we'll rely on a few to
 
 ## Web Component Tester
 
-If you've used followed the [Prerequisites]({{ "/docs/get-started.html#prerequisites" | relative_url }}) in [Getting Started]({{ "/docs/get-started.html" | relative_url }}), the setup should already be done. If you didn't, make sure you have wct installed globally `npm install -g wct`, add `wct-browser-legacy` as a dev dependency in your `package.json` file, and add  a `test` script in the scripts section of your `package.json` file - `"test": "wct --npm"`.
+If you've used followed the [Prerequisites]({{ "/docs/get-started.html#prerequisites" | relative_url }}) in [Getting Started]({{ "/docs/get-started.html" | relative_url }}), the setup should already be done. If you didn't, make sure you have web-component-tester installed globally `npm install -g web-component-tester`, add `wct-browser-legacy` as a dev dependency in your `package.json` file, and add  a `test` script in the scripts section of your `package.json` file - `"test": "wct --npm"`.
 
 ### Test Setup
 

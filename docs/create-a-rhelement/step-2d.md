@@ -122,6 +122,22 @@ All this code does is check which attribute changed and if it was the `following
 
 Two more things and then we're done. Next, let's use a `photo-url` attribute to pass in a photo url for our profile pic. Once again we can use `observedAttributes` and the `attributeChangedCallback` to handle this. So with just a few updates to those two methods, we can add our profile pic.
 
+Let's first add a reference to our `#profile-pic` container in the constructor by setting `this.profilePic`.
+
+```
+constructor() {
+  super('rh-cool-element', template);
+
+  this.following = this.hasAttribute('following') || false;
+  this._clickHandler = this._clickHandler.bind(this);
+
+  this.button = this.shadowRoot.querySelector('button');
+  this.button.addEventListener('click', this._clickHandler);
+
+  this.profilePic = this.shadowRoot.querySelector('#profile-pic');
+}
+```
+
 Here is the update to `observedAttributes`.
 
 ```

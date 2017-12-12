@@ -3,10 +3,10 @@
 ## Prerequisites
 
 The easiest way to get started is install `generator-rhelement` to scaffold out
-a new RHElement. The generator requires that you have [Yeoman](http://yeoman.io/) installed. In addition to Yeoman, you'll want to install [Web Component Tester](https://github.com/Polymer/web-component-tester) globally for running tests on your element.
+a new RHElement. The generator requires that you have [Yeoman](http://yeoman.io/) installed. In addition to Yeoman, you'll want to install [Polyserve](https://github.com/Polymer/polyserve) for local development and [Web Component Tester](https://github.com/Polymer/web-component-tester) globally for running tests on your element.
 
 ```
-npm install -g yo wct
+npm install -g yo polyserve web-component-tester
 ```
 
 Once you have Yeoman and Web Component Tester installed, install the RHElement generator.

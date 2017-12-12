@@ -19,7 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
     <link href='https://overpass-30e2.kxcdn.com/overpass.css' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/assets/css/style.css?v=daf2551708176a26196baf45cc97707ed5328a30">
+    <link rel="stylesheet" href="/assets/css/style.css?v=3a0d6abb1c22213859326e9c57ff1c2053235de5">
   </head>
   <body>
     <section class="page-header">
@@ -153,6 +153,21 @@ get following() {
 <p><img src="/assets/images/demo-page-js-follow-attribute-changed-step.png" alt="demo page js attribute changed step" width="500px" /></p>
 
 <p>Two more things and then we’re done. Next, let’s use a <code class="highlighter-rouge">photo-url</code> attribute to pass in a photo url for our profile pic. Once again we can use <code class="highlighter-rouge">observedAttributes</code> and the <code class="highlighter-rouge">attributeChangedCallback</code> to handle this. So with just a few updates to those two methods, we can add our profile pic.</p>
+
+<p>Let’s first add a reference to our <code class="highlighter-rouge">#profile-pic</code> container in the constructor by setting <code class="highlighter-rouge">this.profilePic</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>constructor() {
+  super('rh-cool-element', template);
+
+  this.following = this.hasAttribute('following') || false;
+  this._clickHandler = this._clickHandler.bind(this);
+
+  this.button = this.shadowRoot.querySelector('button');
+  this.button.addEventListener('click', this._clickHandler);
+
+  this.profilePic = this.shadowRoot.querySelector('#profile-pic');
+}
+</code></pre></div></div>
 
 <p>Here is the update to <code class="highlighter-rouge">observedAttributes</code>.</p>
 
