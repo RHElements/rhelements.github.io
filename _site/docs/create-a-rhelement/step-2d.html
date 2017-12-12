@@ -170,7 +170,6 @@ get following() {
       break;
 
     case 'photo-url':
-      console.log(newValue);
       this.profilePic.style.backgroundImage = `url(${newValue})`;
       break;
   }
@@ -275,7 +274,6 @@ class RhCoolElement extends Rhelement {
         break;
 
       case 'photo-url':
-        console.log(newValue);
         this.profilePic.style.backgroundImage = `url(${newValue})`;
         break;
     }
@@ -284,6 +282,10 @@ class RhCoolElement extends Rhelement {
 
 window.customElements.define('rh-cool-element', RhCoolElement);
 </code></pre></div></div>
+
+<p>Now that we have all of the code working for our <code class="highlighter-rouge">rh-cool-element</code>, we need to make sure we have tests written to ensure that our element is going to work as it changes in the future. We’ll take care of that in the next step.</p>
+
+<p><a href="step-3.html">Move to Step 3: Test</a></p>
 
 
       <footer class="site-footer">

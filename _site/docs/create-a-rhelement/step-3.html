@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
 
 <!-- Begin Jekyll SEO tag v2.3.0 -->
-<title>RHElements | RHElements is a set of web components</title>
-<meta property="og:title" content="RHElements" />
+<title>Step 3: Test | RHElements</title>
+<meta property="og:title" content="Step 3: Test" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="RHElements is a set of web components" />
 <meta property="og:description" content="RHElements is a set of web components" />
@@ -13,7 +13,7 @@
 <meta property="og:url" content="http://localhost:4000/docs/create-a-rhelement/step-3.html" />
 <meta property="og:site_name" content="RHElements" />
 <script type="application/ld+json">
-{"name":null,"description":"RHElements is a set of web components","url":"http://localhost:4000/docs/create-a-rhelement/step-3.html","headline":"RHElements","dateModified":null,"datePublished":null,"sameAs":null,"@type":"WebPage","author":null,"image":null,"publisher":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+{"name":null,"description":"RHElements is a set of web components","url":"http://localhost:4000/docs/create-a-rhelement/step-3.html","headline":"Step 3: Test","dateModified":null,"datePublished":null,"sameAs":null,"@type":"WebPage","author":null,"image":null,"publisher":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,7 +32,217 @@
     </section>
 
     <section class="main-content">
-      
+      <h1 id="step-3-test">Step 3: Test</h1>
+
+<p>To test the <code class="highlighter-rouge">rh-cool-element</code> that we’ve been working on, we’ll rely on a few tools to help us ensure that the element we’ve built can be relied on in production. The first tool we’ll use is <a href="https://github.com/Polymer/web-component-tester">Web Component Tester</a> which was built and is maintained by the Polymer team. Web Component Tester makes testing pretty easy since we’ll just need to add our HTML to a file and then set up our suite of tests. Under the hood, Web Component tester uses Mocha and Chai so we’ll be using the <a href="http://chaijs.com/api/assert/">Chai Assertion Library</a> to make sure our tests pass. Finally, we’ll show how easy it is to integrate these tests with <a href="https://travis-ci.org">Travis CI</a>.</p>
+
+<h2 id="web-component-tester">Web Component Tester</h2>
+
+<p>If you’ve used followed the <a href="/docs/get-started.html#prerequisites">Prerequisites</a> in <a href="/docs/get-started.html">Getting Started</a>, the setup should already be done. If you didn’t, make sure you have wct installed globally <code class="highlighter-rouge">npm install -g wct</code>, add <code class="highlighter-rouge">wct-browser-legacy</code> as a dev dependency in your <code class="highlighter-rouge">package.json</code> file, and add  a <code class="highlighter-rouge">test</code> script in the scripts section of your <code class="highlighter-rouge">package.json</code> file - <code class="highlighter-rouge">"test": "wct --npm"</code>.</p>
+
+<h3 id="test-setup">Test Setup</h3>
+
+<p>In the root of our element, we have a <code class="highlighter-rouge">/test</code> directory that has an <code class="highlighter-rouge">index.html</code> file and a <code class="highlighter-rouge">rh-cool-element_test.html</code> file. The <code class="highlighter-rouge">index.html</code> file tells Web Component Tester which files should be tested, in this case <code class="highlighter-rouge">rh-cool-element_test.html</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"../../../@webcomponents/webcomponentsjs/webcomponents-lite.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"../../../wct-browser-legacy/browser.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+      <span class="c1">// Load and run all tests (.html, .js):</span>
+      <span class="nx">WCT</span><span class="p">.</span><span class="nx">loadSuites</span><span class="p">([</span>
+        <span class="s1">'rh-cool-element_test.html'</span>
+      <span class="p">]);</span>
+    <span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;/body&gt;&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>In our <code class="highlighter-rouge">/test/index.html</code> file we’ve included the web component polyfill and <code class="highlighter-rouge">wct-browser-legacy/browser.js</code>. The reason for <code class="highlighter-rouge">wct-browser-legacy/browser.js</code> is that, by default, Web Component Tester is looking for our web components to be loaded from a <code class="highlighter-rouge">bower_components</code> directory and since our web components are installed via npm and served from a <code class="highlighter-rouge">node_modules</code> directory, we need to use <code class="highlighter-rouge">wct-browser-legacy</code> (Reference to the <a href="https://github.com/Polymer/web-component-tester#node-support">Node support section of the Web Component Tester README</a>).</p>
+
+<p>The setup for our <code class="highlighter-rouge">/test/rh-cool-element_test.html</code> file is pretty basic too. I’ve added four stubs for the functionality that we need to test.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"../../../@webcomponents/webcomponentsjs/webcomponents-lite.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"../../../wct-browser-legacy/browser.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"module"</span> <span class="na">src=</span><span class="s">"../rh-cool-element.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+
+    <span class="nt">&lt;rh-cool-element</span> <span class="na">photo-url=</span><span class="s">"https://avatars2.githubusercontent.com/u/330256?s=400&amp;u=de56919e816dc9f821469c2f86174f29141a896e&amp;v=4"</span><span class="nt">&gt;</span>
+      Kyle Buchanan
+    <span class="nt">&lt;/rh-cool-element&gt;</span>
+
+    <span class="nt">&lt;script&gt;</span>
+      <span class="nx">suite</span><span class="p">(</span><span class="s1">'&lt;rh-cool-element&gt;'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">test</span><span class="p">(</span><span class="s1">'it should set a username from the light DOM'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+        <span class="p">});</span>
+
+        <span class="nx">test</span><span class="p">(</span><span class="s1">'it should allow a user to follow a profile'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+        <span class="p">});</span>
+
+        <span class="nx">test</span><span class="p">(</span><span class="s1">'it should set the state to follow if the following attribute is present'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+        <span class="p">});</span>
+
+        <span class="nx">test</span><span class="p">(</span><span class="s1">'it should set a profile pic from the photo-url attribute'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+        <span class="p">});</span>
+      <span class="p">});</span>
+    <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>A couple of things to note here is that we’ve used <code class="highlighter-rouge">&lt;script type="module"...</code> to load our element definition. We’re doing this because we want to make sure that we’re testing the true source of our element instead of the transpiled version. Second, notice that we just add the HTML we need to set up our tests. This is the same HTML from our <code class="highlighter-rouge">/demo/index.html</code> file.</p>
+
+<p>Lastly, we have one additional file that helps with testing. In the root of our element, if you used our generator, there is a <code class="highlighter-rouge">wct.conf.json</code> file. We use this file to tell Web Component Tester that we want to use Chrome and Firefox for our testing.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "verbose": false,
+  "plugins": {
+    "local": {
+      "browsers": ["chrome", "firefox"]
+    }
+  }
+}
+</code></pre></div></div>
+
+<p>Now that our setup is complete, we can start building out our tests.</p>
+
+<h3 id="test-cases">Test Cases</h3>
+
+<p>Testing our ‘rh-cool-element’ is pretty straight-forward. We use <code class="highlighter-rouge">document.querySelector</code> to grab our element and then we use the usual DOM API methods to get at the things we want to test. Here is how our final test code looks.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"../../../@webcomponents/webcomponentsjs/webcomponents-lite.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"../../../wct-browser-legacy/browser.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"module"</span> <span class="na">src=</span><span class="s">"../rh-cool-element.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+
+    <span class="nt">&lt;rh-cool-element</span> <span class="na">photo-url=</span><span class="s">"https://avatars2.githubusercontent.com/u/330256?s=400&amp;u=de56919e816dc9f821469c2f86174f29141a896e&amp;v=4"</span><span class="nt">&gt;</span>
+      Kyle Buchanan
+    <span class="nt">&lt;/rh-cool-element&gt;</span>
+
+    <span class="nt">&lt;script&gt;</span>
+      <span class="nx">suite</span><span class="p">(</span><span class="s1">'&lt;rh-cool-element&gt;'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">test</span><span class="p">(</span><span class="s1">'it should set a username from the light DOM'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'rh-cool-element'</span><span class="p">);</span>
+          <span class="kd">const</span> <span class="nx">elementLightDOMContent</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">textContent</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>
+          <span class="kd">const</span> <span class="nx">shadowRoot</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">;</span>
+          <span class="kd">const</span> <span class="nx">slotContent</span> <span class="o">=</span> <span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'slot'</span><span class="p">).</span><span class="nx">assignedNodes</span><span class="p">()[</span><span class="mi">0</span><span class="p">].</span><span class="nx">textContent</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>
+
+          <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="nx">slotContent</span><span class="p">,</span> <span class="nx">elementLightDOMContent</span><span class="p">);</span>
+        <span class="p">});</span>
+
+        <span class="nx">test</span><span class="p">(</span><span class="s1">'it should allow a user to follow a profile'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'rh-cool-element'</span><span class="p">);</span>
+          <span class="nx">element</span><span class="p">.</span><span class="nx">button</span><span class="p">.</span><span class="nx">click</span><span class="p">();</span>
+
+          <span class="nx">assert</span><span class="p">.</span><span class="nx">isTrue</span><span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">hasAttribute</span><span class="p">(</span><span class="s1">'following'</span><span class="p">));</span>
+          <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">button</span><span class="p">.</span><span class="nx">textContent</span><span class="p">,</span> <span class="s1">'Unfollow'</span><span class="p">);</span>
+
+          <span class="nx">element</span><span class="p">.</span><span class="nx">button</span><span class="p">.</span><span class="nx">click</span><span class="p">();</span>
+
+          <span class="nx">assert</span><span class="p">.</span><span class="nx">isNotTrue</span><span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">hasAttribute</span><span class="p">(</span><span class="s1">'following'</span><span class="p">));</span>
+          <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">button</span><span class="p">.</span><span class="nx">textContent</span><span class="p">,</span> <span class="s1">'Follow'</span><span class="p">);</span>
+        <span class="p">});</span>
+
+        <span class="nx">test</span><span class="p">(</span><span class="s1">'it should set the state to follow if the following attribute is present'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'rh-cool-element'</span><span class="p">);</span>
+          <span class="nx">element</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s1">'following'</span><span class="p">,</span> <span class="s1">''</span><span class="p">);</span>
+
+          <span class="nx">assert</span><span class="p">.</span><span class="nx">isTrue</span><span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">hasAttribute</span><span class="p">(</span><span class="s1">'following'</span><span class="p">));</span>
+          <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">button</span><span class="p">.</span><span class="nx">textContent</span><span class="p">,</span> <span class="s1">'Unfollow'</span><span class="p">);</span>
+
+          <span class="nx">element</span><span class="p">.</span><span class="nx">removeAttribute</span><span class="p">(</span><span class="s1">'following'</span><span class="p">);</span>
+
+          <span class="nx">assert</span><span class="p">.</span><span class="nx">isNotTrue</span><span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">hasAttribute</span><span class="p">(</span><span class="s1">'following'</span><span class="p">));</span>
+          <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">button</span><span class="p">.</span><span class="nx">textContent</span><span class="p">,</span> <span class="s1">'Follow'</span><span class="p">);</span>
+        <span class="p">});</span>
+
+        <span class="nx">test</span><span class="p">(</span><span class="s1">'it should set a profile pic from the photo-url attribute'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'rh-cool-element'</span><span class="p">);</span>
+          <span class="kd">const</span> <span class="nx">photoUrlAttribute</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">'photo-url'</span><span class="p">);</span>
+          <span class="kd">const</span> <span class="nx">shadowRoot</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">;</span>
+          <span class="kd">const</span> <span class="nx">profilePicContainer</span> <span class="o">=</span> <span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#profile-pic'</span><span class="p">);</span>
+          <span class="kd">const</span> <span class="nx">backgroundImage</span> <span class="o">=</span> <span class="nx">profilePicContainer</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">backgroundImage</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">);</span>
+
+          <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="nx">photoUrlAttribute</span><span class="p">,</span> <span class="nx">backgroundImage</span><span class="p">);</span>
+        <span class="p">});</span>
+      <span class="p">});</span>
+    <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>A couple of things to note here is the access to <code class="highlighter-rouge">shadowRoot</code>. <code class="highlighter-rouge">shadowRoot</code> is available to our element since we have a shadow root set up for us by extending <code class="highlighter-rouge">Rhelement</code> in the definition of our element. Something else new you may not have seen before is</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>shadowRoot.querySelector('slot').assignedNodes()[0].textContent.trim();
+</code></pre></div></div>
+
+<p>If you want to access the content in the <code class="highlighter-rouge">&lt;slot&gt;&lt;/slot&gt;</code> of your element, you need to used the <code class="highlighter-rouge">assignedNodes()</code> method to get to it. In this case, our username is the only item being passed into the slot so it’s available to us as the only item in the array returned by <code class="highlighter-rouge">assignedNodes()</code>.</p>
+
+<h3 id="run-the-test">Run the Test</h3>
+
+<p>Now, we need to do is run our test command and see how we did.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm test
+</code></pre></div></div>
+
+<p>And here is the command line output.</p>
+
+<p><img src="/assets/images/test-output.png" alt="test output" /></p>
+
+<p>Great! All four of our tests are working in Chrome and Firefox.</p>
+
+<h2 id="travis-integration">Travis Integration</h2>
+
+<p>Now that we have our tests written and our element code passes the tests, we can set up continuous integration on <a href="https://travis-ci.org">Travis CI</a> so anytime we push changes to our repository, Travis will run our tests and let us know if everything is still passing.</p>
+
+<p>If you used the generator to create your element, there should already be a <code class="highlighter-rouge">.travis.yml</code> file at the root of your element.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>language: node_js
+dist: trusty
+sudo: required
+addons:
+  firefox: "latest"
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+node_js: stable
+before_install:
+  - npm install -g web-component-tester
+install:
+  - npm install
+before_script:
+script:
+  - xvfb-run npm run test
+</code></pre></div></div>
+
+<p>All we’re telling Travis to do is to use the current, stable version of Node.js, install the Web Component Tester globally, install our dependencies, and then run our tests. Assuming that everything goes according to plan, we should see a nice “build passing” badge in Travis.</p>
+
+<p>That’s it for testing. Now that we have our <code class="highlighter-rouge">rh-cool-element</code> and our tests are passing, we can publish and share our component on npm.</p>
+
+<p><a href="step-4.html">Move to Step 4: Publish</a></p>
 
 
       <footer class="site-footer">

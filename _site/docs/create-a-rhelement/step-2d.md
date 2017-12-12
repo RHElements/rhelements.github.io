@@ -140,7 +140,6 @@ attributeChangedCallback(name, oldValue, newValue) {
       break;
 
     case 'photo-url':
-      console.log(newValue);
       this.profilePic.style.backgroundImage = `url(${newValue})`;
       break;
   }
@@ -249,7 +248,6 @@ class RhCoolElement extends Rhelement {
         break;
 
       case 'photo-url':
-        console.log(newValue);
         this.profilePic.style.backgroundImage = `url(${newValue})`;
         break;
     }
@@ -258,3 +256,7 @@ class RhCoolElement extends Rhelement {
 
 window.customElements.define('rh-cool-element', RhCoolElement);
 ```
+
+Now that we have all of the code working for our `rh-cool-element`, we need to make sure we have tests written to ensure that our element is going to work as it changes in the future. We'll take care of that in the next step.
+
+[Move to Step 3: Test](step-3.html)
