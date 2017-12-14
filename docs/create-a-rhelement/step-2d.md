@@ -1,3 +1,7 @@
+---
+layout: doc
+---
+
 # Step 2: Develop (Javascript)
 
 In this step, we'll accomplish a few things.

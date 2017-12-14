@@ -1,3 +1,7 @@
+---
+layout: doc
+---
+
 # Step 2: Develop (CSS or Sass)
 
 We're working on our `rh-cool-element` and we want it to look like a profile with a profile photo, username, and follow button. But right now, our element is pretty ugly so we need to update our CSS (or Sass) to make it look the way we want.

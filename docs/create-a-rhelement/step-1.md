@@ -1,3 +1,7 @@
+---
+layout: doc
+---
+
 # Create a RHElement
 
 ## Prerequisites

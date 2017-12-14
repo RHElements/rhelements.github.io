@@ -1,3 +1,7 @@
+---
+layout: doc
+---
+
 # Step 3: Test
 
 To test the `rh-cool-element` that we've been working on, we'll rely on a few tools to help us ensure that the element we've built can be relied on in production. The first tool we'll use is [Web Component Tester](https://github.com/Polymer/web-component-tester) which was built and is maintained by the Polymer team. Web Component Tester makes testing pretty easy since we'll just need to add our HTML to a file and then set up our suite of tests. Under the hood, Web Component tester uses Mocha and Chai so we'll be using the [Chai Assertion Library](http://chaijs.com/api/assert/) to make sure our tests pass. Finally, we'll show how easy it is to integrate these tests with [Travis CI](https://travis-ci.org).

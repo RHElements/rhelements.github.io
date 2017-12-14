@@ -319,9 +319,29 @@ a:hover { text-decoration: underline; }
 
 body { font-family: Overpass; color: #333; }
 
-nav { height: 60px; background: #333; color: white; display: flex; align-items: center; padding: 0 16px; }
-nav a { text-decoration: none; color: white; font-weight: bold; font-size: 20px; }
+body, html { height: 100%; }
 
+header { position: relative; }
+header nav { height: 60px; background: #333; color: white; display: flex; align-items: center; padding: 0 16px; box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12); }
+header nav button { background: none; border: none; padding: 0; margin-right: 8px; }
+header nav a { text-decoration: none; color: white; font-weight: bold; font-size: 20px; }
+
+.main-content { flex: 1; }
 .main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6 { color: #333; }
 
 .page-header { background-color: #333; background-image: none; }
+
+main { display: flex; }
+main aside { background: #fff; position: fixed; visibility: hidden; top: 0; left: 0; right: 0; bottom: 0; width: 256px; }
+main aside.open { visibility: visible; }
+main aside nav { border-right: 1px solid #e4e4e4; height: 100%; z-index: 2; top: 0; left: 0; right: 0; bottom: 0; width: 256px; position: fixed; background: #fff; }
+main aside nav ul { margin: 0; padding: 0; }
+main aside nav ul li { list-style-type: none; padding: 0; margin: 0; }
+main aside nav ul li .header { font-weight: bold; }
+main aside nav ul li a, main aside nav ul li .header { display: flex; padding: 8px; font-size: 15px; }
+main aside .scrim { position: fixed; top: 0; left: 0; bottom: 0; right: 0; background: rgba(0, 0, 0, 0.5); }
+
+@media (min-width: 960px) { header nav button { display: none; }
+  main aside { position: static; visibility: visible; }
+  main aside nav { position: static; }
+  main aside .scrim { display: none; } }

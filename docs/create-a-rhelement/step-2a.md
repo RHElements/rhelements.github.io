@@ -1,3 +1,7 @@
+---
+layout: doc
+---
+
 # Step 2: Develop (Structure)
 
 Run the start command in the package.json file to open up the demo page and have the rh-cool-element.js and rh-cool-element.compiled.js files update when you make changes to the files in the `/src` directory.

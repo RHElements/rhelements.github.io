@@ -1,3 +1,7 @@
+---
+layout: doc
+---
+
 # Step 2: Develop (HTML)
 
 Now that we have our element set up and our dev server is running. Let's take advantage of the shadow root and the slot to make our element a bit more interesting.
