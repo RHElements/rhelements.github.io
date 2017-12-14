@@ -82,4 +82,4 @@ As you can see, the task took the HTML we wrote in `/src/rh-cool-element.html` a
 
 Now that we've updated the HTML, let's make our element look good. We'll update our Sass file and style the element the way we want.
 
-[Move to Step 2c](step-2c.html)
+[Move to Step 2: Develop (CSS or Sass)](step-2c.html)

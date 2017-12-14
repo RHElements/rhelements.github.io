@@ -2,6 +2,14 @@
 layout: default
 ---
 
+# Get Started
+
+Develop your own RHElements using the guide we've built to guide you through each step of the process&mdash;Scaffold, Develop, Test, and Publish.
+
+[Get Started](docs/get-started.html)
+
+# Demo RHElements
+
 [CP Accordion](cp-accordion)
 
 [CP FAQ](cp-faq)

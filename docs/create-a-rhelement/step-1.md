@@ -40,4 +40,4 @@ cd rh-cool-element
 
 Open up your code editor and view the structure of the element. The important things to note are the `/src`, `/demo` and `/test` directories and the rh-cool-element.js and rh-cool-element.compiled.js files. You'll do all your development in the `/src` directory and write your tests in `/test` directory. We'll use the `/demo` directory to preview the element locally and the rh-cool-element.js and rh-cool-element.compiled.js files we'll be used for the demo.
 
-[Move on to Step 2a](step-2a.html)
+[Move to Step 2: Develop (Structure)](step-2a.html)

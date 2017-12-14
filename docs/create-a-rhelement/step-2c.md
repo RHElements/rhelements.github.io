@@ -107,4 +107,4 @@ You'll notice that our style tag has all of the styles we just wrote in our Sass
 
 Now that we have our `rh-cool-element` styled, we need to add some interaction to the follow button. We also need to find a way to fill in the profile photo. We can accomplish this by updating our `/src/rh-cool-element.js` file.
 
-[Move to Step 2d](step-2d.html)
+[Move to Step 2: Develop (Javascript)](step-2d.html)

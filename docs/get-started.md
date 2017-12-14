@@ -62,3 +62,9 @@ The build script will merge the files in the `/src` directory and update the ES6
 ## Publish
 
 We've been publishing our RHElements to npm under the [RHElements organization](https://www.npmjs.com/org/rhelements), but you should feel free to update the package.json file and change the name of your element to point to an organization of your choice.
+
+## Create a Rhelement
+
+Now that we have everything set up, let's create a RHElement together.
+
+[Create a RHElement](/docs/create-a-rhelement/step-1.html)
