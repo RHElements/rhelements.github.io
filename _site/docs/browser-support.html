@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
 
 <!-- Begin Jekyll SEO tag v2.3.0 -->
-<title>RHElements | RHElements is a set of web components</title>
-<meta property="og:title" content="RHElements" />
+<title>Browser Support | RHElements</title>
+<meta property="og:title" content="Browser Support" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="RHElements is a set of web components" />
 <meta property="og:description" content="RHElements is a set of web components" />
@@ -13,27 +13,61 @@
 <meta property="og:url" content="http://localhost:4000/docs/browser-support.html" />
 <meta property="og:site_name" content="RHElements" />
 <script type="application/ld+json">
-{"name":null,"description":"RHElements is a set of web components","url":"http://localhost:4000/docs/browser-support.html","headline":"RHElements","dateModified":null,"datePublished":null,"sameAs":null,"@type":"WebPage","author":null,"image":null,"publisher":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+{"name":null,"description":"RHElements is a set of web components","url":"http://localhost:4000/docs/browser-support.html","headline":"Browser Support","dateModified":null,"datePublished":null,"sameAs":null,"@type":"WebPage","author":null,"image":null,"publisher":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
+    <link rel="stylesheet" href="/assets/css/icono.min.css?v=d3e77d91ec6aeb5c091e669a15a9b31088876f14">
     <link href='https://overpass-30e2.kxcdn.com/overpass.css' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/assets/css/style.css?v=bc82c4b899c3349226efc7d086996cf467169633">
+    <link rel="stylesheet" href="/assets/css/style.css?v=d3e77d91ec6aeb5c091e669a15a9b31088876f14">
   </head>
   <body>
-    <section class="page-header">
+    <!-- <section class="page-header">
       <h1 class="project-name">RHElements</h1>
       <h2 class="project-tagline">RHElements is a set of web components</h2>
       
         <a href="http://github.com/RHElements/rhelements.github.io" class="btn">View on GitHub</a>
       
       
-    </section>
+    </section> -->
+
+    <header>
+      <nav>
+        <button>
+          <i class="icono-hamburger"></i>
+        </button>
+        <a href="/">RHElements</a>
+      </nav>
+    </header>
 
     <main>
+      <aside>
+        <nav>
+          <ul>
+            <li><a href="/docs/get-started.html">Get Started</a></li>
+            <li>
+              <span class="header">Create a RHElement</span>
+              <ul>
+                <li><a href="/docs/create-a-rhelement/step-1.html">Step 1: Scaffold</a></li>
+                <li><a href="/docs/create-a-rhelement/step-2a.html">Step 2: Develop (Structure)</a></li>
+                <li><a href="/docs/create-a-rhelement/step-2b.html">Step 2: Develop (HTML)</a></li>
+                <li><a href="/docs/create-a-rhelement/step-2c.html">Step 2: Develop (CSS or Sass)</a></li>
+                <li><a href="/docs/create-a-rhelement/step-2d.html">Step 2: Develop (Javascript)</a></li>
+                <li><a href="/docs/create-a-rhelement/step-3.html">Step 3: Test</a></li>
+                <li><a href="/docs/create-a-rhelement/step-4.html">Step 4: Publish</a></li>
+              </ul>
+            </li>
+            <li><a href="/docs/browser-support.html">Browser Support</a></li>
+          </ul>
+        </nav>
+        <div class="scrim"></div>
+      </aside>
+
       <section class="main-content">
-        <p>We support all major browsers and support goes all the way back to IE 11.</p>
+        <h1 id="browser-support">Browser Support</h1>
+
+<p>RHElements are built on top of the <a href="https://w3c.github.io/webcomponents/spec/custom/">Custom Elements v1 spec</a>. As a result, with the help of the web components polyfill, we can support all major browsers and go all the way back to IE 11.</p>
 
 <table>
   <thead>
@@ -47,14 +81,79 @@
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left">check</td>
-      <td style="text-align: left">check</td>
-      <td style="text-align: left">check</td>
-      <td style="text-align: left">check</td>
-      <td style="text-align: left">check</td>
+      <td style="text-align: left">✓</td>
+      <td style="text-align: left">✓</td>
+      <td style="text-align: left">✓</td>
+      <td style="text-align: left">✓</td>
+      <td style="text-align: left">✓</td>
     </tr>
   </tbody>
 </table>
+
+<h2 id="written-in-es6">Written in ES6</h2>
+
+<p>To make sure we’re future-proof, RHElements are written in ES6. As more browsers begin to support the use of ES6 modules and the ability to import dependencies, the ES6 versions of our RHElements can be used directly. Our goal is to eventually phase out the transpilation step in our build process, but until then, we’ll provide both the ES6 and ES5 versions on npm.</p>
+
+<h2 id="backwards-compatible-with-polyfills">Backwards Compatible with Polyfills</h2>
+
+<p>To provide the widest range of support for RHElements, we provide an ES5 version of our RHElements that will work in all major browsers and even IE11 with some help from polyfills.</p>
+
+<p>As a developer, you will need to make sure you include the necessary polyfills. We recommend using the <a href="https://github.com/WebComponents/webcomponentsjs">webcomponentsjs polyfill</a> provided by <a href="https://www.webcomponents.org/">webcomponents.org</a>. There are two options when using this polyfill. You can either include the polyfill for the features that you know you want to support or you can use the webcomponents-loader.js file. The webcomponents-loader.js file will run feature detection on the client side and asynchronously load the polyfills needed to support web components.</p>
+
+<h3 id="polyfill-option-1---include-the-polyfills-you-need">Polyfill Option 1 - Include the polyfills you need</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>RHElements<span class="nt">&lt;/title&gt;</span>
+
+    <span class="c">&lt;!-- uncomment the es5-adapter if you're using the compiled version --&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.10/custom-elements-es5-adapter.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="c">&lt;!-- webcomponents-lite.js includes all of the polyfills --&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.10/webcomponents-lite.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>For more options on which polyfill to include, refer to the <a href="https://github.com/WebComponents/webcomponentsjs#how-to-use">README on the webcomponentsjs repository</a>.</p>
+
+<h3 id="polyfill-option-2---load-only-the-necessary-polyfills">Polyfill Option 2 - Load only the necessary polyfills</h3>
+
+<p>There’s only a difference of the web component file that’s being downloaded, but with the loader bringing in the necessary polyfills asynchronously, you’ll need to wait for the <code class="highlighter-rouge">WebComponentsReady</code> event to fire before you safely continue.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>RHElements<span class="nt">&lt;/title&gt;</span>
+
+    <span class="c">&lt;!-- uncomment the es5-adapter if you're using the compiled version --&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.10/custom-elements-es5-adapter.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.10/webcomponents-loader.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'WebComponentsReady'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Polyfills are loaded and it's safe to interact with the components</span>
+      <span class="p">});</span>
+    <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>For a more in-depth explanation, view the <a href="https://github.com/WebComponents/webcomponentsjs#webcomponents-loaderjs">example on GitHub</a>.</p>
+
+<h3 id="custom-elements-es5-adapterjs">custom-elements-es5-adapter.js</h3>
+
+<p>The two examples above also include the <code class="highlighter-rouge">custom-elements-es5-adapter.js</code> file before the web component polyfill. In the case that you need to support ES5, you need to include this polyfill. According to the spec, custom elements must be written as ES6 classes. However, in our build step we transpile our ES6 components to ES5 which makes it necessary for us to include the adapter to get our components to work.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.10/custom-elements-es5-adapter.js"&gt;&lt;/script&gt;
+</code></pre></div></div>
+
+<p>For more documentation, check out the <a href="https://github.com/WebComponents/webcomponentsjs#custom-elements-es5-adapterjs">custom-elements-es5-adapter.js section</a> on GitHub.</p>
 
 
         <footer class="site-footer">
@@ -65,6 +164,20 @@
         </footer>
       </section>
     </main>
+
+    <script>
+      const button = document.querySelector('header nav button');
+      const drawer = document.querySelector('aside');
+      const scrim = document.querySelector('.scrim');
+
+      button.addEventListener('click', function () {
+        drawer.classList.toggle('open');
+      });
+
+      scrim.addEventListener('click', function () {
+        drawer.classList.remove('open');
+      });
+    </script>
 
     
   </body>
