@@ -10,11 +10,7 @@ Develop your own RHElements using the guide we've built to guide you through eac
 
 # Demo RHElements
 
-[CP Accordion](cp-accordion)
-
-[CP FAQ](cp-faq)
-
-[CP Tooltip](cp-tooltip)
+[Demo Site](demo/)
 
 <!--Text can be **bold**, _italic_, or ~~strikethrough~~.
 
