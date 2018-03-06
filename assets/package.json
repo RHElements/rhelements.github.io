@@ -24,6 +24,6 @@
     "@rhelements/cp-accordion-heading": "0.0.10",
     "@rhelements/cp-faq": "0.0.3",
     "@rhelements/cp-tooltip": "^0.1.2",
-    "@rhelements/rh-dropdown": "^0.1.5"
+    "@rhelements/rh-dropdown": "^0.1.6"
   }
 }
