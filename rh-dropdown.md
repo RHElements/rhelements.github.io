@@ -11,6 +11,10 @@ layout: component
   </style>
 </noscript>
 
+<style>
+section { margin-top: 1.5em; }
+</style>
+
 # Tacos
 
 <rh-dropdown>
