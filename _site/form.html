@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
 
 <!-- Begin Jekyll SEO tag v2.3.0 -->
-<title>Form test | RHElements</title>
-<meta property="og:title" content="Form test" />
+<title>Form label test | RHElements</title>
+<meta property="og:title" content="Form label test" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="RHElements is a set of web components" />
 <meta property="og:description" content="RHElements is a set of web components" />
@@ -13,13 +13,13 @@
 <meta property="og:url" content="http://localhost:4000/form.html" />
 <meta property="og:site_name" content="RHElements" />
 <script type="application/ld+json">
-{"name":null,"description":"RHElements is a set of web components","url":"http://localhost:4000/form.html","headline":"Form test","dateModified":null,"datePublished":null,"sameAs":null,"@type":"WebPage","author":null,"image":null,"publisher":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+{"name":null,"description":"RHElements is a set of web components","url":"http://localhost:4000/form.html","headline":"Form label test","dateModified":null,"datePublished":null,"sameAs":null,"@type":"WebPage","author":null,"image":null,"publisher":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
     <link href='https://overpass-30e2.kxcdn.com/overpass.css' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/assets/css/style.css?v=2bdf2a68403c557509d41bb80a11fad0ba82c1a4">
+    <link rel="stylesheet" href="/assets/css/style.css?v=e4e678959c8ceb51b4335f8d50fea4461075bc1e">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.10/custom-elements-es5-adapter.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.10/webcomponents-lite.js"></script>
@@ -41,15 +41,87 @@
     </section> -->
 
     <section class="main-content">
-      <h1 id="form-test">Form test</h1>
+      <h1 id="form-label-test">Form label test</h1>
 
-<p><label for="test">Street</label>
+<h2 id="no-form-wrapper">No form wrapper</h2>
+
+<p><label for="test">Explicit label</label>
 <input name="test" id="test" type="text" /></p>
 
 <p><label>
-  <span>Street 2</span>
+  <span>Implicit label</span>
   <input name="test2" type="text" />
 </label></p>
+
+<h2 id="form-wrapper">Form wrapper</h2>
+
+<form action="">
+  <label for="test3">Explicit label</label>
+  <input name="test3" id="test3" type="text" />
+
+  <label>
+    <span>Implicit label</span>
+    <input name="test4" type="text" />
+  </label>
+</form>
+
+<h2 id="dialog-with-no-form-wrapper">Dialog with no form wrapper</h2>
+<p><button id="opendialog1">Open dialog 1</button></p>
+<dialog id="dialog1">
+  <label for="test5">Explicit label</label>
+  <input name="test5" id="test5" type="text" />
+
+
+  <label>
+    <span>Implicit label</span>
+    <input name="test6" type="text" />
+  </label>
+  <button id="cancel1">Cancel</button>
+</dialog>
+
+<h2 id="dialog-with-form-wrapper">Dialog with form wrapper</h2>
+<p><button id="opendialog2">Open dialog 2</button></p>
+<dialog id="dialog2">
+  <form action="">
+    <label for="test7">Explicit label</label>
+    <input name="test7" id="test5" type="text" />
+
+
+    <label>
+      <span>Implicit label</span>
+      <input name="test7" type="text" />
+    </label>
+    <button id="cancel2">Cancel</button>
+  </form>
+</dialog>
+
+<script>
+  (function() {
+  var openButton1 = document.getElementById('opendialog1');
+  var openButton2 = document.getElementById('opendialog2');
+  var cancelButton1 = document.getElementById('cancel1');
+  var cancelButton2 = document.getElementById('cancel2');
+  var dialog1 = document.getElementById('dialog1');
+  var dialog2 = document.getElementById('dialog2');
+
+  // Update button opens a modal dialog
+  openButton1.addEventListener('click', function() {
+    dialog1.showModal();
+  });
+  openButton2.addEventListener('click', function() {
+    dialog2.showModal();
+  });
+
+  // Form cancel button closes the dialog box
+  cancelButton1.addEventListener('click', function() {
+    dialog1.close();
+  });
+  cancelButton2.addEventListener('click', function() {
+    dialog2.close();
+  });
+  })();
+</script>
+
 
 
       <footer class="site-footer">
