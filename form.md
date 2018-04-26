@@ -26,6 +26,16 @@ layout: component
   </label>
 </form>
 
+## No form wrapper, no name.
+
+<label for="test">Explicit label</label>
+<input id="test" type="text">
+
+<label>
+  <span>Implicit label</span>
+  <input type="text">
+</label>
+
 ## Dialog with no form wrapper
 <button id="opendialog1">Open dialog 1</button>
 <dialog id="dialog1">
