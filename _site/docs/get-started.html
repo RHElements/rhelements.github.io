@@ -13,14 +13,14 @@
 <meta property="og:url" content="http://localhost:4000/docs/get-started.html" />
 <meta property="og:site_name" content="RHElements" />
 <script type="application/ld+json">
-{"name":null,"description":"RHElements is a set of web components","url":"http://localhost:4000/docs/get-started.html","headline":"Get Started","dateModified":null,"datePublished":null,"sameAs":null,"@type":"WebPage","author":null,"image":null,"publisher":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+{"name":null,"description":"RHElements is a set of web components","author":null,"@type":"WebPage","url":"http://localhost:4000/docs/get-started.html","publisher":null,"image":null,"headline":"Get Started","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/icono.min.css?v=41ff78a95f7ed9c85d405b368034c584bcd02872">
+    <link rel="stylesheet" href="/assets/css/icono.min.css?v=b398f0f1875e1bbe99e9f2d4938cfa93321df7ef">
     <link href='https://overpass-30e2.kxcdn.com/overpass.css' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/assets/css/style.css?v=41ff78a95f7ed9c85d405b368034c584bcd02872">
+    <link rel="stylesheet" href="/assets/css/style.css?v=b398f0f1875e1bbe99e9f2d4938cfa93321df7ef">
   </head>
   <body>
     <!-- <section class="page-header">
@@ -70,47 +70,50 @@
 
 <h2 id="prerequisites">Prerequisites</h2>
 
-<p>The easiest way to get started is install <code class="highlighter-rouge">generator-rhelement</code> to scaffold out
-a new RHElement. The generator requires that you have <a href="http://yeoman.io/">Yeoman</a> installed. In addition to Yeoman, you’ll want to install <a href="https://github.com/Polymer/polyserve">Polyserve</a> for local development and <a href="https://github.com/Polymer/web-component-tester">Web Component Tester</a> globally for running tests on your element.</p>
+<p>Clone the <a href="https://github.com/RHElements/rhelements">RHElements/rhelements</a> and run the install command from the root of the repository.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install -g yo polyserve web-component-tester
-</code></pre></div></div>
-
-<p>Once you have Yeoman and Web Component Tester installed, install the RHElement generator.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install -g generator-rhelement
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install
 </code></pre></div></div>
 
 <h2 id="generate-a-rhelement">Generate a RHElement</h2>
 
-<p>Using the generator-rhelement, the generator will ask you a few questions that will help with the scaffolding.</p>
+<p>Using the <a href="https://github.com/RHElements/generator-rhelement">generator-rhelement</a>, which installed as a dev dependency, the generator will ask you a few questions that will help with the scaffolding. Make sure you are in the root directory of the RHElements repository.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yo rhelement
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run new
 </code></pre></div></div>
 
 <h2 id="scaffolding-structure">Scaffolding Structure</h2>
 
 <p>The generator will scaffold out a new RHElement that will include a ES6 module version of your element as well as a version compiled to ES5 code. These two files will live at the root of your new element. <strong>DO NOT EDIT THESE TWO FILES</strong>. These two files are the files that will be used when your element is distributed and they’ll be overwritten during development and your build.</p>
 
-<p>Instead, do your development in the <code class="highlighter-rouge">/src</code> directory of your element. In the <code class="highlighter-rouge">/src</code> directory you’ll find a Javascript file that extends the Rhelement class that takes care of setting up a shadow root and ShadyCSS. The HTML file is where you’ll add the HTML that will be cloned into the shadow root. And the CSS or SCSS file (depending on if you’re using Sass) is where you’ll add your styles. During the development and build tasks, a Gulp task will merge these three files together into the root of your element and will update the ES6 and ES5 versions.</p>
+<p>Instead, do your development in the <code class="highlighter-rouge">/src</code> directory of your element. In the <code class="highlighter-rouge">/src</code> directory you’ll find a Javascript file that extends the RHElement class that takes care of setting up a shadow root and ShadyCSS. The HTML file is where you’ll add the HTML that will be cloned into the shadow root. And the CSS or SCSS file (depending on if you’re using Sass) is where you’ll add your styles. During the development and build tasks, a Gulp task will merge these three files together into the root of your element and will update the ES6 and ES5 versions.</p>
 
 <h2 id="develop">Develop</h2>
 
-<p>Run the start script in the package.json file at the root of your element and Gulp will start watching the files in your <code class="highlighter-rouge">/src</code> directory and will run a build each time you edit one of those files. The start script will also open a browser to the demo page of the element.</p>
+<p>Run the dev script in the package.json file at the root of the element you just created and Gulp will start watching the files in your <code class="highlighter-rouge">/src</code> directory and will run a build each time you edit one of those files.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run dev
+</code></pre></div></div>
+
+<h2 id="preview-your-changes">Preview Your Changes</h2>
+
+<p>From the root of the RHElements repository, run the start command which will open a browser to the <code class="highlighter-rouge">/doc</code> directory.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm start
 </code></pre></div></div>
 
+<p>From there you can change the URL to the demo page of the element you’re working on. For example, if I ran <code class="highlighter-rouge">npm run dev</code> in the <code class="highlighter-rouge">/elements/rh-card</code> directory, I’d navigate in the browser to <code class="highlighter-rouge">http://localhost:1234/elements/rh-card/demo</code>.</p>
+
 <h2 id="test">Test</h2>
 
-<p>Run the test script in the package.json file and Web Component Tester will use Mocha and Chai to execute your tests in the browser using both Chrome and Firefox. Be sure to add your tests to the *_test.html file in the <code class="highlighter-rouge">/test</code> directory. We’ve also added a .travis.yml file with everything that’s needed to run your tests on <a href="https://travis-ci.org/">Travis CI</a>.</p>
+<p>From the directory of the element you’re working on, run the test script in the package.json file and Web Component Tester will use Mocha and Chai to execute your tests in the browser.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm test
 </code></pre></div></div>
 
 <h2 id="build">Build</h2>
 
-<p>Prepare your element for distribution by running the build script in the package.json file. If you’ve been running <code class="highlighter-rouge">npm start</code>, the start script runs the build script every time you save a file in the <code class="highlighter-rouge">/src</code> directory so running the build script might be redundant, but better safe than sorry.</p>
+<p>Prepare your element for distribution by running the build script in the package.json file located at the root of the element you’re working on. If you’ve been running <code class="highlighter-rouge">npm run dev</code>, the dev script runs the build script every time you save a file in the <code class="highlighter-rouge">/src</code> directory so running the build script might be redundant, but better safe than sorry.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run build
 </code></pre></div></div>
@@ -119,7 +122,7 @@ a new RHElement. The generator requires that you have <a href="http://yeoman.io/
 
 <h2 id="publish">Publish</h2>
 
-<p>We’ve been publishing our RHElements to npm under the <a href="https://www.npmjs.com/org/rhelements">RHElements organization</a>, but you should feel free to update the package.json file and change the name of your element to point to an organization of your choice.</p>
+<p>We’ve been publishing our RHElements to npm under the <a href="https://www.npmjs.com/org/rhelements">RHElements organization</a>.</p>
 
 <h2 id="create-a-rhelement">Create a Rhelement</h2>
 
