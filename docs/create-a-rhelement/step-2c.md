@@ -11,9 +11,13 @@ To update the styles for our element, we'll be working in the `/src/rh-cool-elem
 The initial state of our Sass file imports some additional Sass from the cp-sass node module, but we can ignore that for now. The second part has a `:host` selector that is used for making our element display as a block element.
 
 ```
-@import "node_modules/@rhelements/cp-sass/cp-sass";
+@import "../../rh-sass/rh-sass";
 :host {
   display: block;
+}
+
+:host([hidden]) {
+  display: none;
 }
 ```
 
@@ -54,19 +58,16 @@ After those updates and refreshing our demo page, our profile looks much better.
 
 A couple of things to note in here is the use of the `:host` selector to set the styles of our container element `<rh-cool-element>`. Second, we added styles to our `button` element but we don't have to worry about this style affecting other buttons on our page. Since we have a shadow root, our styles for this element are encapsulated and won't bleed outside of our element. This is one of the main benefits of shadow DOM in that we can feel confident that our element will always look the same when we distribute our element. There are a lot of cool things that you can do with styling shadow DOM. If you'd like to learn more check out the Styling section of [Shadow DOM v1: Self-Contained Web Components](https://developers.google.com/web/fundamentals/web-components/shadowdom#styling).
 
-Now that our demo page has been updated, let's take a quick look at what happened to our ES6 version of the element in the root of our directory.
+Now that our demo page has been updated, let's take a quick look at what happened to our ES6 version of the element in the root of our element's directory.
 
 ```
-import Rhelement from '../rhelement/rhelement.js';
+import RHElement from "../rhelement/rhelement.js";
 
-/*
- * DO NOT EDIT. This will be autopopulated with the
- * html from rh-cool-element.html and css from
- * rh-cool-element.scss
- */
-const template = document.createElement('template');
-template.innerHTML = `
-<style>:host {
+class RhCoolElement extends RHElement {
+  get html() {
+    return `
+<style>
+:host {
   display: flex;
   width: 128px;
   flex-direction: column;
@@ -75,6 +76,9 @@ template.innerHTML = `
   padding: 32px;
   font-family: Arial;
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12); }
+
+:host([hidden]) {
+  display: none; }
 
 #profile-pic {
   width: 50px;
@@ -85,22 +89,33 @@ template.innerHTML = `
   margin-bottom: 16px; }
 
 button {
-  margin-top: 16px; }</style>
+  margin-top: 16px; }
+</style>
 <div id="profile-pic"></div>
 <slot></slot>
 <div>
   <button>Follow</button>
-</div>
-`;
-/* end DO NOT EDIT */
+</div>`;
+  }
 
-class RhCoolElement extends Rhelement {
+  static get tag() {
+    return "rh-cool-element";
+  }
+
+  get templateUrl() {
+    return "rh-cool-element.html";
+  }
+
+  get styleUrl() {
+    return "rh-cool-element.scss";
+  }
+
   constructor() {
-    super('rh-cool-element', template);
+    super(RhCoolElement.tag);
   }
 }
 
-window.customElements.define('rh-cool-element', RhCoolElement);
+RHElement.create(RhCoolElement);
 ```
 
 You'll notice that our style tag has all of the styles we just wrote in our Sass file. If we had Sass variables in the Sass that we wrote, they would've been compiled and the values would be reflected in the changes above.

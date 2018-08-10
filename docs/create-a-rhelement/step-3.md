@@ -8,7 +8,7 @@ To test the `rh-cool-element` that we've been working on, we'll rely on a few to
 
 ## Web Component Tester
 
-If you've used followed the [Prerequisites]({{ "/docs/get-started.html#prerequisites" | relative_url }}) in [Getting Started]({{ "/docs/get-started.html" | relative_url }}), the setup should already be done. If you didn't, make sure you have web-component-tester installed globally `npm install -g web-component-tester`, add `wct-browser-legacy` as a dev dependency in your `package.json` file, and add  a `test` script in the scripts section of your `package.json` file - `"test": "wct --npm"`.
+If you've used followed the [Prerequisites]({{ "/docs/get-started.html#prerequisites" | relative_url }}) in [Getting Started]({{ "/docs/get-started.html" | relative_url }}), the setup should already be done.
 
 ### Test Setup
 
@@ -20,8 +20,7 @@ In the root of our element, we have a `/test` directory that has an `index.html`
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-    <script src="../../../@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
-    <script src="../../../wct-browser-legacy/browser.js"></script>
+    <script src="/components/web-component-tester/browser.js"></script>
   </head>
   <body>
     <script>
@@ -44,18 +43,22 @@ The setup for our `/test/rh-cool-element_test.html` file is pretty basic too. I'
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-    <script src="../../../@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
-    <script src="../../../wct-browser-legacy/browser.js"></script>
+    <script src="/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="/components/web-component-tester/browser.js"></script>
     <script type="module" src="../rh-cool-element.js"></script>
   </head>
   <body>
-
     <rh-cool-element photo-url="https://avatars2.githubusercontent.com/u/330256?s=400&u=de56919e816dc9f821469c2f86174f29141a896e&v=4">
       Kyle Buchanan
     </rh-cool-element>
 
     <script>
       suite('<rh-cool-element>', () => {
+        test('it should upgrade', () => {
+          const rhCoolElement = document.querySelector('rh-cool-element');
+          assert.instanceOf(rhCoolElement, customElements.get("rh-cool-element", 'rh-cool-element should be an instance of rhCoolElement'));
+        });
+
         test('it should set a username from the light DOM', () => {
 
         });
@@ -79,14 +82,19 @@ The setup for our `/test/rh-cool-element_test.html` file is pretty basic too. I'
 
 A couple of things to note here is that we've used `<script type="module"...` to load our element definition. We're doing this because we want to make sure that we're testing the true source of our element instead of the transpiled version. Second, notice that we just add the HTML we need to set up our tests. This is the same HTML from our `/demo/index.html` file.
 
-Lastly, we have one additional file that helps with testing. In the root of our element, if you used our generator, there is a `wct.conf.json` file. We use this file to tell Web Component Tester that we want to use Chrome and Firefox for our testing.
+Lastly, we have one additional file that helps with testing. In the root of our RHElements repo, there is a `wct.conf.json` file. We use this file to tell Web Component Tester that we want to use Chrome and Firefox for our testing.
 
 ```
 {
   "verbose": false,
+  "npm": true,
   "plugins": {
     "local": {
-      "browsers": ["chrome", "firefox"]
+      "browsers": ["chrome"],
+      "browserOptions": {
+        "chrome": ["headless", "disable-gpu", "no-sandbox"],
+        "firefox": ["-headless"]
+      }
     }
   }
 }
@@ -104,18 +112,22 @@ Testing our 'rh-cool-element' is pretty straight-forward. We use `document.query
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-    <script src="../../../@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
-    <script src="../../../wct-browser-legacy/browser.js"></script>
+    <script src="/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="/components/web-component-tester/browser.js"></script>
     <script type="module" src="../rh-cool-element.js"></script>
   </head>
   <body>
-
     <rh-cool-element photo-url="https://avatars2.githubusercontent.com/u/330256?s=400&u=de56919e816dc9f821469c2f86174f29141a896e&v=4">
       Kyle Buchanan
     </rh-cool-element>
 
     <script>
       suite('<rh-cool-element>', () => {
+        test('it should upgrade', () => {
+          const rhCoolElement = document.querySelector('rh-cool-element');
+          assert.instanceOf(rhCoolElement, customElements.get("rh-cool-element", 'rh-cool-element should be an instance of rhCoolElement'));
+        });
+
         test('it should set a username from the light DOM', () => {
           const element = document.querySelector('rh-cool-element');
           const elementLightDOMContent = element.textContent.trim();
@@ -166,7 +178,7 @@ Testing our 'rh-cool-element' is pretty straight-forward. We use `document.query
 </html>
 ```
 
-A couple of things to note here is the access to `shadowRoot`. `shadowRoot` is available to our element since we have a shadow root set up for us by extending `Rhelement` in the definition of our element. Something else new you may not have seen before is
+A couple of things to note here is the access to `shadowRoot`. `shadowRoot` is available to our element since we have a shadow root set up for us by extending `RHElement` in the definition of our element. Something else new you may not have seen before is
 
 ```
 shadowRoot.querySelector('slot').assignedNodes()[0].textContent.trim();
@@ -190,32 +202,7 @@ Great! All four of our tests are working in Chrome and Firefox.
 
 ## Travis Integration
 
-Now that we have our tests written and our element code passes the tests, we can set up continuous integration on [Travis CI](https://travis-ci.org) so anytime we push changes to our repository, Travis will run our tests and let us know if everything is still passing.
-
-If you used the generator to create your element, there should already be a `.travis.yml` file at the root of your element.
-
-```
-language: node_js
-dist: trusty
-sudo: required
-addons:
-  firefox: "latest"
-  apt:
-    sources:
-      - google-chrome
-    packages:
-      - google-chrome-stable
-node_js: stable
-before_install:
-  - npm install -g web-component-tester
-install:
-  - npm install
-before_script:
-script:
-  - xvfb-run npm run test
-```
-
-All we're telling Travis to do is to use the current, stable version of Node.js, install the Web Component Tester globally, install our dependencies, and then run our tests. Assuming that everything goes according to plan, we should see a nice "build passing" badge in Travis.
+Now that we have our tests written and our element code passes the tests, we have set up continuous integration on [Travis CI](https://travis-ci.org) so anytime we push changes to our repository, Travis will run our tests and let us know if everything is still passing.
 
 That's it for testing. Now that we have our `rh-cool-element` and our tests are passing, we can publish and share our component on npm.
 

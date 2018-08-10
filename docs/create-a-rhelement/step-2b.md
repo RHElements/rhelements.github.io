@@ -27,11 +27,11 @@ Also, I've updated `/demo/index.html` so my name is being passed into the slot t
     <meta charset="utf-8">
     <title>RHElements: rh-cool-element Demo</title>
 
-    <!-- uncomment the es5-adapter if you're using the compiled version -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.10/custom-elements-es5-adapter.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.10/webcomponents-lite.js"></script>
+    <!-- uncomment the es5-adapter if you're using the umd version -->
+    <script src="/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
+    <script src="/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
-    <script>require(['../rh-cool-element.compiled.js'])</script>
+    <script>require(['../rh-cool-element.umd.js'])</script>
   </head>
   <body>
     <rh-cool-element>
@@ -47,38 +47,49 @@ The end result should look like this in the browser.
 
 ![demo page html step]({{ "assets/images/demo-page-html-step.png" | relative_url }}){:width="500px"}
 
-Remember, since we have the `npm start` command running, any changes we make in the `/src` directory are being watched. When changes happen, the `merge` and `compile` tasks run in our gulpfile and our ES6 and ES5 versions of the component are updated in the root of our element. Our ES6 version should now look like this.
+Remember, since we have the `npm run dev` command running, any changes we make in the `/src` directory are being watched. When changes happen, the `merge` and `compile` tasks run in our gulpfile and our ES6 and ES5 versions of the component are updated in the root of our element. Our ES6 version should now look like this.
 
 ```
-import Rhelement from '../rhelement/rhelement.js';
+import RHElement from "../rhelement/rhelement.js";
 
-/*
- * DO NOT EDIT. This will be autopopulated with the
- * html from rh-cool-element.html and css from
- * rh-cool-element.scss
- */
-const template = document.createElement('template');
-template.innerHTML = `
-<style>:host {
-  display: block; }</style>
+class RhCoolElement extends RHElement {
+  get html() {
+    return `
+<style>
+:host {
+  display: block; }
+
+:host([hidden]) {
+  display: none; }
+</style>
 <div id="profile-pic"></div>
 <slot></slot>
 <div>
   <button>Follow</button>
-</div>
-`;
-/* end DO NOT EDIT */
+</div>`;
+  }
 
-class RhCoolElement extends Rhelement {
+  static get tag() {
+    return "rh-cool-element";
+  }
+
+  get templateUrl() {
+    return "rh-cool-element.html";
+  }
+
+  get styleUrl() {
+    return "rh-cool-element.scss";
+  }
+
   constructor() {
-    super('rh-cool-element', template);
+    super(RhCoolElement.tag);
   }
 }
 
-window.customElements.define('rh-cool-element', RhCoolElement);
+RHElement.create(RhCoolElement);
 ```
 
-As you can see, the task took the HTML we wrote in `/src/rh-cool-element.html` and merged it into our ES6 version of our component. The HTML we wrote is now included in the innerHTML of our template element. The same thing has happened to our ES5 version, but that file is minified and ugly to look at so just take my word for it.
+As you can see, the task took the HTML we wrote in `/src/rh-cool-element.html` and merged it into our ES6 version of our component. The HTML we wrote is now included in the `get html()` method of our element. The same thing has happened to our ES5 version, but that file is minified and ugly to look at so just take my word for it.
 
 Now that we've updated the HTML, let's make our element look good. We'll update our Sass file and style the element the way we want.
 

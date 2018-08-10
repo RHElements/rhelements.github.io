@@ -14,34 +14,37 @@ First, let's listen for clicks on the button in our element. The best place to a
 
 > In general, the constructor should be used to set up initial state and default values, and to set up event listeners and possibly a shadow root.
 
-Since the base Rhelement class that we're extending already sets up the shadow root, all we need to do is set up our click listener.
+Since the base RHElement class that we're extending already sets up the shadow root, all we need to do is set up our click listener.
 
 ```
-import Rhelement from '../rhelement/rhelement.js';
+import RHElement from "../rhelement/rhelement.js";
 
-/*
- * DO NOT EDIT. This will be autopopulated with the
- * html from rh-cool-element.html and css from
- * rh-cool-element.scss
- */
-const template = document.createElement('template');
-template.innerHTML = ``;
-/* end DO NOT EDIT */
+class RhCoolElement extends RHElement {
+  static get tag() {
+    return "rh-cool-element";
+  }
 
-class RhCoolElement extends Rhelement {
+  get templateUrl() {
+    return "rh-cool-element.html";
+  }
+
+  get styleUrl() {
+    return "rh-cool-element.scss";
+  }
+
   constructor() {
-    super('rh-cool-element', template);
+    super(RhCoolElement.tag);
 
-    this.button = this.shadowRoot.querySelector('button');
-    this.button.addEventListener('click', this._clickHandler);
+    this.button = this.shadowRoot.querySelector("button");
+    this.button.addEventListener("click", this._clickHandler);
   }
 
   _clickHandler(evt) {
-    console.log('Button clicked!!!');
+    console.log("Button clicked!!!");
   }
 }
 
-window.customElements.define('rh-cool-element', RhCoolElement);
+RHElement.create(RhCoolElement);
 ```
 
 In our constructor, we run `querySelector` on our `shadowRoot` to locate our button. Then we add the click listener, `this._clickHandler`. Note the underscore before the method name. This is a convention that you'll find in other custom elements where the author is trying to signal that this method is meant to be a private method.
@@ -59,7 +62,7 @@ constructor() {
   this.following = false;
   this._clickHandler = this._clickHandler.bind(this);
 
-  this.button = this.shadowRoot.querySelector('button');
+  this.button = this.shadowRoot.querySelector("button");
   this.button.addEventListener('click', this._clickHandler);
 }
 ```
@@ -75,14 +78,14 @@ set following(value) {
   const isFollowing = Boolean(value);
 
   if (isFollowing) {
-    this.setAttribute('following', '');
+    this.setAttribute("following", "");
   } else {
-    this.removeAttribute('following');
+    this.removeAttribute("following");
   }
 }
 
 get following() {
-  return this.hasAttribute('following');
+  return this.hasAttribute("following");
 }
 ```
 
@@ -104,7 +107,7 @@ Let's do one more thing with the follow state. Let's update the button text to "
 
 ```
 static get observedAttributes() {
-  return ['following'];
+  return ["following"];
 }
 ```
 
@@ -113,8 +116,8 @@ static get observedAttributes() {
 ```
 attributeChangedCallback(name, oldValue, newValue) {
   switch (name) {
-    case 'following':
-      this.button.textContent = this.following ? 'Unfollow' : 'Follow';
+    case "following":
+      this.button.textContent = this.following ? "Unfollow" : "Follow";
       break;
   }
 }
@@ -130,15 +133,15 @@ Let's first add a reference to our `#profile-pic` container in the constructor b
 
 ```
 constructor() {
-  super('rh-cool-element', template);
+  super(RhCoolElement.tag);
 
-  this.following = this.hasAttribute('following') || false;
+  this.following = false;
   this._clickHandler = this._clickHandler.bind(this);
 
-  this.button = this.shadowRoot.querySelector('button');
-  this.button.addEventListener('click', this._clickHandler);
+  this.button = this.shadowRoot.querySelector("button");
+  this.button.addEventListener("click", this._clickHandler);
 
-  this.profilePic = this.shadowRoot.querySelector('#profile-pic');
+  this.profilePic = this.shadowRoot.querySelector("#profile-pic");
 }
 ```
 
@@ -146,7 +149,7 @@ Here is the update to `observedAttributes`.
 
 ```
 static get observedAttributes() {
-  return ['following', 'photo-url'];
+  return ["following", "photo-url"];
 }
 ```
 
@@ -155,11 +158,11 @@ And the updates to the `attributeChangedCallback`.
 ```
 attributeChangedCallback(name, oldValue, newValue) {
   switch (name) {
-    case 'following':
-      this.button.textContent = this.following ? 'Unfollow' : 'Follow';
+    case "following":
+      this.button.textContent = this.following ? "Unfollow" : "Follow";
       break;
 
-    case 'photo-url':
+    case "photo-url":
       this.profilePic.style.backgroundImage = `url(${newValue})`;
       break;
   }
@@ -200,7 +203,7 @@ It's a good idea to clean up any event listeners that you've added to your web c
 
 ```
 disconnectedCallback() {
-  this.button.removeEventListener('click', this._clickHandler);
+  this.button.removeEventListener("click", this._clickHandler);
 }
 ```
 
@@ -211,70 +214,73 @@ And that's it! We're all done. To summarize, we've built a brand new web compone
 For reference, here's the final Javascript code for our element.
 
 ```
-import Rhelement from '../rhelement/rhelement.js';
+import RHElement from "../rhelement/rhelement.js";
 
-/*
- * DO NOT EDIT. This will be autopopulated with the
- * html from rh-cool-element.html and css from
- * rh-cool-element.scss
- */
-const template = document.createElement('template');
-template.innerHTML = ``;
-/* end DO NOT EDIT */
+class RhCoolElement extends RHElement {
+  static get tag() {
+    return "rh-cool-element";
+  }
 
-class RhCoolElement extends Rhelement {
+  get templateUrl() {
+    return "rh-cool-element.html";
+  }
+
+  get styleUrl() {
+    return "rh-cool-element.scss";
+  }
+
   static get observedAttributes() {
-    return ['following', 'photo-url'];
-  }
-
-  constructor() {
-    super('rh-cool-element', template);
-
-    this.following = this.hasAttribute('following') || false;
-    this._clickHandler = this._clickHandler.bind(this);
-
-    this.button = this.shadowRoot.querySelector('button');
-    this.button.addEventListener('click', this._clickHandler);
-
-    this.profilePic = this.shadowRoot.querySelector('#profile-pic');
-  }
-
-  disconnectedCallback() {
-    this.button.removeEventListener('click', this._clickHandler);
+    return ["following", "photo-url"];
   }
 
   set following(value) {
     const isFollowing = Boolean(value);
 
     if (isFollowing) {
-      this.setAttribute('following', '');
+      this.setAttribute("following", "");
     } else {
-      this.removeAttribute('following');
+      this.removeAttribute("following");
     }
   }
 
   get following() {
-    return this.hasAttribute('following');
+    return this.hasAttribute("following");
   }
 
-  _clickHandler() {
-    this.following = !this.following;
+  constructor() {
+    super(RhCoolElement.tag);
+
+    this.following = false;
+    this._clickHandler = this._clickHandler.bind(this);
+
+    this.button = this.shadowRoot.querySelector("button");
+    this.button.addEventListener("click", this._clickHandler);
+
+    this.profilePic = this.shadowRoot.querySelector("#profile-pic");
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
     switch (name) {
-      case 'following':
-        this.button.textContent = this.following ? 'Unfollow' : 'Follow';
+      case "following":
+        this.button.textContent = this.following ? "Unfollow" : "Follow";
         break;
 
-      case 'photo-url':
+      case "photo-url":
         this.profilePic.style.backgroundImage = `url(${newValue})`;
         break;
     }
   }
+
+  disconnectedCallback() {
+    this.button.removeEventListener("click", this._clickHandler);
+  }
+
+  _clickHandler(evt) {
+    this.following = !this.following;
+  }
 }
 
-window.customElements.define('rh-cool-element', RhCoolElement);
+RHElement.create(RhCoolElement);
 ```
 
 Now that we have all of the code working for our `rh-cool-element`, we need to make sure we have tests written to ensure that our element is going to work as it changes in the future. We'll take care of that in the next step.
