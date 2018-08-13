@@ -4,11 +4,11 @@ layout: doc
 
 # Step 2: Develop (CSS or Sass)
 
-We're working on our `rh-cool-element` and we want it to look like a profile with a profile photo, username, and follow button. But right now, our element is pretty ugly so we need to update our CSS (or Sass) to make it look the way we want.
+We want the `rh-cool-element` to have a profile photo, a username, and a follow button. Right now, it only contains the HTML structure, but we can style our element by updating our Sass (or CSS) to make it look the way we want.
 
-To update the styles for our element, we'll be working in the `/src/rh-cool-element.scss` file. It's a `.scss` file in this case since I chose to use Sass when I initially created the element using the RHElement generator.
+We'll be working in the `/src/rh-cool-element.scss` file since we decided to use the Sass option in the RHElement generator.
 
-The initial state of our Sass file imports some additional Sass from the cp-sass node module, but we can ignore that for now. The second part has a `:host` selector that is used for making our element display as a block element.
+Your Sass file will initially import additional Sass from the rh-sass node module, but we can ignore that for now. The second part has a `:host` selector that makes our element display as a block element.
 
 ```
 @import "../../rh-sass/rh-sass";
@@ -21,16 +21,16 @@ The initial state of our Sass file imports some additional Sass from the cp-sass
 }
 ```
 
-I'm just going to update the styles a bit so it looks more like a profile.
+Now we can update our styles, like so:
 
 ```
-@import "node_modules/@rhelements/cp-sass/cp-sass";
+@import "node_modules/@rhelements/rh-sass/rh-sass";
 :host {
   display: flex;
-  width: 128px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 128px;
   padding: 32px;
   font-family: Arial;
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
@@ -41,10 +41,10 @@ I'm just going to update the styles a bit so it looks more like a profile.
 #profile-pic {
   width: 50px;
   height: 50px;
+  margin-bottom: 16px;
   border: 2px solid #333;
   border-radius: 50%;
   background-color: #efefef;
-  margin-bottom: 16px;
 }
 
 button {
@@ -52,13 +52,15 @@ button {
 }
 ```
 
-After those updates and refreshing our demo page, our profile looks much better.
+After saving and viewing our demo page, our profile element looks much better.
 
 ![demo page css step]({{ "assets/images/demo-page-css-step.png" | relative_url }}){:width="500px"}
 
-A couple of things to note in here is the use of the `:host` selector to set the styles of our container element `<rh-cool-element>`. Second, we added styles to our `button` element but we don't have to worry about this style affecting other buttons on our page. Since we have a shadow root, our styles for this element are encapsulated and won't bleed outside of our element. This is one of the main benefits of shadow DOM in that we can feel confident that our element will always look the same when we distribute our element. There are a lot of cool things that you can do with styling shadow DOM. If you'd like to learn more check out the Styling section of [Shadow DOM v1: Self-Contained Web Components](https://developers.google.com/web/fundamentals/web-components/shadowdom#styling).
+A couple of things to note: 
+1. The `:host` selector sets the styles of the container element `<rh-cool-element>`. 
+2. The `button` styles are encapsulated within this element and will not bleed out, meaning that there's no worry of this it affecting other buttons on the page. Feeling confident that your element will always look the same when it's distributed is one of the main advantages of the shadow DOM. Check out the Styling section of [Shadow DOM v1: Self-Contained Web Components](https://developers.google.com/web/fundamentals/web-components/shadowdom#styling) to learn what else you can do with styling the shadow DOM.
 
-Now that our demo page has been updated, let's take a quick look at what happened to our ES6 version of the element in the root of our element's directory.
+Now that our demo page is updated, let's take a look at what happened to the ES6 version of the element in the root of our element's directory.
 
 ```
 import RHElement from "../rhelement/rhelement.js";
@@ -118,8 +120,8 @@ button {
 RHElement.create(RhCoolElement);
 ```
 
-You'll notice that our style tag has all of the styles we just wrote in our Sass file. If we had Sass variables in the Sass that we wrote, they would've been compiled and the values would be reflected in the changes above.
+You'll notice <style> contains everything we just wrote in our Sass file. Sass variables will also compiled their values and get included in the changes above.
 
-Now that we have our `rh-cool-element` styled, we need to add some interaction to the follow button. We also need to find a way to fill in the profile photo. We can accomplish this by updating our `/src/rh-cool-element.js` file.
+Now that our `rh-cool-element` is more appealing, we'll add the follow button's interaction and fill in the profile photo. We can accomplish both of these tasks by updating the `/src/rh-cool-element.js` file.
 
 [Move to Step 2: Develop (Javascript)](step-2d.html)
