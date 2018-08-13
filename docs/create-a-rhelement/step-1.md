@@ -19,7 +19,7 @@ npm run new
 The generator will ask you a series of questions to set up your project.
 
 1.  Your element name:
-  - Your element name needs to be lowercase and should contain at least one hyphen. For rules on naming custom elements, refer to the W3C [Custom Elements Working Draft](https://www.w3.org/TR/custom-elements/#valid-custom-element-name).
+  - Your element's name should be lowercase and needs to contain at least one hyphen. For rules on naming custom elements, refer to the W3C [Custom Elements Working Draft](https://www.w3.org/TR/custom-elements/#valid-custom-element-name).
   - Red Hat prefixes elements with `rh-` for global components and then namespaces web property specific ones like `cp-` for the Customer Portal. However, prefix your elements with whatever fits your project.
   - As an example, we'll create `rh-your-element`.
   
@@ -30,7 +30,7 @@ The generator will ask you a series of questions to set up your project.
 3.  Do you want to use Sass with this element? (Yes or No)
 
 4.  If yes to question #3, Do you want to use existing Sass dependencies? (rh-sass or No thanks. I'll provide my own later)
-  - rh-sass will include the rh-sass node module with all of the mixins and variables used in RHElements.
+  - rh-sass includes the rh-sass node module with all of the mixins and variables used in RHElements.
 
 After answering the questions, you'll see something like this:
 
