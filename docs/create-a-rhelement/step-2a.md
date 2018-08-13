@@ -4,98 +4,99 @@ layout: doc
 
 # Step 2: Develop (Structure)
 
-Run the dev command in the package.json file located at the root of our element to open to start watching for changes to the files in the `/src` directory of the element. This command will build the rh-cool-element.js and rh-cool-element.umd.js files anytime you make changes to the files in the `/src` directory.
+Run the dev command found in the package.json file at the root of your element to start watching for changes to any files located in the `/src` directory. This will build rh-your-element.js and rh-your-element.umd.js whenever you save changes.
 
 ```
+# from the root of your element
 npm run dev
 ```
 
-After running the command, we can start a server at the root of the RHElements repository to view our work in the browser.
+After running the dev command, start a server at the root of the RHElements repository to view it in the browser.
 
 ```
 # from the root of the RHElements repository
 npm start
 ```
 
-This will start a simple HTTP server for us and it will reload the browser anytime we make changes to our element
+This will start a simple HTTP server that reloads the browser as you update your element.
 
-![npm start command]({{ "assets/images/rh-cool-element-start.png" | relative_url }}){:width="500px"}
+![npm start command]({{ "assets/images/rh-your-element-start.png" | relative_url }}){:width="500px"}
 
-Navigate to `http://localhost:1234/elements/rh-cool-element/demo/` to view the element in the browser.
+Navigate to `http://localhost:1234/elements/rh-your-element/demo/` to view your element.
 
-It doesn't look like much, but we're off to a good start. We have a new custom element that extends our base RHElement class, it uses shadow DOM, and has a fallback to ShadyCSS in case shadow DOM isn't supported.
+You're off to a good start! You have a new custom element that extends the base RHElement class, uses shadow DOM, and has a built-in fallback for ShadyCSS in case shadow DOM isn't supported.
 
-Let's take a look at the rh-cool-element.js file in the `/src` directory to see what we have.
+Let's take a look at the rh-your-element.js file in the `/src` directory to see what we have.
 
 ```
 import RHElement from "../rhelement/rhelement.js";
 
-class RhCoolElement extends RHElement {
+class RhYourElement extends RHElement {
   static get tag() {
-    return "rh-cool-element";
+    return "rh-your-element";
   }
 
   get templateUrl() {
-    return "rh-cool-element.html";
+    return "rh-your-element.html";
   }
 
   get styleUrl() {
-    return "rh-cool-element.scss";
+    return "rh-your-element.scss";
   }
 
   constructor() {
-    super(RhCoolElement.tag);
+    super(RhYourElement.tag);
   }
 }
 
-RHElement.create(RhCoolElement);
+RHElement.create(RhYourElement);
 ```
 
-First, you'll notice that we are using ES6 module imports and we import the RHElement base element.
+First, notice how we're using ES6 module imports and that we import the RHElement base element.
 ```
 import RHElement from '../rhelement/rhelement.js';
 ```
 
-Second, you'll see where we define the string for the HTML tag that we'll use on the page when we include our element.
+Second, we define the string for the HTML tag that we want to use.
 
 ```
 static get tag() {
-  return "rh-cool-element";
+  return "rh-your-element";
 }
 ```
 
-Third, we have references to where the HTML for our template and the Sass for our styles are located.
+Third, we reference where the HTML for our template and Sass styles are located.
 
 ```
 get templateUrl() {
-  return "rh-cool-element.html";
+  return "rh-your-element.html";
 }
 
 get styleUrl() {
-  return "rh-cool-element.scss";
+  return "rh-your-element.scss";
 }
 ```
 
-The gulp merge task in gulpfile.js will fill this section of our compiled and transpiled files when you edit a file in the `/src` directory.
+The gulp merge task in gulpfile.js fills this section with the compiled and transpiled files when you edit a file in the `/src` directory.
 
-Fourth, we have the constructor for our element.
+Fourth, you'll see the constructor for the element.
 
 ```
 constructor() {
-  super(RhCoolElement.tag);
+  super(RhYourElement.tag);
 }
 ```
 
-The RHElement base element will create a shadow root for us and handle the ShadyCSS work we'll need for browsers that don't support shadow DOM.
+The RHElement base element creates a shadow root to handle the ShadyCSS work for browsers that don't support shadow DOM.
 
-Finally, we register our element using the `create` method location in our RHElement class. This method will call `window.customElements.define` for us.
+Finally, we register our element using the `create` method from the RHElement class. This method calls `window.customElements.define`.
 
 ```
-RHElement.create(RhCoolElement);
+RHElement.create(RhYourElement);
 ```
 
-If you have any questions about how Custom Elements work and need to learn more about the basics of shadow DOM, checkout Eric Bidelman's post: [Custom Elements v1: Reusable Web Components](https://developers.google.com/web/fundamentals/web-components/customelements).
+For questions on how Custom Elements work, or if you want to learn the basics of shadow DOM, check out Eric Bidelman's post: [Custom Elements v1: Reusable Web Components](https://developers.google.com/web/fundamentals/web-components/customelements).
 
-Now that we have our structure and our dev server running, let's make our element actually do something.
+Now that our dev server is running and we have our element's structure, let's make it actually do something.
 
 [Move to Step 2: Develop (HTML)](step-2b.html)
