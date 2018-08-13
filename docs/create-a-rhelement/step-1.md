@@ -21,7 +21,7 @@ The generator will ask you a series of questions to set up your project.
 1.  Your element name:
   - Your element's name should be lowercase and needs to contain at least one hyphen. For rules on naming custom elements, refer to the W3C [Custom Elements Working Draft](https://www.w3.org/TR/custom-elements/#valid-custom-element-name).
   - Red Hat prefixes elements with `rh-` for global components and then namespaces web property specific ones like `cp-` for the Customer Portal. However, prefix your elements with whatever fits your project.
-  - As an example, we'll create `rh-your-element`.
+  - As an example, we'll create `rh-cool-element`.
   
 2.  Author name:
   - Add your name
@@ -36,12 +36,12 @@ After answering the questions, you'll see something like this:
 
 ![npm run new command]({{ "assets/images/npm-run-new.png" | relative_url }}){:width="500px"}
 
-Once that's done, switch directories to the element you just created. We'll cd into the rh-your-element directory.
+Once that's done, switch directories to the element you just created. We'll cd into the rh-cool-element directory.
 
 ```
-cd elements/rh-your-element
+cd elements/rh-cool-element
 ```
 
-Open your code editor to view the structure of the element. It's important to note the `/src`, `/demo` and `/test` directories and the rh-your-element.js and rh-your-element.compiled.js files. The `/src` directory is reserved for development and you can write tests in `/test` directory. Finally, the `/demo` directory lets you preview your element locally using the rh-your-element.js and rh-your-element.umd.js files.
+Open your code editor to view the structure of the element. It's important to note the `/src`, `/demo` and `/test` directories and the rh-cool-element.js and rh-cool-element.compiled.js files. The `/src` directory is reserved for development and you can write tests in `/test` directory. Finally, the `/demo` directory lets you preview your element locally using the rh-cool-element.js and rh-cool-element.umd.js files.
 
 [Move to Step 2: Develop (Structure)](step-2a.html)
