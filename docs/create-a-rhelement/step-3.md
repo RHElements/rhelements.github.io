@@ -4,15 +4,22 @@ layout: doc
 
 # Step 3: Test
 
-To test the `rh-cool-element` that we've been working on, we'll rely on a few tools to help us ensure that the element we've built can be relied on in production. The first tool we'll use is [Web Component Tester](https://github.com/Polymer/web-component-tester) which was built and is maintained by the Polymer team. Web Component Tester makes testing pretty easy since we'll just need to add our HTML to a file and then set up our suite of tests. Under the hood, Web Component tester uses Mocha and Chai so we'll be using the [Chai Assertion Library](http://chaijs.com/api/assert/) to make sure our tests pass. Finally, we'll show how easy it is to integrate these tests with [Travis CI](https://travis-ci.org).
+Let's write a test for the `rh-cool-element`. 
+
+We rely on a few tools to ensure our element is reliable in production: 
+1. [Web Component Tester](https://github.com/Polymer/web-component-tester), built and maintained by the Polymer team, makes testing easy. All we have to do is add the element's HTML to a file and set up our suite of tests. 
+2. We'll use the [Chai Assertion Library](http://chaijs.com/api/assert/) to make sure our tests pass since Mocha and Chai are both included in Web Component Tester.
+3. Finally, we integrate tests with [Travis CI](https://travis-ci.org).
 
 ## Web Component Tester
 
-If you've used followed the [Prerequisites]({{ "/docs/get-started.html#prerequisites" | relative_url }}) in [Getting Started]({{ "/docs/get-started.html" | relative_url }}), the setup should already be done. If you didn't, make sure you have web-component-tester installed globally `npm install -g web-component-tester`, add `wct-browser-legacy` as a dev dependency in your `package.json` file, and add  a `test` script in the scripts section of your `package.json` file - `"test": "wct --npm"`.
+If you followed the [Prerequisites]({{ "/docs/get-started.html#prerequisites" | relative_url }}) in [Getting Started]({{ "/docs/get-started.html" | relative_url }}), your setup should already be done.
 
 ### Test Setup
 
-In the root of our element, we have a `/test` directory that has an `index.html` file and a `rh-cool-element_test.html` file. The `index.html` file tells Web Component Tester which files should be tested, in this case `rh-cool-element_test.html`.
+In the root of the element, there's a `/test` directory with an `index.html` and a `rh-cool-element_test.html` file. The `index.html` file tells Web Component Tester which files to test. 
+
+For this example, `rh-cool-element_test.html` is the only file.
 
 ```
 <!doctype html>
@@ -20,8 +27,7 @@ In the root of our element, we have a `/test` directory that has an `index.html`
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-    <script src="../../../@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
-    <script src="../../../wct-browser-legacy/browser.js"></script>
+    <script src="/components/web-component-tester/browser.js"></script>
   </head>
   <body>
     <script>
@@ -34,9 +40,11 @@ In the root of our element, we have a `/test` directory that has an `index.html`
 </body></html>
 ```
 
-In our `/test/index.html` file we've included the web component polyfill and `wct-browser-legacy/browser.js`. The reason for `wct-browser-legacy/browser.js` is that, by default, Web Component Tester is looking for our web components to be loaded from a `bower_components` directory and since our web components are installed via npm and served from a `node_modules` directory, we need to use `wct-browser-legacy` (Reference to the [Node support section of the Web Component Tester README](https://github.com/Polymer/web-component-tester#node-support)).
+We've included the web component polyfill and `wct-browser-legacy/browser.js` in the `/test/index.html` file. We need `wct-browser-legacy/browser.js` because Web Component Tester looks for web components loaded from a `bower_components` directory. However, our web components are installed via npm and served from a `node_modules` directory, meaning that we're required to use `wct-browser-legacy` (Reference to the [Node support section of the Web Component Tester README](https://github.com/Polymer/web-component-tester#node-support)).
 
-The setup for our `/test/rh-cool-element_test.html` file is pretty basic too. I've added four stubs for the functionality that we need to test.
+The setup for `/test/rh-cool-element_test.html` is pretty simple. 
+
+We'll add four stubs for the functionality we need to test:
 
 ```
 <!DOCTYPE html>
@@ -44,18 +52,22 @@ The setup for our `/test/rh-cool-element_test.html` file is pretty basic too. I'
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-    <script src="../../../@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
-    <script src="../../../wct-browser-legacy/browser.js"></script>
+    <script src="/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="/components/web-component-tester/browser.js"></script>
     <script type="module" src="../rh-cool-element.js"></script>
   </head>
   <body>
-
     <rh-cool-element photo-url="https://avatars2.githubusercontent.com/u/330256?s=400&u=de56919e816dc9f821469c2f86174f29141a896e&v=4">
       Kyle Buchanan
     </rh-cool-element>
 
     <script>
       suite('<rh-cool-element>', () => {
+        test('it should upgrade', () => {
+          const rhCoolElement = document.querySelector('rh-cool-element');
+          assert.instanceOf(rhCoolElement, customElements.get("rh-cool-element", 'rh-cool-element should be an instance of rhCoolElement'));
+        });
+
         test('it should set a username from the light DOM', () => {
 
         });
@@ -77,26 +89,35 @@ The setup for our `/test/rh-cool-element_test.html` file is pretty basic too. I'
 </html>
 ```
 
-A couple of things to note here is that we've used `<script type="module"...` to load our element definition. We're doing this because we want to make sure that we're testing the true source of our element instead of the transpiled version. Second, notice that we just add the HTML we need to set up our tests. This is the same HTML from our `/demo/index.html` file.
+Note that we using `<script type="module"...` to load our element definition to make sure we're testing the true source of our element instead of the transpiled version. You'll also notice the HTML included to set up our tests. This is the same HTML from our `/demo/index.html` file.
 
-Lastly, we have one additional file that helps with testing. In the root of our element, if you used our generator, there is a `wct.conf.json` file. We use this file to tell Web Component Tester that we want to use Chrome and Firefox for our testing.
+Lastly, there's one additional piece that can help us test thoroughly. In the root of the RHElements repo, locate the `wct.conf.json` file. 
+
+We'll use this to tell Web Component Tester to test in both Chrome and Firefox:
 
 ```
 {
   "verbose": false,
+  "npm": true,
   "plugins": {
     "local": {
-      "browsers": ["chrome", "firefox"]
+      "browsers": ["chrome"],
+      "browserOptions": {
+        "chrome": ["headless", "disable-gpu", "no-sandbox"],
+        "firefox": ["-headless"]
+      }
     }
   }
 }
 ```
 
-Now that our setup is complete, we can start building out our tests.
+Now that our setup is complete, we can start building our tests.
 
 ### Test Cases
 
-Testing our 'rh-cool-element' is pretty straight-forward. We use `document.querySelector` to grab our element and then we use the usual DOM API methods to get at the things we want to test. Here is how our final test code looks.
+Let's build out the 'rh-cool-element' test suites. We'll use `document.querySelector` to grab our element and include DOM API methods to interact with what we're testing.
+
+Here is the code:
 
 ```
 <!DOCTYPE html>
@@ -104,18 +125,22 @@ Testing our 'rh-cool-element' is pretty straight-forward. We use `document.query
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-    <script src="../../../@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
-    <script src="../../../wct-browser-legacy/browser.js"></script>
+    <script src="/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="/components/web-component-tester/browser.js"></script>
     <script type="module" src="../rh-cool-element.js"></script>
   </head>
   <body>
-
     <rh-cool-element photo-url="https://avatars2.githubusercontent.com/u/330256?s=400&u=de56919e816dc9f821469c2f86174f29141a896e&v=4">
       Kyle Buchanan
     </rh-cool-element>
 
     <script>
       suite('<rh-cool-element>', () => {
+        test('it should upgrade', () => {
+          const rhCoolElement = document.querySelector('rh-cool-element');
+          assert.instanceOf(rhCoolElement, customElements.get("rh-cool-element", 'rh-cool-element should be an instance of rhCoolElement'));
+        });
+
         test('it should set a username from the light DOM', () => {
           const element = document.querySelector('rh-cool-element');
           const elementLightDOMContent = element.textContent.trim();
@@ -166,57 +191,32 @@ Testing our 'rh-cool-element' is pretty straight-forward. We use `document.query
 </html>
 ```
 
-A couple of things to note here is the access to `shadowRoot`. `shadowRoot` is available to our element since we have a shadow root set up for us by extending `Rhelement` in the definition of our element. Something else new you may not have seen before is
+You may notice we're accessing the `shadowRoot` here, available to our element by extending `RHElement` in the definition of our element. You can also access content in the `<slot></slot>` of your element by using the `assignedNodes()` method. 
+
+We use a slot for the username in `rh-cool-element`, making it available to us in the array returned by `assignedNodes()`.
 
 ```
 shadowRoot.querySelector('slot').assignedNodes()[0].textContent.trim();
 ```
 
-If you want to access the content in the `<slot></slot>` of your element, you need to used the `assignedNodes()` method to get to it. In this case, our username is the only item being passed into the slot so it's available to us as the only item in the array returned by `assignedNodes()`.
-
 ### Run the Test
 
-Now, we need to do is run our test command and see how we did.
+Lastly, we can run the test command below to see how we did.
 
 ```
 npm test
 ```
 
-And here is the command line output.
+Here is the command line output:
 
 ![test output]({{ "assets/images/test-output.png" | relative_url }})
 
-Great! All four of our tests are working in Chrome and Firefox.
+Nice! All four tests are working in Chrome and Firefox.
 
 ## Travis Integration
 
-Now that we have our tests written and our element code passes the tests, we can set up continuous integration on [Travis CI](https://travis-ci.org) so anytime we push changes to our repository, Travis will run our tests and let us know if everything is still passing.
+That's it for testing, but you can also set up continuous integration on [Travis CI](https://travis-ci.org) to run tests for every push to your repository to keep track of future updates.
 
-If you used the generator to create your element, there should already be a `.travis.yml` file at the root of your element.
-
-```
-language: node_js
-dist: trusty
-sudo: required
-addons:
-  firefox: "latest"
-  apt:
-    sources:
-      - google-chrome
-    packages:
-      - google-chrome-stable
-node_js: stable
-before_install:
-  - npm install -g web-component-tester
-install:
-  - npm install
-before_script:
-script:
-  - xvfb-run npm run test
-```
-
-All we're telling Travis to do is to use the current, stable version of Node.js, install the Web Component Tester globally, install our dependencies, and then run our tests. Assuming that everything goes according to plan, we should see a nice "build passing" badge in Travis.
-
-That's it for testing. Now that we have our `rh-cool-element` and our tests are passing, we can publish and share our component on npm.
+Now that we've created our `rh-cool-element` and all of our code passes, the final step is to publish and share your component on npm!
 
 [Move to Step 4: Publish](step-4.html)
