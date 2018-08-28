@@ -18,9 +18,9 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/icono.min.css?v=ffeaf42f559b550adde5a1b76798df11b143134b">
+    <link rel="stylesheet" href="/assets/css/icono.min.css?v=f39f57b4ea22d402b440701b659c28950534c021">
     <link href='https://overpass-30e2.kxcdn.com/overpass.css' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/assets/css/style.css?v=ffeaf42f559b550adde5a1b76798df11b143134b">
+    <link rel="stylesheet" href="/assets/css/style.css?v=f39f57b4ea22d402b440701b659c28950534c021">
   </head>
   <body>
     <!-- <section class="page-header">
@@ -45,10 +45,19 @@
       <aside>
         <nav>
           <ul>
-            <li><a href="/docs/get-started.html">Get Started</a></li>
+            <li>
+              <span class="header">Use a RHElement</span>
+              <ul>
+                <li><a href="/docs/use-a-rhelement/get-started.html">Get Started</a></li>
+                <li><a href="/docs/use-a-rhelement/vanilla-js-es6.html">Vanilla JS ES6</a></li>
+                <li><a href="/docs/use-a-rhelement/vanilla-js-es5-without-module-loader.html">Vanilla JS ES5 without a Module Loader</a></li>
+                <li><a href="/docs/use-a-rhelement/vanilla-js-es5-with-module-loader.html">Vanilla JS ES5 with a Module Loader</a></li>
+              </ul>
+            </li>
             <li>
               <span class="header">Create a RHElement</span>
               <ul>
+                <li><a href="/docs/get-started.html">Get Started</a></li>
                 <li><a href="/docs/create-a-rhelement/step-1.html">Step 1: Scaffold</a></li>
                 <li><a href="/docs/create-a-rhelement/step-2a.html">Step 2: Develop (Structure)</a></li>
                 <li><a href="/docs/create-a-rhelement/step-2b.html">Step 2: Develop (HTML)</a></li>
@@ -68,23 +77,31 @@
       <section class="main-content">
         <h1 id="step-3-test">Step 3: Test</h1>
 
-<p>To test the <code class="highlighter-rouge">rh-cool-element</code> that we’ve been working on, we’ll rely on a few tools to help us ensure that the element we’ve built can be relied on in production. The first tool we’ll use is <a href="https://github.com/Polymer/web-component-tester">Web Component Tester</a> which was built and is maintained by the Polymer team. Web Component Tester makes testing pretty easy since we’ll just need to add our HTML to a file and then set up our suite of tests. Under the hood, Web Component tester uses Mocha and Chai so we’ll be using the <a href="http://chaijs.com/api/assert/">Chai Assertion Library</a> to make sure our tests pass. Finally, we’ll show how easy it is to integrate these tests with <a href="https://travis-ci.org">Travis CI</a>.</p>
+<p>Let’s write a test for the <code class="highlighter-rouge">rh-cool-element</code>.</p>
+
+<p>We rely on a few tools to ensure our element is reliable in production:</p>
+<ol>
+  <li><a href="https://github.com/Polymer/web-component-tester">Web Component Tester</a>, built and maintained by the Polymer team, makes testing easy. All we have to do is add the element’s HTML to a file and set up our suite of tests.</li>
+  <li>We’ll use the <a href="http://chaijs.com/api/assert/">Chai Assertion Library</a> to make sure our tests pass since Mocha and Chai are both included in Web Component Tester.</li>
+  <li>Finally, we integrate tests with <a href="https://travis-ci.org">Travis CI</a>.</li>
+</ol>
 
 <h2 id="web-component-tester">Web Component Tester</h2>
 
-<p>If you’ve used followed the <a href="/docs/get-started.html#prerequisites">Prerequisites</a> in <a href="/docs/get-started.html">Getting Started</a>, the setup should already be done. If you didn’t, make sure you have web-component-tester installed globally <code class="highlighter-rouge">npm install -g web-component-tester</code>, add <code class="highlighter-rouge">wct-browser-legacy</code> as a dev dependency in your <code class="highlighter-rouge">package.json</code> file, and add  a <code class="highlighter-rouge">test</code> script in the scripts section of your <code class="highlighter-rouge">package.json</code> file - <code class="highlighter-rouge">"test": "wct --npm"</code>.</p>
+<p>If you followed the <a href="/docs/get-started.html#prerequisites">Prerequisites</a> in <a href="/docs/get-started.html">Getting Started</a>, your setup should already be done.</p>
 
 <h3 id="test-setup">Test Setup</h3>
 
-<p>In the root of our element, we have a <code class="highlighter-rouge">/test</code> directory that has an <code class="highlighter-rouge">index.html</code> file and a <code class="highlighter-rouge">rh-cool-element_test.html</code> file. The <code class="highlighter-rouge">index.html</code> file tells Web Component Tester which files should be tested, in this case <code class="highlighter-rouge">rh-cool-element_test.html</code>.</p>
+<p>In the root of the element, there’s a <code class="highlighter-rouge">/test</code> directory with an <code class="highlighter-rouge">index.html</code> and a <code class="highlighter-rouge">rh-cool-element_test.html</code> file. The <code class="highlighter-rouge">index.html</code> file tells Web Component Tester which files to test.</p>
+
+<p>For this example, <code class="highlighter-rouge">rh-cool-element_test.html</code> is the only file.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
   <span class="nt">&lt;head&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"../../../@webcomponents/webcomponentsjs/webcomponents-lite.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"../../../wct-browser-legacy/browser.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/components/web-component-tester/browser.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
   <span class="nt">&lt;/head&gt;</span>
   <span class="nt">&lt;body&gt;</span>
     <span class="nt">&lt;script&gt;</span>
@@ -97,27 +114,33 @@
 <span class="nt">&lt;/body&gt;&lt;/html&gt;</span>
 </code></pre></div></div>
 
-<p>In our <code class="highlighter-rouge">/test/index.html</code> file we’ve included the web component polyfill and <code class="highlighter-rouge">wct-browser-legacy/browser.js</code>. The reason for <code class="highlighter-rouge">wct-browser-legacy/browser.js</code> is that, by default, Web Component Tester is looking for our web components to be loaded from a <code class="highlighter-rouge">bower_components</code> directory and since our web components are installed via npm and served from a <code class="highlighter-rouge">node_modules</code> directory, we need to use <code class="highlighter-rouge">wct-browser-legacy</code> (Reference to the <a href="https://github.com/Polymer/web-component-tester#node-support">Node support section of the Web Component Tester README</a>).</p>
+<p>We’ve included the web component polyfill and <code class="highlighter-rouge">wct-browser-legacy/browser.js</code> in the <code class="highlighter-rouge">/test/index.html</code> file. We need <code class="highlighter-rouge">wct-browser-legacy/browser.js</code> because Web Component Tester looks for web components loaded from a <code class="highlighter-rouge">bower_components</code> directory. However, our web components are installed via npm and served from a <code class="highlighter-rouge">node_modules</code> directory, meaning that we’re required to use <code class="highlighter-rouge">wct-browser-legacy</code> (Reference to the <a href="https://github.com/Polymer/web-component-tester#node-support">Node support section of the Web Component Tester README</a>).</p>
 
-<p>The setup for our <code class="highlighter-rouge">/test/rh-cool-element_test.html</code> file is pretty basic too. I’ve added four stubs for the functionality that we need to test.</p>
+<p>The setup for <code class="highlighter-rouge">/test/rh-cool-element_test.html</code> is pretty simple.</p>
+
+<p>We’ll add four stubs for the functionality we need to test:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
   <span class="nt">&lt;head&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"../../../@webcomponents/webcomponentsjs/webcomponents-lite.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"../../../wct-browser-legacy/browser.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/components/web-component-tester/browser.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
     <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"module"</span> <span class="na">src=</span><span class="s">"../rh-cool-element.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
   <span class="nt">&lt;/head&gt;</span>
   <span class="nt">&lt;body&gt;</span>
-
     <span class="nt">&lt;rh-cool-element</span> <span class="na">photo-url=</span><span class="s">"https://avatars2.githubusercontent.com/u/330256?s=400&amp;u=de56919e816dc9f821469c2f86174f29141a896e&amp;v=4"</span><span class="nt">&gt;</span>
       Kyle Buchanan
     <span class="nt">&lt;/rh-cool-element&gt;</span>
 
     <span class="nt">&lt;script&gt;</span>
       <span class="nx">suite</span><span class="p">(</span><span class="s1">'&lt;rh-cool-element&gt;'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">test</span><span class="p">(</span><span class="s1">'it should upgrade'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="kd">const</span> <span class="nx">rhCoolElement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'rh-cool-element'</span><span class="p">);</span>
+          <span class="nx">assert</span><span class="p">.</span><span class="nx">instanceOf</span><span class="p">(</span><span class="nx">rhCoolElement</span><span class="p">,</span> <span class="nx">customElements</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s2">"rh-cool-element"</span><span class="p">,</span> <span class="s1">'rh-cool-element should be an instance of rhCoolElement'</span><span class="p">));</span>
+        <span class="p">});</span>
+
         <span class="nx">test</span><span class="p">(</span><span class="s1">'it should set a username from the light DOM'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
 
         <span class="p">});</span>
@@ -139,43 +162,56 @@
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
 
-<p>A couple of things to note here is that we’ve used <code class="highlighter-rouge">&lt;script type="module"...</code> to load our element definition. We’re doing this because we want to make sure that we’re testing the true source of our element instead of the transpiled version. Second, notice that we just add the HTML we need to set up our tests. This is the same HTML from our <code class="highlighter-rouge">/demo/index.html</code> file.</p>
+<p>Note that we using <code class="highlighter-rouge">&lt;script type="module"...</code> to load our element definition to make sure we’re testing the true source of our element instead of the transpiled version. You’ll also notice the HTML included to set up our tests. This is the same HTML from our <code class="highlighter-rouge">/demo/index.html</code> file.</p>
 
-<p>Lastly, we have one additional file that helps with testing. In the root of our element, if you used our generator, there is a <code class="highlighter-rouge">wct.conf.json</code> file. We use this file to tell Web Component Tester that we want to use Chrome and Firefox for our testing.</p>
+<p>Lastly, there’s one additional piece that can help us test thoroughly. In the root of the RHElements repo, locate the <code class="highlighter-rouge">wct.conf.json</code> file.</p>
+
+<p>We’ll use this to tell Web Component Tester to test in both Chrome and Firefox:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
   "verbose": false,
+  "npm": true,
   "plugins": {
     "local": {
-      "browsers": ["chrome", "firefox"]
+      "browsers": ["chrome"],
+      "browserOptions": {
+        "chrome": ["headless", "disable-gpu", "no-sandbox"],
+        "firefox": ["-headless"]
+      }
     }
   }
 }
 </code></pre></div></div>
 
-<p>Now that our setup is complete, we can start building out our tests.</p>
+<p>Now that our setup is complete, we can start building our tests.</p>
 
 <h3 id="test-cases">Test Cases</h3>
 
-<p>Testing our ‘rh-cool-element’ is pretty straight-forward. We use <code class="highlighter-rouge">document.querySelector</code> to grab our element and then we use the usual DOM API methods to get at the things we want to test. Here is how our final test code looks.</p>
+<p>Let’s build out the ‘rh-cool-element’ test suites. We’ll use <code class="highlighter-rouge">document.querySelector</code> to grab our element and include DOM API methods to interact with what we’re testing.</p>
+
+<p>Here is the code:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
   <span class="nt">&lt;head&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"../../../@webcomponents/webcomponentsjs/webcomponents-lite.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"../../../wct-browser-legacy/browser.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/components/web-component-tester/browser.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
     <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"module"</span> <span class="na">src=</span><span class="s">"../rh-cool-element.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
   <span class="nt">&lt;/head&gt;</span>
   <span class="nt">&lt;body&gt;</span>
-
     <span class="nt">&lt;rh-cool-element</span> <span class="na">photo-url=</span><span class="s">"https://avatars2.githubusercontent.com/u/330256?s=400&amp;u=de56919e816dc9f821469c2f86174f29141a896e&amp;v=4"</span><span class="nt">&gt;</span>
       Kyle Buchanan
     <span class="nt">&lt;/rh-cool-element&gt;</span>
 
     <span class="nt">&lt;script&gt;</span>
       <span class="nx">suite</span><span class="p">(</span><span class="s1">'&lt;rh-cool-element&gt;'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">test</span><span class="p">(</span><span class="s1">'it should upgrade'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="kd">const</span> <span class="nx">rhCoolElement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'rh-cool-element'</span><span class="p">);</span>
+          <span class="nx">assert</span><span class="p">.</span><span class="nx">instanceOf</span><span class="p">(</span><span class="nx">rhCoolElement</span><span class="p">,</span> <span class="nx">customElements</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s2">"rh-cool-element"</span><span class="p">,</span> <span class="s1">'rh-cool-element should be an instance of rhCoolElement'</span><span class="p">));</span>
+        <span class="p">});</span>
+
         <span class="nx">test</span><span class="p">(</span><span class="s1">'it should set a username from the light DOM'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
           <span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'rh-cool-element'</span><span class="p">);</span>
           <span class="kd">const</span> <span class="nx">elementLightDOMContent</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">textContent</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>
@@ -226,55 +262,31 @@
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
 
-<p>A couple of things to note here is the access to <code class="highlighter-rouge">shadowRoot</code>. <code class="highlighter-rouge">shadowRoot</code> is available to our element since we have a shadow root set up for us by extending <code class="highlighter-rouge">Rhelement</code> in the definition of our element. Something else new you may not have seen before is</p>
+<p>You may notice we’re accessing the <code class="highlighter-rouge">shadowRoot</code> here, available to our element by extending <code class="highlighter-rouge">RHElement</code> in the definition of our element. You can also access content in the <code class="highlighter-rouge">&lt;slot&gt;&lt;/slot&gt;</code> of your element by using the <code class="highlighter-rouge">assignedNodes()</code> method.</p>
+
+<p>We use a slot for the username in <code class="highlighter-rouge">rh-cool-element</code>, making it available to us in the array returned by <code class="highlighter-rouge">assignedNodes()</code>.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>shadowRoot.querySelector('slot').assignedNodes()[0].textContent.trim();
 </code></pre></div></div>
 
-<p>If you want to access the content in the <code class="highlighter-rouge">&lt;slot&gt;&lt;/slot&gt;</code> of your element, you need to used the <code class="highlighter-rouge">assignedNodes()</code> method to get to it. In this case, our username is the only item being passed into the slot so it’s available to us as the only item in the array returned by <code class="highlighter-rouge">assignedNodes()</code>.</p>
-
 <h3 id="run-the-test">Run the Test</h3>
 
-<p>Now, we need to do is run our test command and see how we did.</p>
+<p>Lastly, we can run the test command below to see how we did.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm test
 </code></pre></div></div>
 
-<p>And here is the command line output.</p>
+<p>Here is the command line output:</p>
 
 <p><img src="/assets/images/test-output.png" alt="test output" /></p>
 
-<p>Great! All four of our tests are working in Chrome and Firefox.</p>
+<p>Nice! All four tests are working in Chrome and Firefox.</p>
 
 <h2 id="travis-integration">Travis Integration</h2>
 
-<p>Now that we have our tests written and our element code passes the tests, we can set up continuous integration on <a href="https://travis-ci.org">Travis CI</a> so anytime we push changes to our repository, Travis will run our tests and let us know if everything is still passing.</p>
+<p>That’s it for testing, but you can also set up continuous integration on <a href="https://travis-ci.org">Travis CI</a> to run tests for every push to your repository to keep track of future updates.</p>
 
-<p>If you used the generator to create your element, there should already be a <code class="highlighter-rouge">.travis.yml</code> file at the root of your element.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>language: node_js
-dist: trusty
-sudo: required
-addons:
-  firefox: "latest"
-  apt:
-    sources:
-      - google-chrome
-    packages:
-      - google-chrome-stable
-node_js: stable
-before_install:
-  - npm install -g web-component-tester
-install:
-  - npm install
-before_script:
-script:
-  - xvfb-run npm run test
-</code></pre></div></div>
-
-<p>All we’re telling Travis to do is to use the current, stable version of Node.js, install the Web Component Tester globally, install our dependencies, and then run our tests. Assuming that everything goes according to plan, we should see a nice “build passing” badge in Travis.</p>
-
-<p>That’s it for testing. Now that we have our <code class="highlighter-rouge">rh-cool-element</code> and our tests are passing, we can publish and share our component on npm.</p>
+<p>Now that we’ve created our <code class="highlighter-rouge">rh-cool-element</code> and all of our code passes, the final step is to publish and share your component on npm!</p>
 
 <p><a href="step-4.html">Move to Step 4: Publish</a></p>
 

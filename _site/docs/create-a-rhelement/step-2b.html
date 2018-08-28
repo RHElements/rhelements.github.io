@@ -18,9 +18,9 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/icono.min.css?v=ffeaf42f559b550adde5a1b76798df11b143134b">
+    <link rel="stylesheet" href="/assets/css/icono.min.css?v=f39f57b4ea22d402b440701b659c28950534c021">
     <link href='https://overpass-30e2.kxcdn.com/overpass.css' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/assets/css/style.css?v=ffeaf42f559b550adde5a1b76798df11b143134b">
+    <link rel="stylesheet" href="/assets/css/style.css?v=f39f57b4ea22d402b440701b659c28950534c021">
   </head>
   <body>
     <!-- <section class="page-header">
@@ -45,10 +45,19 @@
       <aside>
         <nav>
           <ul>
-            <li><a href="/docs/get-started.html">Get Started</a></li>
+            <li>
+              <span class="header">Use a RHElement</span>
+              <ul>
+                <li><a href="/docs/use-a-rhelement/get-started.html">Get Started</a></li>
+                <li><a href="/docs/use-a-rhelement/vanilla-js-es6.html">Vanilla JS ES6</a></li>
+                <li><a href="/docs/use-a-rhelement/vanilla-js-es5-without-module-loader.html">Vanilla JS ES5 without a Module Loader</a></li>
+                <li><a href="/docs/use-a-rhelement/vanilla-js-es5-with-module-loader.html">Vanilla JS ES5 with a Module Loader</a></li>
+              </ul>
+            </li>
             <li>
               <span class="header">Create a RHElement</span>
               <ul>
+                <li><a href="/docs/get-started.html">Get Started</a></li>
                 <li><a href="/docs/create-a-rhelement/step-1.html">Step 1: Scaffold</a></li>
                 <li><a href="/docs/create-a-rhelement/step-2a.html">Step 2: Develop (Structure)</a></li>
                 <li><a href="/docs/create-a-rhelement/step-2b.html">Step 2: Develop (HTML)</a></li>
@@ -68,11 +77,11 @@
       <section class="main-content">
         <h1 id="step-2-develop-html">Step 2: Develop (HTML)</h1>
 
-<p>Now that we have our element set up and our dev server is running. Let’s take advantage of the shadow root and the slot to make our element a bit more interesting.</p>
+<p>Now that our element is set up and our dev server is running, let’s take advantage of the slot and shadow root to make our element a bit more interesting.</p>
 
-<p>I’ll edit the <code class="highlighter-rouge">/src/rh-cool-element.html</code> file to add some additional HTML. Let’s turn <code class="highlighter-rouge">rh-cool-element</code> into a profile element that has a profile photo, a username, and a button that will allow us to follow the user.</p>
+<p>We’ll edit the <code class="highlighter-rouge">/src/rh-cool-element.html</code> file to add some additional HTML. Let’s turn <code class="highlighter-rouge">rh-cool-element</code> into a profile element that has a profile photo, a username, and a button to follow the user.</p>
 
-<p>Here’s the updated HTML in <code class="highlighter-rouge">/src/rh-cool-element.html</code>.</p>
+<p>Here’s the updated HTML in <code class="highlighter-rouge">/src/rh-cool-element.html</code>:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div id="profile-pic"&gt;&lt;/div&gt;
 &lt;slot&gt;&lt;/slot&gt;
@@ -81,7 +90,7 @@
 &lt;/div&gt;
 </code></pre></div></div>
 
-<p>Also, I’ve updated <code class="highlighter-rouge">/demo/index.html</code> so my name is being passed into the slot that we have set up in our element.</p>
+<p>We’ll also need to update <code class="highlighter-rouge">/demo/index.html</code> so that the user’s name is passed into the slot in <code class="highlighter-rouge">/src/rh-cool-element.html</code>:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
@@ -89,11 +98,11 @@
     <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;title&gt;</span>RHElements: rh-cool-element Demo<span class="nt">&lt;/title&gt;</span>
 
-    <span class="c">&lt;!-- uncomment the es5-adapter if you're using the compiled version --&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.10/custom-elements-es5-adapter.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.10/webcomponents-lite.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="c">&lt;!-- uncomment the es5-adapter if you're using the umd version --&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/@webcomponents/webcomponentsjs/webcomponents-loader.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
     <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script&gt;</span><span class="nx">require</span><span class="p">([</span><span class="s1">'../rh-cool-element.compiled.js'</span><span class="p">])</span><span class="nt">&lt;/script&gt;</span>
+    <span class="nt">&lt;script&gt;</span><span class="nx">require</span><span class="p">([</span><span class="s1">'../rh-cool-element.umd.js'</span><span class="p">])</span><span class="nt">&lt;/script&gt;</span>
   <span class="nt">&lt;/head&gt;</span>
   <span class="nt">&lt;body&gt;</span>
     <span class="nt">&lt;rh-cool-element&gt;</span>
@@ -103,45 +112,58 @@
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
 
-<p>Slots are a great way to take HTML from the light DOM and move it into a specific place in the shadow DOM. To learn more about shadow DOM and how to use slots, checkout <a href="https://developers.google.com/web/fundamentals/web-components/shadowdom">Shadow DOM v1: Self-Contained Web Components</a>.</p>
+<p>Slots take the HTML from the light DOM and moves it right into the shadow DOM. To learn more about shadow DOM and how to use slots, check out <a href="https://developers.google.com/web/fundamentals/web-components/shadowdom">Shadow DOM v1: Self-Contained Web Components</a>.</p>
 
-<p>The end result should look like this in the browser.</p>
+<p>Here’s how it should look in the browser:</p>
 
 <p><img src="/assets/images/demo-page-html-step.png" alt="demo page html step" width="500px" /></p>
 
-<p>Remember, since we have the <code class="highlighter-rouge">npm start</code> command running, any changes we make in the <code class="highlighter-rouge">/src</code> directory are being watched. When changes happen, the <code class="highlighter-rouge">merge</code> and <code class="highlighter-rouge">compile</code> tasks run in our gulpfile and our ES6 and ES5 versions of the component are updated in the root of our element. Our ES6 version should now look like this.</p>
+<p>Remember that any changes we make in the <code class="highlighter-rouge">/src</code> directory are being watched while the <code class="highlighter-rouge">npm run dev</code> command runs. When you save changes, the <code class="highlighter-rouge">merge</code> and <code class="highlighter-rouge">compile</code> tasks run from the gulpfile to update the ES6 and ES5 versions of the component in the root of your element.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import Rhelement from '../rhelement/rhelement.js';
+<p>The ES6 version should now look like this:</p>
 
-/*
- * DO NOT EDIT. This will be autopopulated with the
- * html from rh-cool-element.html and css from
- * rh-cool-element.scss
- */
-const template = document.createElement('template');
-template.innerHTML = `
-&lt;style&gt;:host {
-  display: block; }&lt;/style&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import RHElement from "../rhelement/rhelement.js";
+
+class RhCoolElement extends RHElement {
+  get html() {
+    return `
+&lt;style&gt;
+:host {
+  display: block; }
+
+:host([hidden]) {
+  display: none; }
+&lt;/style&gt;
 &lt;div id="profile-pic"&gt;&lt;/div&gt;
 &lt;slot&gt;&lt;/slot&gt;
 &lt;div&gt;
   &lt;button&gt;Follow&lt;/button&gt;
-&lt;/div&gt;
-`;
-/* end DO NOT EDIT */
+&lt;/div&gt;`;
+  }
 
-class RhCoolElement extends Rhelement {
+  static get tag() {
+    return "rh-cool-element";
+  }
+
+  get templateUrl() {
+    return "rh-cool-element.html";
+  }
+
+  get styleUrl() {
+    return "rh-cool-element.scss";
+  }
+
   constructor() {
-    super('rh-cool-element', template);
+    super(RhCoolElement.tag);
   }
 }
 
-window.customElements.define('rh-cool-element', RhCoolElement);
+RHElement.create(RhCoolElement);
 </code></pre></div></div>
 
-<p>As you can see, the task took the HTML we wrote in <code class="highlighter-rouge">/src/rh-cool-element.html</code> and merged it into our ES6 version of our component. The HTML we wrote is now included in the innerHTML of our template element. The same thing has happened to our ES5 version, but that file is minified and ugly to look at so just take my word for it.</p>
+<p>The gulp task takes the HTML from <code class="highlighter-rouge">/src/rh-cool-element.html</code> and merges it into the ES6 version of your component while the HTML for the element is included in the <code class="highlighter-rouge">get html()</code> method of our element. The same thing happens for the ES5 version, but we’ve minified this file. See for yourself, but it’s not pretty.</p>
 
-<p>Now that we’ve updated the HTML, let’s make our element look good. We’ll update our Sass file and style the element the way we want.</p>
+<p>Now that we’ve added the HTML, let’s style our element by updating the Sass file.</p>
 
 <p><a href="step-2c.html">Move to Step 2: Develop (CSS or Sass)</a></p>
 

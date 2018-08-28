@@ -18,9 +18,9 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/icono.min.css?v=ffeaf42f559b550adde5a1b76798df11b143134b">
+    <link rel="stylesheet" href="/assets/css/icono.min.css?v=f39f57b4ea22d402b440701b659c28950534c021">
     <link href='https://overpass-30e2.kxcdn.com/overpass.css' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/assets/css/style.css?v=ffeaf42f559b550adde5a1b76798df11b143134b">
+    <link rel="stylesheet" href="/assets/css/style.css?v=f39f57b4ea22d402b440701b659c28950534c021">
   </head>
   <body>
     <!-- <section class="page-header">
@@ -45,10 +45,19 @@
       <aside>
         <nav>
           <ul>
-            <li><a href="/docs/get-started.html">Get Started</a></li>
+            <li>
+              <span class="header">Use a RHElement</span>
+              <ul>
+                <li><a href="/docs/use-a-rhelement/get-started.html">Get Started</a></li>
+                <li><a href="/docs/use-a-rhelement/vanilla-js-es6.html">Vanilla JS ES6</a></li>
+                <li><a href="/docs/use-a-rhelement/vanilla-js-es5-without-module-loader.html">Vanilla JS ES5 without a Module Loader</a></li>
+                <li><a href="/docs/use-a-rhelement/vanilla-js-es5-with-module-loader.html">Vanilla JS ES5 with a Module Loader</a></li>
+              </ul>
+            </li>
             <li>
               <span class="header">Create a RHElement</span>
               <ul>
+                <li><a href="/docs/get-started.html">Get Started</a></li>
                 <li><a href="/docs/create-a-rhelement/step-1.html">Step 1: Scaffold</a></li>
                 <li><a href="/docs/create-a-rhelement/step-2a.html">Step 2: Develop (Structure)</a></li>
                 <li><a href="/docs/create-a-rhelement/step-2b.html">Step 2: Develop (HTML)</a></li>
@@ -74,44 +83,47 @@
 
 <h2 id="step-1-scaffold-an-element">Step 1: Scaffold an Element</h2>
 
-<p>Use the RHElement generator to start the scaffolding process.</p>
+<p>Use the RHElement generator to start the scaffolding process. From the root directory of the RHElements repository, run the following command.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yo rhelement
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run new
 </code></pre></div></div>
 
-<p>The generator will ask a series of questions to help you get everything set up.</p>
+<p>The generator will ask you a series of questions to set up your project.</p>
 
 <ol>
   <li>Your element name:
     <ul>
-      <li>Your element name should be lowercase and contain at least one hyphen in it. For the exact rules to naming a custom element, refer to the W3C <a href="https://www.w3.org/TR/custom-elements/#valid-custom-element-name">Custom Elements Working Draft</a>. In this case, we’re going to create <code class="highlighter-rouge">rh-cool-element</code>.</li>
-      <li>We’ve been prefixing elements with <code class="highlighter-rouge">rh-</code> if they are meant to be used by Red Hat and <code class="highlighter-rouge">cp-</code> if the element will be specific to the Customer Portal. But you can prefix your element with whatever makes most sense for you.</li>
+      <li>Your element’s name should be lowercase and needs to contain at least one hyphen. For rules on naming custom elements, refer to the W3C <a href="https://www.w3.org/TR/custom-elements/#valid-custom-element-name">Custom Elements Working Draft</a>.</li>
+      <li>Red Hat prefixes elements with <code class="highlighter-rouge">rh-</code> for global components and then namespaces web property specific ones like <code class="highlighter-rouge">cp-</code> for the Customer Portal. However, prefix your elements with whatever fits your project.</li>
+      <li>As an example, we’ll create <code class="highlighter-rouge">rh-cool-element</code>.</li>
     </ul>
   </li>
   <li>Author name:
     <ul>
       <li>Add your name</li>
-      <li>NOTE: we’re going to update the generator in the future so it will do a better job with the author object to include an email address and GitHub profile.</li>
+      <li>NOTE: we will update the generator in the future to include an email address and GitHub profile.</li>
     </ul>
   </li>
-  <li>Do you want to use Sass with this element? (Yes or No)</li>
-  <li>If yes to question #3, Do you want to use existing Sass dependencies? (cp-sass or No thanks. I’ll provide my own later)
+  <li>
+    <p>Do you want to use Sass with this element? (Yes or No)</p>
+  </li>
+  <li>If yes to question #3, Do you want to use existing Sass dependencies? (rh-sass or No thanks. I’ll provide my own later)
     <ul>
-      <li>cp-sass will include the cp-sass node module with all of the Customer Portal mixins and variables.</li>
+      <li>rh-sass includes the rh-sass node module with all of the mixins and variables used in RHElements.</li>
     </ul>
   </li>
 </ol>
 
-<p>After you’ve answered the questions, you should see something like this.</p>
+<p>After answering the questions, you’ll see something like this:</p>
 
-<p><img src="/assets/images/yo-rhelement.png" alt="yo rhelement command" width="500px" /></p>
+<p><img src="/assets/images/npm-run-new.png" alt="npm run new command" width="500px" /></p>
 
-<p>Once that completes, change directories into the name of the element you just created. In this case will go into the rh-cool-element directory.</p>
+<p>Once that’s done, switch directories to the element you just created. We’ll cd into the rh-cool-element directory.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd rh-cool-element
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd elements/rh-cool-element
 </code></pre></div></div>
 
-<p>Open up your code editor and view the structure of the element. The important things to note are the <code class="highlighter-rouge">/src</code>, <code class="highlighter-rouge">/demo</code> and <code class="highlighter-rouge">/test</code> directories and the rh-cool-element.js and rh-cool-element.compiled.js files. You’ll do all your development in the <code class="highlighter-rouge">/src</code> directory and write your tests in <code class="highlighter-rouge">/test</code> directory. We’ll use the <code class="highlighter-rouge">/demo</code> directory to preview the element locally and the rh-cool-element.js and rh-cool-element.compiled.js files we’ll be used for the demo.</p>
+<p>Open your code editor to view the structure of the element. It’s important to note the <code class="highlighter-rouge">/src</code>, <code class="highlighter-rouge">/demo</code> and <code class="highlighter-rouge">/test</code> directories and the rh-cool-element.js and rh-cool-element.compiled.js files. The <code class="highlighter-rouge">/src</code> directory is reserved for development and you can write tests in <code class="highlighter-rouge">/test</code> directory. Finally, the <code class="highlighter-rouge">/demo</code> directory lets you preview your element locally using the rh-cool-element.js and rh-cool-element.umd.js files.</p>
 
 <p><a href="step-2a.html">Move to Step 2: Develop (Structure)</a></p>
 

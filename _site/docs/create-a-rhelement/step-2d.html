@@ -18,9 +18,9 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/icono.min.css?v=ffeaf42f559b550adde5a1b76798df11b143134b">
+    <link rel="stylesheet" href="/assets/css/icono.min.css?v=f39f57b4ea22d402b440701b659c28950534c021">
     <link href='https://overpass-30e2.kxcdn.com/overpass.css' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/assets/css/style.css?v=ffeaf42f559b550adde5a1b76798df11b143134b">
+    <link rel="stylesheet" href="/assets/css/style.css?v=f39f57b4ea22d402b440701b659c28950534c021">
   </head>
   <body>
     <!-- <section class="page-header">
@@ -45,10 +45,19 @@
       <aside>
         <nav>
           <ul>
-            <li><a href="/docs/get-started.html">Get Started</a></li>
+            <li>
+              <span class="header">Use a RHElement</span>
+              <ul>
+                <li><a href="/docs/use-a-rhelement/get-started.html">Get Started</a></li>
+                <li><a href="/docs/use-a-rhelement/vanilla-js-es6.html">Vanilla JS ES6</a></li>
+                <li><a href="/docs/use-a-rhelement/vanilla-js-es5-without-module-loader.html">Vanilla JS ES5 without a Module Loader</a></li>
+                <li><a href="/docs/use-a-rhelement/vanilla-js-es5-with-module-loader.html">Vanilla JS ES5 with a Module Loader</a></li>
+              </ul>
+            </li>
             <li>
               <span class="header">Create a RHElement</span>
               <ul>
+                <li><a href="/docs/get-started.html">Get Started</a></li>
                 <li><a href="/docs/create-a-rhelement/step-1.html">Step 1: Scaffold</a></li>
                 <li><a href="/docs/create-a-rhelement/step-2a.html">Step 2: Develop (Structure)</a></li>
                 <li><a href="/docs/create-a-rhelement/step-2b.html">Step 2: Develop (HTML)</a></li>
@@ -68,56 +77,63 @@
       <section class="main-content">
         <h1 id="step-2-develop-javascript">Step 2: Develop (Javascript)</h1>
 
-<p>In this step, we’ll accomplish a few things.</p>
+<p>In this step, we will:</p>
 <ul>
-  <li>Add a click listener to our follow button</li>
+  <li>Add a click listener to the follow button</li>
   <li>Set a follow state on element</li>
-  <li>Have an image show up in our profile photo</li>
+  <li>Add a the profile photo</li>
   <li>Properly disconnect our element</li>
 </ul>
 
-<p>First, let’s listen for clicks on the button in our element. The best place to add the click listener to the button is in the constructor. According to the W3C Custom Elements draft section called <a href="https://w3c.github.io/webcomponents/spec/custom/#custom-element-conformance">“2.2 Requirements for custom element constructors”</a>:</p>
+<p>First, we’ll go ahead and listen for click events on the button. The best place to add a click listener is in the constructor, according to the W3C Custom Elements draft section called <a href="https://w3c.github.io/webcomponents/spec/custom/#custom-element-conformance">“2.2 Requirements for custom element constructors”</a>:</p>
 
 <blockquote>
-  <p>In general, the constructor should be used to set up initial state and default values, and to set up event listeners and possibly a shadow root.</p>
+  <p>In general, the constructor is responsible for setting the initial state, default values, event listeners, and a shadow root.</p>
 </blockquote>
 
-<p>Since the base Rhelement class that we’re extending already sets up the shadow root, all we need to do is set up our click listener.</p>
+<p>Since our base RHElement that we extended already sets up a shadow root, all we’ll need to do is set up an event listener.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import Rhelement from '../rhelement/rhelement.js';
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import RHElement from "../rhelement/rhelement.js";
 
-/*
- * DO NOT EDIT. This will be autopopulated with the
- * html from rh-cool-element.html and css from
- * rh-cool-element.scss
- */
-const template = document.createElement('template');
-template.innerHTML = ``;
-/* end DO NOT EDIT */
+class RhCoolElement extends RHElement {
+  static get tag() {
+    return "rh-cool-element";
+  }
 
-class RhCoolElement extends Rhelement {
+  get templateUrl() {
+    return "rh-cool-element.html";
+  }
+
+  get styleUrl() {
+    return "rh-cool-element.scss";
+  }
+
   constructor() {
-    super('rh-cool-element', template);
+    super(RhCoolElement.tag);
 
-    this.button = this.shadowRoot.querySelector('button');
-    this.button.addEventListener('click', this._clickHandler);
+    this.button = this.shadowRoot.querySelector("button");
+    this.button.addEventListener("click", this._clickHandler);
   }
 
   _clickHandler(evt) {
-    console.log('Button clicked!!!');
+    console.log("Button clicked!!!");
   }
 }
 
-window.customElements.define('rh-cool-element', RhCoolElement);
+RHElement.create(RhCoolElement);
 </code></pre></div></div>
 
-<p>In our constructor, we run <code class="highlighter-rouge">querySelector</code> on our <code class="highlighter-rouge">shadowRoot</code> to locate our button. Then we add the click listener, <code class="highlighter-rouge">this._clickHandler</code>. Note the underscore before the method name. This is a convention that you’ll find in other custom elements where the author is trying to signal that this method is meant to be a private method.</p>
+<p>In the constructor, we ran <code class="highlighter-rouge">querySelector</code> on our <code class="highlighter-rouge">shadowRoot</code> to locate the button and added a click listener <code class="highlighter-rouge">this._clickHandler</code> to capture the event.</p>
 
-<p>Refresh your demo page, click the button and you should see the following result.</p>
+<p>Please note the underscore before the method name. This is a convention you’ll notice in other custom elements where the author is trying to signal that it’s meant as a private method.</p>
+
+<p>After saving your files, the demo page will refresh and you’ll notice the start of your button interactivity.</p>
 
 <p><img src="/assets/images/demo-page-js-click-setup-step.png" alt="demo page js click setup step" width="500px" /></p>
 
-<p>Now that the click handler is set up, let’s set a following state on our element to keep track of whether or not the user is following this profile. We’ll update the <code class="highlighter-rouge">constructor</code> with a couple lines of code.</p>
+<p>Now that the click handler is set up, let’s set a following state to keep track of whether or not you’re following that user.</p>
+
+<p>We’ll update the <code class="highlighter-rouge">constructor</code> like so:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>constructor() {
   super('rh-cool-element', template);
@@ -125,214 +141,223 @@ window.customElements.define('rh-cool-element', RhCoolElement);
   this.following = false;
   this._clickHandler = this._clickHandler.bind(this);
 
-  this.button = this.shadowRoot.querySelector('button');
+  this.button = this.shadowRoot.querySelector("button");
   this.button.addEventListener('click', this._clickHandler);
 }
 </code></pre></div></div>
 
-<p>We did two things here. First we set the state of <code class="highlighter-rouge">following</code> to false on our element. We also bound <code class="highlighter-rouge">this</code> to our click handler so we can continue to use <code class="highlighter-rouge">this</code> and refer to our element in the <code class="highlighter-rouge">_clickHandler</code>.</p>
+<p>We did a couple things here. First, we set the state of <code class="highlighter-rouge">following</code> to false on our element and then we bound <code class="highlighter-rouge">this</code> to our click handler to continue using <code class="highlighter-rouge">this</code> to refer to our element in the <code class="highlighter-rouge">_clickHandler</code>.</p>
 
 <h2 id="getter-setter-and-element-state">Getter, Setter, and Element State</h2>
 
-<p>Next, let create a getter and a setter for the <code class="highlighter-rouge">following</code> property of our element. The setter will enable us to reflect the state of following to an attribute on <code class="highlighter-rouge">rh-cool-element</code>. The getter will provide us with the value of that attribute. Let’s use <code class="highlighter-rouge">following</code> as the attribute to reflect the state.</p>
+<p>Next, we’ll need to create a getter and a setter for the <code class="highlighter-rouge">following</code> property of our element. The setter helps us reflect the state of following to an attribute on <code class="highlighter-rouge">rh-cool-element</code>, and the getter provides us with the value of that attribute.</p>
+
+<p>Let’s use <code class="highlighter-rouge">following</code> as an attribute:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set following(value) {
   const isFollowing = Boolean(value);
 
   if (isFollowing) {
-    this.setAttribute('following', '');
+    this.setAttribute("following", "");
   } else {
-    this.removeAttribute('following');
+    this.removeAttribute("following");
   }
 }
 
 get following() {
-  return this.hasAttribute('following');
+  return this.hasAttribute("following");
 }
 </code></pre></div></div>
 
-<p>Now that we have the following getter and setter wired up, let’s update the <code class="highlighter-rouge">_clickHandler</code> method to toggle the following state.</p>
+<p>Now that our getter and setter is wired up, we can update the <code class="highlighter-rouge">_clickHandler</code> method to toggle the following state.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_clickHandler() {
   this.following = !this.following;
 }
 </code></pre></div></div>
 
-<p>So now when we click the follow button, we should see the <code class="highlighter-rouge">following</code> attribute set and unset as we toggle the button.</p>
+<p>When we click the follow button now, you’ll notice the <code class="highlighter-rouge">following</code> attribute set and unset as we toggle the button.</p>
 
 <p><img src="/assets/images/demo-page-js-attribute-change-step.png" alt="demo page js attribute changed step" width="500px" /></p>
 
 <h2 id="observed-attributes">Observed Attributes</h2>
 
-<p>Let’s do one more thing with the follow state. Let’s update the button text to “Unfollow” when <code class="highlighter-rouge">this.following</code> is true and be “Follow” when <code class="highlighter-rouge">this.following</code> is false. In this part, we’ll introduce a new concept: observing attributes. Observing attributes is an easy way to tell your custom element to perform an action when an attribute your observing changes. In this case, we want to know when the <code class="highlighter-rouge">following</code> attribute has changed. When it does, we’ll change the text of our follow button. To observe an attribute, add this code to the top of your class.</p>
+<p>Let’s add one more thing with the follow state. We should update the button’s text to “Unfollow” when <code class="highlighter-rouge">this.following</code> is true and to “Follow” when <code class="highlighter-rouge">this.following</code> is false. Observing attributes is an easy way to tell a custom element to perform an action when an attribute changes. In this case, we keep an eye on the <code class="highlighter-rouge">following</code> attribute for changes, and when it does, we’ll update the button’s text.</p>
+
+<p>To observe an attribute, add this code to the top of your class:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>static get observedAttributes() {
-  return ['following'];
+  return ["following"];
 }
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">observedAttributes</code> should return an array of attributes that you want to observe. In this case, we’ll observe the <code class="highlighter-rouge">following</code> attribute. To react to a change in the attributes were observing, we need to set up the <code class="highlighter-rouge">attributeChangedCallback</code> method.</p>
+<p><code class="highlighter-rouge">observedAttributes</code> returns an array of attributes you want observed. To react to a change, we’ll need to set up the <code class="highlighter-rouge">attributeChangedCallback</code> method.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>attributeChangedCallback(name, oldValue, newValue) {
   switch (name) {
-    case 'following':
-      this.button.textContent = this.following ? 'Unfollow' : 'Follow';
+    case "following":
+      this.button.textContent = this.following ? "Unfollow" : "Follow";
       break;
   }
 }
 </code></pre></div></div>
 
-<p>All this code does is check which attribute changed and if it was the <code class="highlighter-rouge">following</code> attribute, we update our button text. Pretty straight-forward. Now our button should reflect the state of <code class="highlighter-rouge">following</code> in our element. With everything wired up, our UI should now look like this when we click the follow button.</p>
+<p>If the changed attribute is <code class="highlighter-rouge">following</code>, the button text will update based on our conditional. Pretty straight-forward, right? Now our button completely reflects the state of <code class="highlighter-rouge">following</code> with everything wired up.</p>
+
+<p>The UI will look like this when we click the follow button:</p>
 
 <p><img src="/assets/images/demo-page-js-follow-attribute-changed-step.png" alt="demo page js attribute changed step" width="500px" /></p>
 
-<p>Two more things and then we’re done. Next, let’s use a <code class="highlighter-rouge">photo-url</code> attribute to pass in a photo url for our profile pic. Once again we can use <code class="highlighter-rouge">observedAttributes</code> and the <code class="highlighter-rouge">attributeChangedCallback</code> to handle this. So with just a few updates to those two methods, we can add our profile pic.</p>
+<p>Next, we add a <code class="highlighter-rouge">photo-url</code> attribute to pass in a profile image. Once again, we’ll use the <code class="highlighter-rouge">observedAttributes</code> and the <code class="highlighter-rouge">attributeChangedCallback</code> to handle the work. We can add a profile image with only a few updates!</p>
 
-<p>Let’s first add a reference to our <code class="highlighter-rouge">#profile-pic</code> container in the constructor by setting <code class="highlighter-rouge">this.profilePic</code>.</p>
+<p>Initially, we’ll need to include a reference to <code class="highlighter-rouge">#profile-pic</code> in the constructor by setting <code class="highlighter-rouge">this.profilePic</code>.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>constructor() {
-  super('rh-cool-element', template);
+  super(RhCoolElement.tag);
 
-  this.following = this.hasAttribute('following') || false;
+  this.following = false;
   this._clickHandler = this._clickHandler.bind(this);
 
-  this.button = this.shadowRoot.querySelector('button');
-  this.button.addEventListener('click', this._clickHandler);
+  this.button = this.shadowRoot.querySelector("button");
+  this.button.addEventListener("click", this._clickHandler);
 
-  this.profilePic = this.shadowRoot.querySelector('#profile-pic');
+  this.profilePic = this.shadowRoot.querySelector("#profile-pic");
 }
 </code></pre></div></div>
 
-<p>Here is the update to <code class="highlighter-rouge">observedAttributes</code>.</p>
+<p>Now, we’ll add the <code class="highlighter-rouge">photo-url</code> attribute to our <code class="highlighter-rouge">observedAttributes</code>:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>static get observedAttributes() {
-  return ['following', 'photo-url'];
+  return ["following", "photo-url"];
 }
 </code></pre></div></div>
 
-<p>And the updates to the <code class="highlighter-rouge">attributeChangedCallback</code>.</p>
+<p>Now we can update our <code class="highlighter-rouge">attributeChangedCallback</code> to set the image:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>attributeChangedCallback(name, oldValue, newValue) {
   switch (name) {
-    case 'following':
-      this.button.textContent = this.following ? 'Unfollow' : 'Follow';
+    case "following":
+      this.button.textContent = this.following ? "Unfollow" : "Follow";
       break;
 
-    case 'photo-url':
+    case "photo-url":
       this.profilePic.style.backgroundImage = `url(${newValue})`;
       break;
   }
 }
 </code></pre></div></div>
 
-<p>Now we need to update our demo page (<code class="highlighter-rouge">/demo/index.html</code>) and add the <code class="highlighter-rouge">photo-url</code> attribute with a URL to a profile pic so we can see everything working.</p>
+<p>Finally, we’ll need to update our demo page (<code class="highlighter-rouge">/demo/index.html</code>) to include the <code class="highlighter-rouge">photo-url</code> attribute. Pass in an image URL to see that it’s working.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;rh-cool-element photo-url="https://avatars2.githubusercontent.com/u/330256?s=400&amp;u=de56919e816dc9f821469c2f86174f29141a896e&amp;v=4"&gt;
   Kyle Buchanan
 &lt;/rh-cool-element&gt;
 </code></pre></div></div>
 
-<p>And finally, we need to modify <code class="highlighter-rouge">/src/rh-cool-element.scss</code> and update the background-size property on <code class="highlighter-rouge">#profile-pic</code>.</p>
+<p>We can also modify <code class="highlighter-rouge">/src/rh-cool-element.scss</code> to adjust the background-size property on <code class="highlighter-rouge">#profile-pic</code>:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#profile-pic {
   width: 50px;
   height: 50px;
+  margin-bottom: 16px;
   border: 2px solid #333;
   border-radius: 50%;
   background-color: #efefef;
-  margin-bottom: 16px;
   background-size: contain;
 }
 </code></pre></div></div>
 
-<p>The final result should look like this.</p>
+<p>The final result should look like this:</p>
 
 <p><img src="/assets/images/demo-page-js-profile-pic-step.png" alt="demo page js profile pic step" width="500px" /></p>
 
-<p>Great! Almost done. We have one last step which is cleaning up our event listeners when our web component is disconnected.</p>
+<p>Great! You’re almost there.</p>
 
 <h2 id="disconnected-callback">Disconnected Callback</h2>
 
-<p>It’s a good idea to clean up any event listeners that you’ve added to your web component. One of the lifecycle callbacks that are run on web components is <code class="highlighter-rouge">disconnectedCallback</code> and this is where we run our cleanup code. In our case, all we need to do is remove the click listener that we added to our follow button.</p>
+<p>It’s a good idea to clean up your event listeners after a web component is disconnected. The lifecycle callback that runs on web components is the <code class="highlighter-rouge">disconnectedCallback</code>, ideal for cleaning up our code. For this example, all we’ll need to do is remove the click listener we added to the follow button.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>disconnectedCallback() {
-  this.button.removeEventListener('click', this._clickHandler);
+  this.button.removeEventListener("click", this._clickHandler);
 }
 </code></pre></div></div>
 
 <h2 id="wrap-up">Wrap-up</h2>
 
-<p>And that’s it! We’re all done. To summarize, we’ve built a brand new web component that extends a base element. We built some HTML, added some custom style, and added some interactivity to our component. With this element we just scratched the surface of what’s possible with custom elements.</p>
+<p>That’s all it takes, folks! To summarize, we built a web component that extends our base element, and added some HTML, custom styles, and interactivity to our component. What’s cool is that we’ve only scratched the surface of what’s possible with custom elements.</p>
 
-<p>For reference, here’s the final Javascript code for our element.</p>
+<p>For your reference, here’s the final Javascript code for <code class="highlighter-rouge">rh-cool-element</code>:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import Rhelement from '../rhelement/rhelement.js';
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import RHElement from "../rhelement/rhelement.js";
 
-/*
- * DO NOT EDIT. This will be autopopulated with the
- * html from rh-cool-element.html and css from
- * rh-cool-element.scss
- */
-const template = document.createElement('template');
-template.innerHTML = ``;
-/* end DO NOT EDIT */
+class RhCoolElement extends RHElement {
+  static get tag() {
+    return "rh-cool-element";
+  }
 
-class RhCoolElement extends Rhelement {
+  get templateUrl() {
+    return "rh-cool-element.html";
+  }
+
+  get styleUrl() {
+    return "rh-cool-element.scss";
+  }
+
   static get observedAttributes() {
-    return ['following', 'photo-url'];
-  }
-
-  constructor() {
-    super('rh-cool-element', template);
-
-    this.following = this.hasAttribute('following') || false;
-    this._clickHandler = this._clickHandler.bind(this);
-
-    this.button = this.shadowRoot.querySelector('button');
-    this.button.addEventListener('click', this._clickHandler);
-
-    this.profilePic = this.shadowRoot.querySelector('#profile-pic');
-  }
-
-  disconnectedCallback() {
-    this.button.removeEventListener('click', this._clickHandler);
+    return ["following", "photo-url"];
   }
 
   set following(value) {
     const isFollowing = Boolean(value);
 
     if (isFollowing) {
-      this.setAttribute('following', '');
+      this.setAttribute("following", "");
     } else {
-      this.removeAttribute('following');
+      this.removeAttribute("following");
     }
   }
 
   get following() {
-    return this.hasAttribute('following');
+    return this.hasAttribute("following");
   }
 
-  _clickHandler() {
-    this.following = !this.following;
+  constructor() {
+    super(RhCoolElement.tag);
+
+    this.following = false;
+    this._clickHandler = this._clickHandler.bind(this);
+
+    this.button = this.shadowRoot.querySelector("button");
+    this.button.addEventListener("click", this._clickHandler);
+
+    this.profilePic = this.shadowRoot.querySelector("#profile-pic");
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
     switch (name) {
-      case 'following':
-        this.button.textContent = this.following ? 'Unfollow' : 'Follow';
+      case "following":
+        this.button.textContent = this.following ? "Unfollow" : "Follow";
         break;
 
-      case 'photo-url':
+      case "photo-url":
         this.profilePic.style.backgroundImage = `url(${newValue})`;
         break;
     }
   }
+
+  disconnectedCallback() {
+    this.button.removeEventListener("click", this._clickHandler);
+  }
+
+  _clickHandler(evt) {
+    this.following = !this.following;
+  }
 }
 
-window.customElements.define('rh-cool-element', RhCoolElement);
+RHElement.create(RhCoolElement);
 </code></pre></div></div>
 
-<p>Now that we have all of the code working for our <code class="highlighter-rouge">rh-cool-element</code>, we need to make sure we have tests written to ensure that our element is going to work as it changes in the future. We’ll take care of that in the next step.</p>
+<p>Now that our code works, we should create tests to ensure our element works as we iterate on it in the future.</p>
 
 <p><a href="step-3.html">Move to Step 3: Test</a></p>
 
