@@ -18,9 +18,9 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/icono.min.css?v=ffeaf42f559b550adde5a1b76798df11b143134b">
+    <link rel="stylesheet" href="/assets/css/icono.min.css?v=f39f57b4ea22d402b440701b659c28950534c021">
     <link href='https://overpass-30e2.kxcdn.com/overpass.css' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/assets/css/style.css?v=ffeaf42f559b550adde5a1b76798df11b143134b">
+    <link rel="stylesheet" href="/assets/css/style.css?v=f39f57b4ea22d402b440701b659c28950534c021">
   </head>
   <body>
     <!-- <section class="page-header">
@@ -45,10 +45,19 @@
       <aside>
         <nav>
           <ul>
-            <li><a href="/docs/get-started.html">Get Started</a></li>
+            <li>
+              <span class="header">Use a RHElement</span>
+              <ul>
+                <li><a href="/docs/use-a-rhelement/get-started.html">Get Started</a></li>
+                <li><a href="/docs/use-a-rhelement/vanilla-js-es6.html">Vanilla JS ES6</a></li>
+                <li><a href="/docs/use-a-rhelement/vanilla-js-es5-without-module-loader.html">Vanilla JS ES5 without a Module Loader</a></li>
+                <li><a href="/docs/use-a-rhelement/vanilla-js-es5-with-module-loader.html">Vanilla JS ES5 with a Module Loader</a></li>
+              </ul>
+            </li>
             <li>
               <span class="header">Create a RHElement</span>
               <ul>
+                <li><a href="/docs/get-started.html">Get Started</a></li>
                 <li><a href="/docs/create-a-rhelement/step-1.html">Step 1: Scaffold</a></li>
                 <li><a href="/docs/create-a-rhelement/step-2a.html">Step 2: Develop (Structure)</a></li>
                 <li><a href="/docs/create-a-rhelement/step-2b.html">Step 2: Develop (HTML)</a></li>
@@ -68,27 +77,31 @@
       <section class="main-content">
         <h1 id="step-2-develop-css-or-sass">Step 2: Develop (CSS or Sass)</h1>
 
-<p>We’re working on our <code class="highlighter-rouge">rh-cool-element</code> and we want it to look like a profile with a profile photo, username, and follow button. But right now, our element is pretty ugly so we need to update our CSS (or Sass) to make it look the way we want.</p>
+<p>We want the <code class="highlighter-rouge">rh-cool-element</code> to have a profile photo, a username, and a follow button. Right now, it only contains the HTML structure, but we can style our element by updating our Sass (or CSS) to make it look the way we want.</p>
 
-<p>To update the styles for our element, we’ll be working in the <code class="highlighter-rouge">/src/rh-cool-element.scss</code> file. It’s a <code class="highlighter-rouge">.scss</code> file in this case since I chose to use Sass when I initially created the element using the RHElement generator.</p>
+<p>We’ll be working in the <code class="highlighter-rouge">/src/rh-cool-element.scss</code> file since we decided to use the Sass option in the RHElement generator.</p>
 
-<p>The initial state of our Sass file imports some additional Sass from the cp-sass node module, but we can ignore that for now. The second part has a <code class="highlighter-rouge">:host</code> selector that is used for making our element display as a block element.</p>
+<p>Your Sass file will initially import additional Sass from the rh-sass node module, but we can ignore that for now. The second part has a <code class="highlighter-rouge">:host</code> selector that makes our element display as a block element.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@import "node_modules/@rhelements/cp-sass/cp-sass";
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@import "../../rh-sass/rh-sass";
 :host {
   display: block;
 }
+
+:host([hidden]) {
+  display: none;
+}
 </code></pre></div></div>
 
-<p>I’m just going to update the styles a bit so it looks more like a profile.</p>
+<p>Now we can update our styles, like so:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@import "node_modules/@rhelements/cp-sass/cp-sass";
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@import "node_modules/@rhelements/rh-sass/rh-sass";
 :host {
   display: flex;
-  width: 128px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 128px;
   padding: 32px;
   font-family: Arial;
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
@@ -99,10 +112,10 @@
 #profile-pic {
   width: 50px;
   height: 50px;
+  margin-bottom: 16px;
   border: 2px solid #333;
   border-radius: 50%;
   background-color: #efefef;
-  margin-bottom: 16px;
 }
 
 button {
@@ -110,24 +123,25 @@ button {
 }
 </code></pre></div></div>
 
-<p>After those updates and refreshing our demo page, our profile looks much better.</p>
+<p>After saving and viewing our demo page, our profile element looks much better.</p>
 
 <p><img src="/assets/images/demo-page-css-step.png" alt="demo page css step" width="500px" /></p>
 
-<p>A couple of things to note in here is the use of the <code class="highlighter-rouge">:host</code> selector to set the styles of our container element <code class="highlighter-rouge">&lt;rh-cool-element&gt;</code>. Second, we added styles to our <code class="highlighter-rouge">button</code> element but we don’t have to worry about this style affecting other buttons on our page. Since we have a shadow root, our styles for this element are encapsulated and won’t bleed outside of our element. This is one of the main benefits of shadow DOM in that we can feel confident that our element will always look the same when we distribute our element. There are a lot of cool things that you can do with styling shadow DOM. If you’d like to learn more check out the Styling section of <a href="https://developers.google.com/web/fundamentals/web-components/shadowdom#styling">Shadow DOM v1: Self-Contained Web Components</a>.</p>
+<p>A couple of things to note:</p>
+<ol>
+  <li>The <code class="highlighter-rouge">:host</code> selector sets the styles of the container element <code class="highlighter-rouge">&lt;rh-cool-element&gt;</code>.</li>
+  <li>The <code class="highlighter-rouge">button</code> styles are encapsulated within this element and will not bleed out, meaning that there’s no worry of this it affecting other buttons on the page. Feeling confident that your element will always look the same when it’s distributed is one of the main advantages of the shadow DOM. Check out the Styling section of <a href="https://developers.google.com/web/fundamentals/web-components/shadowdom#styling">Shadow DOM v1: Self-Contained Web Components</a> to learn what else you can do with styling the shadow DOM.</li>
+</ol>
 
-<p>Now that our demo page has been updated, let’s take a quick look at what happened to our ES6 version of the element in the root of our directory.</p>
+<p>Now that our demo page is updated, let’s take a look at what happened to the ES6 version of the element in the root of our element’s directory.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import Rhelement from '../rhelement/rhelement.js';
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import RHElement from "../rhelement/rhelement.js";
 
-/*
- * DO NOT EDIT. This will be autopopulated with the
- * html from rh-cool-element.html and css from
- * rh-cool-element.scss
- */
-const template = document.createElement('template');
-template.innerHTML = `
-&lt;style&gt;:host {
+class RhCoolElement extends RHElement {
+  get html() {
+    return `
+&lt;style&gt;
+:host {
   display: flex;
   width: 128px;
   flex-direction: column;
@@ -136,6 +150,9 @@ template.innerHTML = `
   padding: 32px;
   font-family: Arial;
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12); }
+
+:host([hidden]) {
+  display: none; }
 
 #profile-pic {
   width: 50px;
@@ -146,27 +163,38 @@ template.innerHTML = `
   margin-bottom: 16px; }
 
 button {
-  margin-top: 16px; }&lt;/style&gt;
+  margin-top: 16px; }
+&lt;/style&gt;
 &lt;div id="profile-pic"&gt;&lt;/div&gt;
 &lt;slot&gt;&lt;/slot&gt;
 &lt;div&gt;
   &lt;button&gt;Follow&lt;/button&gt;
-&lt;/div&gt;
-`;
-/* end DO NOT EDIT */
+&lt;/div&gt;`;
+  }
 
-class RhCoolElement extends Rhelement {
+  static get tag() {
+    return "rh-cool-element";
+  }
+
+  get templateUrl() {
+    return "rh-cool-element.html";
+  }
+
+  get styleUrl() {
+    return "rh-cool-element.scss";
+  }
+
   constructor() {
-    super('rh-cool-element', template);
+    super(RhCoolElement.tag);
   }
 }
 
-window.customElements.define('rh-cool-element', RhCoolElement);
+RHElement.create(RhCoolElement);
 </code></pre></div></div>
 
-<p>You’ll notice that our style tag has all of the styles we just wrote in our Sass file. If we had Sass variables in the Sass that we wrote, they would’ve been compiled and the values would be reflected in the changes above.</p>
+<p>You’ll notice <style> contains everything we just wrote in our Sass file. Sass variables will also compiled their values and get included in the changes above.</style></p>
 
-<p>Now that we have our <code class="highlighter-rouge">rh-cool-element</code> styled, we need to add some interaction to the follow button. We also need to find a way to fill in the profile photo. We can accomplish this by updating our <code class="highlighter-rouge">/src/rh-cool-element.js</code> file.</p>
+<p>Now that our <code class="highlighter-rouge">rh-cool-element</code> is more appealing, we’ll add the follow button’s interaction and fill in the profile photo. We can accomplish both of these tasks by updating the <code class="highlighter-rouge">/src/rh-cool-element.js</code> file.</p>
 
 <p><a href="step-2d.html">Move to Step 2: Develop (Javascript)</a></p>
 

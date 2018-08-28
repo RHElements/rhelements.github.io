@@ -18,9 +18,9 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/icono.min.css?v=ffeaf42f559b550adde5a1b76798df11b143134b">
+    <link rel="stylesheet" href="/assets/css/icono.min.css?v=f39f57b4ea22d402b440701b659c28950534c021">
     <link href='https://overpass-30e2.kxcdn.com/overpass.css' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/assets/css/style.css?v=ffeaf42f559b550adde5a1b76798df11b143134b">
+    <link rel="stylesheet" href="/assets/css/style.css?v=f39f57b4ea22d402b440701b659c28950534c021">
   </head>
   <body>
     <!-- <section class="page-header">
@@ -45,10 +45,19 @@
       <aside>
         <nav>
           <ul>
-            <li><a href="/docs/get-started.html">Get Started</a></li>
+            <li>
+              <span class="header">Use a RHElement</span>
+              <ul>
+                <li><a href="/docs/use-a-rhelement/get-started.html">Get Started</a></li>
+                <li><a href="/docs/use-a-rhelement/vanilla-js-es6.html">Vanilla JS ES6</a></li>
+                <li><a href="/docs/use-a-rhelement/vanilla-js-es5-without-module-loader.html">Vanilla JS ES5 without a Module Loader</a></li>
+                <li><a href="/docs/use-a-rhelement/vanilla-js-es5-with-module-loader.html">Vanilla JS ES5 with a Module Loader</a></li>
+              </ul>
+            </li>
             <li>
               <span class="header">Create a RHElement</span>
               <ul>
+                <li><a href="/docs/get-started.html">Get Started</a></li>
                 <li><a href="/docs/create-a-rhelement/step-1.html">Step 1: Scaffold</a></li>
                 <li><a href="/docs/create-a-rhelement/step-2a.html">Step 2: Develop (Structure)</a></li>
                 <li><a href="/docs/create-a-rhelement/step-2b.html">Step 2: Develop (HTML)</a></li>
@@ -68,71 +77,92 @@
       <section class="main-content">
         <h1 id="step-2-develop-structure">Step 2: Develop (Structure)</h1>
 
-<p>Run the start command in the package.json file to open up the demo page and have the rh-cool-element.js and rh-cool-element.compiled.js files update when you make changes to the files in the <code class="highlighter-rouge">/src</code> directory.</p>
+<p>Run the dev command found in the package.json file at the root of your element to start watching for changes to any files located in the <code class="highlighter-rouge">/src</code> directory. This will build rh-cool-element.js and rh-cool-element.umd.js whenever you save changes.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm start
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># from the root of your element
+npm run dev
 </code></pre></div></div>
 
-<p>After running the command, your default browser should open up the demo page and look something like this.</p>
+<p>After running the dev command, start a server at the root of the RHElements repository to view it in the browser.</p>
 
-<p><img src="/assets/images/npm-start.png" alt="npm start command" width="500px" /></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># from the root of the RHElements repository
+npm start
+</code></pre></div></div>
 
-<p>It doesn’t look like much, but we’re off to a good start. We have a new custom element that extends our base Rhelement class, uses shadow DOM, and has a fallback to ShadyCSS in case shadow DOM isn’t supported.</p>
+<p>This will start a simple HTTP server that reloads the browser as you update your element.</p>
+
+<p><img src="/assets/images/rh-cool-element-start.png" alt="npm start command" width="500px" /></p>
+
+<p>Navigate to <code class="highlighter-rouge">http://localhost:1234/elements/rh-cool-element/demo/</code> to view your element.</p>
+
+<p>You’re off to a good start! You have a new custom element that extends the base RHElement class, uses shadow DOM, and has a built-in fallback for ShadyCSS in case shadow DOM isn’t supported.</p>
 
 <p>Let’s take a look at the rh-cool-element.js file in the <code class="highlighter-rouge">/src</code> directory to see what we have.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import Rhelement from '../rhelement/rhelement.js';
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import RHElement from "../rhelement/rhelement.js";
 
-/*
- * DO NOT EDIT. This will be autopopulated with the
- * html from rh-cool-element.html and css from
- * rh-cool-element.scss
- */
-const template = document.createElement('template');
-template.innerHTML = ``;
-/* end DO NOT EDIT */
+class RhCoolElement extends RHElement {
+  static get tag() {
+    return "rh-cool-element";
+  }
 
-class RhCoolElement extends Rhelement {
+  get templateUrl() {
+    return "rh-cool-element.html";
+  }
+
+  get styleUrl() {
+    return "rh-cool-element.scss";
+  }
+
   constructor() {
-    super('rh-cool-element', template);
+    super(RhCoolElement.tag);
   }
 }
 
-window.customElements.define('rh-cool-element', RhCoolElement);
+RHElement.create(RhCoolElement);
 </code></pre></div></div>
 
-<p>First, you’ll notice that we are using ES6 module imports and we import the Rhelement base element.</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import Rhelement from '../rhelement/rhelement.js';
+<p>First, notice how we’re using ES6 module imports and that we import the RHElement base element.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import RHElement from '../rhelement/rhelement.js';
 </code></pre></div></div>
 
-<p>Second, you’ll see where we set up the template and just like the comments say, <strong>DO NOT EDIT</strong> this section.</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/*
- * DO NOT EDIT. This will be autopopulated with the
- * html from rh-cool-element.html and css from
- * rh-cool-element.scss
- */
-const template = document.createElement('template');
-template.innerHTML = ``;
-/* end DO NOT EDIT */
-</code></pre></div></div>
-<p>The gulp merge task in gulpfile.js will fill this section of our compiled and transpiled files when you edit a file in the <code class="highlighter-rouge">/src</code> directory.</p>
+<p>Second, we define the string for the HTML tag that we want to use.</p>
 
-<p>Third, you’ll see where we define the <code class="highlighter-rouge">RhCoolElement</code> class that extends the Rhelement base element. In the constructor, we call <code class="highlighter-rouge">super</code> and pass a string that will be the tag we use on a page and the template.</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class RhCoolElement extends Rhelement {
-  constructor() {
-    super('rh-cool-element', template);
-  }
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>static get tag() {
+  return "rh-cool-element";
 }
 </code></pre></div></div>
-<p>The Rhelement base element will create a shadow root for us and handle the ShadyCSS work we’ll need for browsers that don’t support shadow DOM.</p>
 
-<p>Finally, we register the element.</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>window.customElements.define('rh-cool-element', RhCoolElement);
+<p>Third, we reference where the HTML for our template and Sass styles are located.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>get templateUrl() {
+  return "rh-cool-element.html";
+}
+
+get styleUrl() {
+  return "rh-cool-element.scss";
+}
 </code></pre></div></div>
 
-<p>If you have any questions about how Custom Elements work and need to learn more about the basics of shadow DOM, checkout Eric Bidelman’s post: <a href="https://developers.google.com/web/fundamentals/web-components/customelements">Custom Elements v1: Reusable Web Components</a>.</p>
+<p>The gulp merge task in gulpfile.js fills this section with the compiled and transpiled files when you edit a file in the <code class="highlighter-rouge">/src</code> directory.</p>
 
-<p>Now that we have our structure and our dev server running, let’s make our element actually do something.</p>
+<p>Fourth, you’ll see the constructor for the element.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>constructor() {
+  super(RhCoolElement.tag);
+}
+</code></pre></div></div>
+
+<p>The RHElement base element creates a shadow root to handle the ShadyCSS work for browsers that don’t support shadow DOM.</p>
+
+<p>Finally, we register our element using the <code class="highlighter-rouge">create</code> method from the RHElement class. This method calls <code class="highlighter-rouge">window.customElements.define</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RHElement.create(RhCoolElement);
+</code></pre></div></div>
+
+<p>For questions on how Custom Elements work, or if you want to learn the basics of shadow DOM, check out Eric Bidelman’s post: <a href="https://developers.google.com/web/fundamentals/web-components/customelements">Custom Elements v1: Reusable Web Components</a>.</p>
+
+<p>Now that our dev server is running and we have our element’s structure, let’s make it actually do something.</p>
 
 <p><a href="step-2b.html">Move to Step 2: Develop (HTML)</a></p>
 

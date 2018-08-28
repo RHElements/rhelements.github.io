@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>Use a RHElement: Vanilla JS ES6 | RHElements</title>
+<meta property="og:title" content="Use a RHElement: Vanilla JS ES6" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="RHElements is a set of web components" />
+<meta property="og:description" content="RHElements is a set of web components" />
+<link rel="canonical" href="http://localhost:4000/docs/use-a-rhelement/vanilla-js-es6.html" />
+<meta property="og:url" content="http://localhost:4000/docs/use-a-rhelement/vanilla-js-es6.html" />
+<meta property="og:site_name" content="RHElements" />
+<script type="application/ld+json">
+{"name":null,"description":"RHElements is a set of web components","author":null,"@type":"WebPage","url":"http://localhost:4000/docs/use-a-rhelement/vanilla-js-es6.html","publisher":null,"image":null,"headline":"Use a RHElement: Vanilla JS ES6","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link rel="stylesheet" href="/assets/css/icono.min.css?v=f39f57b4ea22d402b440701b659c28950534c021">
+    <link href='https://overpass-30e2.kxcdn.com/overpass.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/assets/css/style.css?v=f39f57b4ea22d402b440701b659c28950534c021">
+  </head>
+  <body>
+    <!-- <section class="page-header">
+      <h1 class="project-name">RHElements</h1>
+      <h2 class="project-tagline">RHElements is a set of web components</h2>
+      
+        <a href="http://github.com/RHElements/rhelements.github.io" class="btn">View on GitHub</a>
+      
+      
+    </section> -->
+
+    <header>
+      <nav>
+        <button>
+          <i class="icono-hamburger"></i>
+        </button>
+        <a href="/">RHElements</a>
+      </nav>
+    </header>
+
+    <main>
+      <aside>
+        <nav>
+          <ul>
+            <li>
+              <span class="header">Use a RHElement</span>
+              <ul>
+                <li><a href="/docs/use-a-rhelement/get-started.html">Get Started</a></li>
+                <li><a href="/docs/use-a-rhelement/vanilla-js-es6.html">Vanilla JS ES6</a></li>
+                <li><a href="/docs/use-a-rhelement/vanilla-js-es5-without-module-loader.html">Vanilla JS ES5 without a Module Loader</a></li>
+                <li><a href="/docs/use-a-rhelement/vanilla-js-es5-with-module-loader.html">Vanilla JS ES5 with a Module Loader</a></li>
+              </ul>
+            </li>
+            <li>
+              <span class="header">Create a RHElement</span>
+              <ul>
+                <li><a href="/docs/get-started.html">Get Started</a></li>
+                <li><a href="/docs/create-a-rhelement/step-1.html">Step 1: Scaffold</a></li>
+                <li><a href="/docs/create-a-rhelement/step-2a.html">Step 2: Develop (Structure)</a></li>
+                <li><a href="/docs/create-a-rhelement/step-2b.html">Step 2: Develop (HTML)</a></li>
+                <li><a href="/docs/create-a-rhelement/step-2c.html">Step 2: Develop (CSS or Sass)</a></li>
+                <li><a href="/docs/create-a-rhelement/step-2d.html">Step 2: Develop (Javascript)</a></li>
+                <li><a href="/docs/create-a-rhelement/step-3.html">Step 3: Test</a></li>
+                <li><a href="/docs/create-a-rhelement/step-4.html">Step 4: Publish</a></li>
+              </ul>
+            </li>
+            <li><a href="/docs/browser-support.html">Browser Support</a></li>
+            <li><a href="/docs/framework-support.html">Framework Support</a></li>
+          </ul>
+        </nav>
+        <div class="scrim"></div>
+      </aside>
+
+      <section class="main-content">
+        <h1 id="use-a-rhelement-vanilla-js-es6">Use a RHElement: Vanilla JS ES6</h1>
+
+<p>Each RHElement ships with an ES6 version of the component. This method is your
+best option if you don’t have to support IE11. You can just use
+<code class="highlighter-rouge">&lt;script type="module"&gt;</code> to include a RHElement.</p>
+
+<p>What’s so nice about this method is that you only need to include the RHElements
+that you want and the browser will take care of loading all of the dependencies.</p>
+
+<p><a href="https://caniuse.com/#feat=es6-module">Script type module support</a></p>
+
+<h2 id="syntax">Syntax</h2>
+
+<h3 id="using-a-module-with-the-source-attribute">Using a Module with the Source Attribute</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- load the web component polyfills --&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/@webcomponents/webcomponentsjs/webcomponents-loader.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+    <span class="c">&lt;!-- load our components using type="module" --&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"module"</span> <span class="na">src=</span><span class="s">"@rhelements/rh-card/rh-card.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;rh-card&gt;</span>
+      <span class="nt">&lt;h2</span> <span class="na">slot=</span><span class="s">"header"</span><span class="nt">&gt;</span>My Card<span class="nt">&lt;/h2&gt;</span>
+      This is the rh-card body.
+      <span class="nt">&lt;div</span> <span class="na">slot=</span><span class="s">"footer"</span><span class="nt">&gt;</span>Text in footer<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/rh-card&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h3 id="using-a-module-with-the-import-statement">Using a Module with the Import Statement</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- load the web component polyfills --&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/@webcomponents/webcomponentsjs/webcomponents-loader.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+    <span class="c">&lt;!-- load our components using type="module" and an import statement --&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"module"</span><span class="nt">&gt;</span>
+      <span class="k">import</span> <span class="s2">"@rhelements/rh-card/rh-card.js"</span><span class="p">;</span>
+    <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;rh-card&gt;</span>
+      <span class="nt">&lt;h2</span> <span class="na">slot=</span><span class="s">"header"</span><span class="nt">&gt;</span>My Card<span class="nt">&lt;/h2&gt;</span>
+      This is the rh-card body.
+      <span class="nt">&lt;div</span> <span class="na">slot=</span><span class="s">"footer"</span><span class="nt">&gt;</span>Text in footer<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/rh-card&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+
+        <footer class="site-footer">
+          
+            <span class="site-footer-owner"><a href="http://github.com/RHElements/rhelements.github.io">rhelements.github.io</a> is maintained by <a href="http://github.com/RHElements">RHElements</a>.</span>
+          
+          <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+        </footer>
+      </section>
+    </main>
+
+    <script>
+      const button = document.querySelector('header nav button');
+      const drawer = document.querySelector('aside');
+      const scrim = document.querySelector('.scrim');
+
+      button.addEventListener('click', function () {
+        drawer.classList.toggle('open');
+      });
+
+      scrim.addEventListener('click', function () {
+        drawer.classList.remove('open');
+      });
+    </script>
+
+    
+  </body>
+</html>
