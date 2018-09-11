@@ -1,0 +1,39 @@
+{{ define "title"}} {{ .Title}} {{end}}
+{{ define "header"}} {{ partial "header" .}} {{end}}
+
+{{ define "main" }}
+
+<article class="rh-l-grid rh-m-gutters">
+  
+  <section id="main-toc" class="rh-m-4-col-on-md rh-m-3-col-on-lg">
+    <ul class="toc-desktop">
+      {{ range .Paginator.Pages.ByWeight }} {{ partial "page-summary" . }} {{ end }}
+    </ul>
+  </section>
+
+  <section id="content" class="rh-m-12-col-on-xs rh-m-7-col-on-md rh-m-6-col-on-lg">
+    <header id="hero" class="page-header">
+      <h1> {{.Params.title }}</h1>
+    </header>
+    
+    <ul id="posts">
+
+     {{ .Content }}
+     
+    </ul>
+  </section>
+  
+  <aside class="list-toc rh-m-3-col">
+    <h3>Contents</h3>
+    {{ partial "toc" .}}
+    <!-- <ul class="guide">
+      {{ range .Paginator.Pages.ByWeight }} {{ partial "page-summary" . }} {{ end }}
+    </ul> -->
+  </aside>
+</article>
+
+{{ end }} 
+
+{{ define "footer" }} 
+  {{ partial "footer" . }} 
+{{ end }}

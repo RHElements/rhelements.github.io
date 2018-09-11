@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Get Started on RHElements</title>
+    <link>rhelements.github.io/get-started/</link>
+    <description>Recent content in Get Started on RHElements</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 31 Aug 2018 14:02:31 -0400</lastBuildDate>
+    
+	<atom:link href="rhelements.github.io/get-started/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Browser Support</title>
+      <link>rhelements.github.io/get-started/browser-support/</link>
+      <pubDate>Fri, 31 Aug 2018 14:02:31 -0400</pubDate>
+      
+      <guid>rhelements.github.io/get-started/browser-support/</guid>
+      <description>Browser Support RHElements are built on top of the Custom Elements v1 spec. As a result, with the help of the web components polyfill, we can support all major browsers and go all the way back to IE 11.
+   Chrome Firefox Safari Edge IE 11     &amp;#10003; &amp;#10003; &amp;#10003; &amp;#10003; &amp;#10003;    Written in ES6 To make sure we&amp;rsquo;re future-proof, RHElements are written in ES6.</description>
+    </item>
+    
+    <item>
+      <title>Framework Support</title>
+      <link>rhelements.github.io/get-started/framework-support/</link>
+      <pubDate>Fri, 31 Aug 2018 14:02:31 -0400</pubDate>
+      
+      <guid>rhelements.github.io/get-started/framework-support/</guid>
+      <description>Framework Support One of the goals of RHElements is to create web components that will work with any number of javascript frameworks. RHElements are built on top of the Custom Elements v1 spec so they should just work. There are some caveats, but we&amp;rsquo;ll get to those later.
+Supported and Tested Frameworks  AngularJS Angular React Vue  If a framework isn&amp;rsquo;t listed above, it doesn&amp;rsquo;t mean that RHElements won&amp;rsquo;t work with that framework.</description>
+    </item>
+    
+    <item>
+      <title>Polyfills</title>
+      <link>rhelements.github.io/get-started/polyfills/</link>
+      <pubDate>Fri, 31 Aug 2018 14:02:31 -0400</pubDate>
+      
+      <guid>rhelements.github.io/get-started/polyfills/</guid>
+      <description>Since all browsers don&amp;rsquo;t support ES6 modules, custom elements, shadow DOM, and custom CSS variables yet, we need to add a few polyfills to make everything work across all the browsers that we support.
+The easiest way to get everything working is to add the following polyfills to the head of your document.
+&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt; &amp;lt;title&amp;gt;RHElements&amp;lt;/title&amp;gt; &amp;lt;!-- polyfills --&amp;gt; &amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.10/custom-elements-es5-adapter.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.10/webcomponents-lite.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt;&amp;lt;/body&amp;gt; &amp;lt;/html  custom-elements-es5-adapter This polyfill is needed if your custom elements have been compiled from ES6 to ES5.</description>
+    </item>
+    
+  </channel>
+</rss>

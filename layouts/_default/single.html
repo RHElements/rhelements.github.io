@@ -1,0 +1,34 @@
+{{ define "title"}} {{ .Title}} {{end}}
+{{ define "header"}} {{ partial "header" .}} {{end}}
+
+{{ define "main" }}
+
+<article class="rh-l-grid">
+  <section id="left-toc">
+    <ul>
+      <li>test</li>
+      <li>test</li>
+      <li>test</li>
+      <li>test</li>
+    </ul>
+  </section>
+
+  <header id="hero" class="wrap">
+    <h1>{{.Title }}</h1>
+    <p>{{.Params.description}}</p>
+  </header>
+
+  <article class="content-body">
+    <ul id="posts"> {{ .Content }}</ul>
+  </article>
+
+  <aside class="list-toc">
+    {{ partial "toc" .}}
+  </aside>
+</article>
+
+{{ end }} 
+
+{{ define "footer" }} 
+  {{ partial "footer" . }} 
+{{ end }}

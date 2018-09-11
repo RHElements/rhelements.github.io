@@ -1,0 +1,47 @@
+{{ define "title"}} {{ .Site.Title}} {{end}}
+{{ define "header"}} {{ partial "header" .}} {{end}}
+{{ define "main"}}
+
+  <article id="homepage">
+    <header id="hero">
+      <h1>
+        <img class="hero-logo" src="/img/logo/svg/rhelements-icon-blue.svg" alt=""> 
+        <span>RH</span>Elements
+      </h1>
+      <p>{{.Description}}</p>
+      
+      <div id="action-buttons">
+        <a class="button primary big" href="/get-started" onclick="_gaq.push(['_trackEvent', 'kube', 'github']);">Get started</a>
+        <a class="button outline big" href="https://github.com/RHElements/" onclick="_gaq.push(['_trackEvent', 'kube', 'github']);">View on Github</a>
+      </div>
+    </header>
+    
+    <section id="kube-features">
+      <ul class="rh-l-grid rh-m-gutters rh-m-all-12-col rh-m-all-6-col-on-sm rh-m-all-4-col-on-md">
+        <li>
+          <figure>
+            <img alt="Baseline" height="48" src="{{ "/img/kube/icon-baseline.png" | relURL }}" width="48">
+          </figure>
+          <h2 class="blue">Web Components</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </li>
+        <li>
+          <figure>
+            <img alt="Typography" height="48" src="{{ "/img/kube/icon-typo.png" | relURL }}" width="48">
+          </figure>
+          <h2>Browser Support</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </li>
+        <li class="rh-m-12-col-on-sm">
+          <figure>
+            <img alt="Minimalism" height="48" src="{{ "/img/kube/icon-minimalism.png" | relURL }}" width="48">
+          </figure>
+          <h2 class="green">Framework Support</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </li>
+      </ul>
+    </section>
+  </article>
+  
+{{ end }}
+{{ define "footer"}} {{ partial "footer" .}} {{end}}

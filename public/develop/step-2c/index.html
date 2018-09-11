@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta name="generator" content="Hugo 0.47.1" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Create a RHElement: Step 2c </title>
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  <meta name="author" content="RHElements">
+
+
+  <meta property="og:title" content="Create a RHElement: Step 2c" />
+<meta property="og:description" content="Create a RHElement: Step 2c Write your CSS (or SASS) We want the rh-cool-element to have a profile photo, a username, and a follow button. Right now, it only contains the HTML structure, but we can style our element by updating our Sass (or CSS) to make it look the way we want.
+We&rsquo;ll be working in the /src/rh-cool-element.scss file since we decided to use the Sass option in the RHElement generator." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="rhelements.github.io/develop/step-2c/" /><meta property="article:published_time" content="2018-08-31T14:02:31-04:00"/>
+<meta property="article:modified_time" content="2018-08-31T14:02:31-04:00"/>
+  
+
+
+
+
+  
+  
+  
+  
+
+  <link rel="canonical" href="rhelements.github.io/develop/step-2c/">  
+
+  <link rel="shortcut icon" href="./img/favicons/favicon.ico">
+
+
+  <link href="/rhelements.github.io/css/font.css" rel="stylesheet" type="text/css">
+  <link href="/rhelements.github.io/css/kube.min.css" rel="stylesheet" type="text/css">
+  <link href="/rhelements.github.io/css/kube.legenda.css" rel="stylesheet" type="text/css">
+  <link href="/rhelements.github.io/css/highlight.css" rel="stylesheet" type="text/css">
+  <link href="/rhelements.github.io/css/master.css" rel="stylesheet" type="text/css">
+  <link href="/rhelements.github.io/css/kube.demo.css" rel="stylesheet" type="text/css">
+  
+  
+  
+  <link rel="stylesheet" href="/rhelements.github.io/src/sass/kube.min.131636a0c332298fe418d3fedb5b3348205dc81a04fa4220da705d16c8d1c6a6.css">
+  
+ 
+
+  <script src="/rhelements.github.io/js/jquery-2.1.4.min.js" type="text/javascript">
+  </script>
+
+  <script type="text/javascript" src="/rhelements.github.io/js/tocbot.min.js"></script>
+</head>
+
+
+<body class="page-kube">
+  <header> 
+<div class="show-sm" id="top-sm">
+  <div id="nav-toggle-box">
+    <div id="nav-toggle-brand">
+      <section id="top-brand">
+        <a href="/" title="home"><span>RH</span>Elements</a>
+      </section>
+    </div>
+    <a data-component="offcanvas" data-target="#mobile-toc" href="#" id="nav-toggle"><i class="kube-menu"></i></a>
+  </div>
+</div>
+<div class="hide-sm" id="top">
+  <section id="top-brand">
+    <a href="/" title="home"><span>RH</span>Elements</a>
+  </section>
+  <nav id="top-nav-main">
+    <ul>
+     
+     
+  <li><a href="rhelements.github.io/get-started/" >Get Started</a></li>
+  
+  <li><a href="rhelements.github.io/develop/" >Develop</a></li>
+  
+  <li><a href="rhelements.github.io/theme/" >Theme</a></li>
+  
+    </ul>
+  </nav>
+  <nav id="top-nav-extra"> 
+    <ul>
+       
+        <li>
+          <a href="rhelements.github.io/site-info/community">Community</a>
+        </li>
+       
+        <li>
+          <a href="rhelements.github.io/site-info/get-help">Help</a>
+        </li>
+        
+    </ul>
+  </nav>
+</div>
+
+<section id="mobile-toc" class="hide">
+  <ul>
+    
+     
+    
+      <li> 
+        <a href="rhelements.github.io/get-started/">Get Started</a>
+        
+      </li>
+    
+      <li> 
+        <a href="rhelements.github.io/develop/">Develop</a>
+        
+      </li>
+    
+      <li> 
+        <a href="rhelements.github.io/theme/">Theme</a>
+        
+      </li>
+    
+  </ul>
+  
+</section>
+ </header>
+  <main>
+
+<article class="rh-l-grid">
+  <section id="left-toc">
+    <ul>
+      <li>test</li>
+      <li>test</li>
+      <li>test</li>
+      <li>test</li>
+    </ul>
+  </section>
+
+  <header id="hero" class="wrap">
+    <h1>Create a RHElement: Step 2c</h1>
+    <p></p>
+  </header>
+
+  <article class="content-body">
+    <ul id="posts"> 
+
+<h1 id="create-a-rhelement-step-2c">Create a RHElement: Step 2c</h1>
+
+<h2 id="write-your-css-or-sass">Write your CSS (or SASS)</h2>
+
+<p>We want the <code>rh-cool-element</code> to have a profile photo, a username, and a follow button. Right now, it only contains the HTML structure, but we can style our element by updating our Sass (or CSS) to make it look the way we want.</p>
+
+<p>We&rsquo;ll be working in the <code>/src/rh-cool-element.scss</code> file since we decided to use the Sass option in the RHElement generator.</p>
+
+<p>Your Sass file will initially import additional Sass from the rh-sass node module, but we can ignore that for now. The second part has a <code>:host</code> selector that makes our element display as a block element.</p>
+
+<pre><code>@import &quot;../../rh-sass/rh-sass&quot;;
+:host {
+  display: block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+</code></pre>
+
+<p>Now we can update our styles, like so:</p>
+
+<pre><code>@import &quot;node_modules/@rhelements/rh-sass/rh-sass&quot;;
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 128px;
+  padding: 32px;
+  font-family: Arial;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+              0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+              0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+#profile-pic {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 16px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  background-color: #efefef;
+}
+
+button {
+  margin-top: 16px;
+}
+</code></pre>
+
+<p>After saving and viewing our demo page, our profile element looks much better.</p>
+
+<p><img src="{{ &quot;assets/images/demo-page-css-step.png&quot; | relative_url }}" alt="demo page css step" />{:width=&ldquo;500px&rdquo;}</p>
+
+<p>A couple of things to note:
+1. The <code>:host</code> selector sets the styles of the container element <code>&lt;rh-cool-element&gt;</code>.
+2. The <code>button</code> styles are encapsulated within this element and will not bleed out, meaning that there&rsquo;s no worry of this it affecting other buttons on the page. Feeling confident that your element will always look the same when it&rsquo;s distributed is one of the main advantages of the shadow DOM. Check out the Styling section of <a href="https://developers.google.com/web/fundamentals/web-components/shadowdom#styling">Shadow DOM v1: Self-Contained Web Components</a> to learn what else you can do with styling the shadow DOM.</p>
+
+<p>Now that our demo page is updated, let&rsquo;s take a look at what happened to the ES6 version of the element in the root of our element&rsquo;s directory.</p>
+
+<pre><code>import RHElement from &quot;../rhelement/rhelement.js&quot;;
+
+class RhCoolElement extends RHElement {
+  get html() {
+    return `
+&lt;style&gt;
+:host {
+  display: flex;
+  width: 128px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  font-family: Arial;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12); }
+
+:host([hidden]) {
+  display: none; }
+
+#profile-pic {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  background-color: #efefef;
+  margin-bottom: 16px; }
+
+button {
+  margin-top: 16px; }
+&lt;/style&gt;
+&lt;div id=&quot;profile-pic&quot;&gt;&lt;/div&gt;
+&lt;slot&gt;&lt;/slot&gt;
+&lt;div&gt;
+  &lt;button&gt;Follow&lt;/button&gt;
+&lt;/div&gt;`;
+  }
+
+  static get tag() {
+    return &quot;rh-cool-element&quot;;
+  }
+
+  get templateUrl() {
+    return &quot;rh-cool-element.html&quot;;
+  }
+
+  get styleUrl() {
+    return &quot;rh-cool-element.scss&quot;;
+  }
+
+  constructor() {
+    super(RhCoolElement.tag);
+  }
+}
+
+RHElement.create(RhCoolElement);
+</code></pre>
+
+<p>You&rsquo;ll notice <style> contains everything we just wrote in our Sass file. Sass variables will also compiled their values and get included in the changes above.</p>
+
+<p>Now that our <code>rh-cool-element</code> is more appealing, we&rsquo;ll add the follow button&rsquo;s interaction and fill in the profile photo. We can accomplish both of these tasks by updating the <code>/src/rh-cool-element.js</code> file.</p>
+
+<p><a href="step-2d.html">Move to Step 2: Develop (Javascript)</a></p>
+</ul>
+  </article>
+
+  <aside class="list-toc">
+    
+
+<div class="js-toc">
+  
+</div>
+
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded",
+function(){
+tocbot.init({
+
+tocSelector: '.js-toc',
+
+contentSelector: '#posts',
+
+headingSelector: 'h2'
+})
+}
+);
+</script>
+
+
+  </aside>
+</article>
+
+</main>
+  <footer> 
+  
+
+<nav>
+  <ul>
+    <li><span>RHElements</span></li>
+    <li>
+      <a href="/get-started">Get Started</a>
+    </li>
+    <li>
+      <a href="/develop">Develop</a>
+    </li>
+      <li>
+      <a href="/theme">Theme</a>
+    </li>
+    <li>
+      <a href="/community">Community</a>
+    </li>
+  </ul>
+</nav>
+<p>&copy; Licence MIT.</p> 
+</footer>
+
+
+  <script src="/rhelements.github.io/js/kube.js" type="text/javascript">
+  </script>
+  <script src="/rhelements.github.io/js/kube.legenda.js" type="text/javascript">
+  </script>
+  <script src="/rhelements.github.io/js/master.js" type="text/javascript">
+  </script>
+</body>
+
+</html>
