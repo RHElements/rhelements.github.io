@@ -102,11 +102,11 @@ $gutter_width_lg:           45px;
   }
 
   // // generate column offset modfiers
-  // @for $col-num from 1 through 12 {
-  //   > .rh-m-offset-#{$col-num}-col#{$suffix} {
-  //     grid-column-start: col ($col-num + 1);
-  //   }
-  // }
+  @for $col-num from 1 through 12 {
+    > .rh-m-offset-#{$col-num}-col#{$suffix} {
+      grid-column-start: col ($col-num + 1);
+    }
+  }
 
   // generate column startat modfiers
   @for $col-num from 1 through 12 {
