@@ -258,17 +258,35 @@ main {
   ///  Single & List - Content
   //////////////////////////////////
   
+  #hero.page-header {
+    // margin: 2rem 0;
+    padding: 0;
+    
+    h1 {
+      max-width: none;
+      margin-bottom: 2rem;
+      font-size: 3rem;
+      font-weight: 800;
+      text-align: left;
+      line-height: normal;
+      
+      @media (min-width: 768px) {
+        font-size: 3.5rem;
+      }
+    }
+  }
+  
+  
+  
   #main-toc {
-    // position: fixed;
-    // top: 21%;
-    // bottom: 0;
-    // width: 272px;
     padding: 2rem 1rem;
     background-color: $rh-global--color--gray-moon;
     overflow-y: auto;
+    overflow-wrap: break-word;
+    min-width: 280px;
     display: none;
     
-    @media (min-width: 992px) {
+    @media (min-width: 768px) {
       display: block;
     }
     
@@ -278,27 +296,25 @@ main {
   }
   
   #content {
-    grid-column-start: 1;
+    padding: 2rem 2rem 0;
+    margin-right: 2rem;
     
-    // @media (min-width: 768px) {
-    //   grid-column-start: 2;
-    // } 
-    
-    @media (min-width: 992px) {
-      grid-column-start: auto;
-    } 
+    // @media (min-width: 1200px) {
+    //   max-width: 2500px;
+    // }
     
     #posts {
       max-width: 100%;
       margin-top: 0;
+      padding: 0;
       text-align: left;
       
       h2 {
         margin-top: 3rem;
         margin-bottom: 1.4rem;
-        /* padding-bottom: 1rem;
-        border-bottom: 2px solid rgba(0,0,0,.1); */
-        font-size: 1.8rem;
+        font-size: 2rem;
+        font-weight: 200;
+        letter-spacing: 1px;
       }
       
       h2:first-child {
@@ -308,31 +324,39 @@ main {
   }
 
 
-  .list-toc {
-    padding: 3rem 2rem;
-    // border-left: 2px solid #aee339;
+  .page-toc {
+    margin-top: 2rem;
     display: none;
     list-style-type: none;
+    width: 100%;
+    
+    height: max-content;
+    padding-left: 1rem;
     
     @media (min-width: 1200px) {
       display: block;
     }
     
     h3 {
-      margin-bottom: .5rem;
+      margin-bottom: .8rem;
       font-size: 1rem;
       font-weight: bold;
       color: #005a7a;
       text-transform: uppercase;
     }
     
-    .list-toc-contents {
-      padding: 0;
+    .js-toc .toc-list {
       margin: 0;
       list-style-type: none;
+      // border-left: 3px solid black;
+      // padding-left: 1rem;
       
-      li a {
-        font-size: 1rem;
+      li {
+        margin-bottom: .3rem;
+        
+        a {
+          font-size: 1rem;
+        }
       }
     }
   }
@@ -342,6 +366,10 @@ main {
 ////////////////////////////////////
 ///  Global CSS - Site Design
 //////////////////////////////////
+
+* {
+  -webkit-font-smoothing: subpixel-antialiased;
+}
 
 a:hover,
 a:focus {
@@ -353,4 +381,11 @@ a:focus {
   a, button, .button {
     margin: 0 .5rem;
   }
+}
+
+p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: .1px;
 }
