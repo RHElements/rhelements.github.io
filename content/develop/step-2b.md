@@ -103,4 +103,4 @@ The gulp task takes the HTML from `/src/rh-cool-element.html` and merges it into
 
 Now that we've added the HTML, let's style our element by updating the Sass file.
 
-[Move to Step 2: Develop (CSS or Sass)](step-2c.html)
+[Move to Step 2: Develop (CSS or Sass)](../step-2c)

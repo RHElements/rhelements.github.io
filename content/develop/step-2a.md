@@ -107,4 +107,4 @@ For questions on how Custom Elements work, or if you want to learn the basics of
 
 Now that our dev server is running and we have our element's structure, let's make it actually do something.
 
-[Move to Step 2: Develop (HTML)](step-2b.html)
+[Move to Step 2: Develop (HTML)](../step-2b)

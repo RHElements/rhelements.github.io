@@ -227,4 +227,4 @@ That's it for testing, but you can also set up continuous integration on [Travis
 
 Now that we've created our `rh-cool-element` and all of our code passes, the final step is to publish and share your component on npm!
 
-[Move to Step 4: Publish](step-4.html)
+[Move to Step 4: Publish](../step-4)

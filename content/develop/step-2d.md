@@ -303,4 +303,4 @@ RHElement.create(RhCoolElement);
 
 Now that our code works, we should create tests to ensure our element works as we iterate on it in the future.
 
-[Move to Step 3: Test](step-3.html)
+[Move to Step 3: Test](../step-3)
