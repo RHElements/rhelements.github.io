@@ -8,8 +8,11 @@ bref = ""
 toc = true
 +++
 
+## Color Variables
 
-### UI Colors
+Looking for values fast? You can find a [list of all the system colors here](https://github.com/RHElements/rhelements/blob/master/elements/rh-sass/variables/_colors.scss)
+
+## UI Colors
 
 A user interface uses color to convey:
 
@@ -35,10 +38,29 @@ If you are overriding these colors, you can do so my changing the CSS variables,
 	  --rh-color--ui-base--text--hover:  #eeeeee;
 	}
 
-It's also a good idea to choose some neutral colors for general UI backgrounds and borders—usually grays. And finally, you’ll have colors for states such as error, warning, and success. Group these colors to see how well they work together and refine as needed.
 
+UI colors are meant to provide basic colors for ubiquitous page elements like links and body text. You may choose to set the value of a link color to something in your brand, but it is not required, and these colors should provide a good user experience.
+
+
+## Surface Colors
+
+It's also a good idea to choose some neutral colors for general UI backgrounds and borders—usually grays. And finally, you’ll have colors for states such as error, warning, and success. Group these colors to see how well they work together and refine as needed.
 
 Surface color encompass any “surface” (whether background or not) that are typically part of container-type elements, like cards or bands. These colors should be harmonious with your corporate style guide (if you have one), but they may not necessarily be your company’s primary brand colors. Pick colors that provide a good user experience, e.g. color contrast.
 
-You can find a list of all the system colors here:
-https://github.com/RHElements/rhelements/blob/master/elements/rh-sass/variables/_colors.scss
+	// Base group
+	$rh-color--surface--base:                      $rh-color--gray-200 !default;
+	$rh-color--surface--base--text:                $rh-color--text !default;
+	$rh-color--surface--base--link:                #00538c !default;  // Contrast with $rh-color--ui-link doesn't meet WCAG2 AA
+	$rh-color--surface--base--link--visited:       #7551a6 !default;
+	$rh-color--surface--base--link--hover:         #00305b !default;
+	$rh-color--surface--base--link--focus:         #00305b !default;
+
+
+## Feedback Colors
+
+
+	$rh-color--feedback--critical:                 $rh-color--red-600 !default;
+	$rh-color--feedback--critical--lightest:       $rh-color--red-50 !default;
+	$rh-color--feedback--critical--darkest:        $rh-color--red-800 !default;
+
