@@ -21,6 +21,27 @@ a:focus {
   
   a, button, .button {
     margin: 0 .5rem;
+    
+    &.primary {
+      background-color: lighten(#e1380c, 10%);
+    }
+    
+    &.primary:hover,
+    &.primary:focus {
+      background-color: darken(#e1380c, 8%);
+    }
+    
+    &.outline {
+      border-color: #e1380c;
+      color: #e1380c;
+    }
+    
+    &.outline:hover,
+    &.outline:focus {
+      background-color: $rh-global--color--gray-gainsboro;
+      border-color: darken(#e1380c, 8%);
+      color: darken(#e1380c, 8%);
+    }
   }
 }
 
@@ -84,7 +105,7 @@ header {
       margin-right: 0;
       
       a {
-        background: url(/img/logo/png/rhelements-icon-red.png) no-repeat 0 50%;
+        background: url(/img/logo/png/rhelements-icon-blue.png) no-repeat 0 50%;
         background-size: 65px;
         padding: 2rem 2rem 2rem 3.6rem;
         font-size: 1.4rem;
@@ -239,8 +260,9 @@ main {
         }
         
         .hero-logo {
-          width: 100px;
-          object-fit: none;
+          width: 110px;
+          background-size: contain;
+          margin-right: 10px;
           display: none;
           
           @media (min-width: 992px) {
@@ -278,10 +300,15 @@ main {
         list-style-type: none;
         margin-left: 0;
       }
+      
+      p {
+        margin-bottom: 0;
+      }
     }
     
     & > .rh-l-grid {
       height: 100% !important;
+      margin-bottom: 0;
     }
   }
   
@@ -313,7 +340,7 @@ main {
       margin-bottom: 1rem;
       font-size: 1.6rem;
       line-height: 1.3;
-      color: $rh-global--color--purple-rain;
+      color: #e1380c;
       font-weight: 400;
     }
   }
@@ -416,7 +443,7 @@ main {
       margin-bottom: 1rem;
       font-size: 1.2rem;
       font-weight: bold;
-      color: $rh-global--color--purple-rain;
+      color: #e1380c;
     }
     
     .js-toc .toc-list {
