@@ -53,7 +53,7 @@ Slots take the HTML from the light DOM and moves it right into the shadow DOM. T
 
 Here's how it should look in the browser:
 
-![demo page html step]({{ "assets/images/demo-page-html-step.png" | relative_url }}){:width="500px"}
+![demo page html step](/demo-page-html-step.png)
 
 Remember that any changes we make in the `/src` directory are being watched while the `npm run dev` command runs. When you save changes, the `merge` and `compile` tasks run from the gulpfile to update the ES6 and ES5 versions of the component in the root of your element. 
 

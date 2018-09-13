@@ -41,7 +41,7 @@ The generator will ask you a series of questions to set up your project.
 
 After answering the questions, you'll see something like this:
 
-![npm run new command]({{ "assets/images/npm-run-new.png" | relative_url }}){:width="500px"}
+![npm run new command](/npm-run-new.png)
 
 Once that's done, switch directories to the element you just created. We'll cd into the rh-cool-element directory.
 

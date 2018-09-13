@@ -28,7 +28,7 @@ npm start
 
 This will start a simple HTTP server that reloads the browser as you update your element.
 
-![npm start command]({{ "assets/images/rh-cool-element-start.png" | relative_url }}){:width="500px"}
+![npm start command](/rh-cool-element-start.png)
 
 Navigate to `http://localhost:1234/elements/rh-cool-element/demo/` to view your element.
 

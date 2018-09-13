@@ -217,7 +217,7 @@ npm test
 
 Here is the command line output:
 
-![test output]({{ "assets/images/test-output.png" | relative_url }})
+![test output](/test-output.png)
 
 Nice! All four tests are working in Chrome and Firefox.
 
