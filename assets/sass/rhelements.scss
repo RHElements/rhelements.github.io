@@ -304,6 +304,10 @@ main {
     padding: 2rem 2rem 0;
     margin-right: 2rem;
     
+    @media (min-width: 1200px) {
+      max-width: 60vw;
+    }
+    
     #posts {
       max-width: 100%;
       margin-top: 0;
@@ -329,7 +333,8 @@ main {
     margin-top: 2rem;
     display: none;
     list-style-type: none;
-    width: 100%;
+    width: 20vw;
+    margin-left: auto;
     
     height: max-content;
     padding-left: 1rem;
