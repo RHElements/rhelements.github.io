@@ -37,6 +37,15 @@
         </li>
       {{ end }}
     </ul>
+    <!-- Figure out the name for this -->
+    <h3>RHElements</h3> 
+    <ul>
+      {{ range .Site.Menus.extra }} 
+        <li>
+          <a href="{{ .URL }}">{{ .Name }}</a>
+        </li>
+      {{ end }}  
+    </ul>
   </nav>
   
   <section id="content" style="">
