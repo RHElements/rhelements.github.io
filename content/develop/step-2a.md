@@ -2,15 +2,13 @@
 title = "Create a RHElement: Step 2a"
 description = ""
 date = 2018-08-31T14:02:31-04:00
-weight = 20
+weight = 5
 draft = false
 bref = ""
 toc = true
 menu = "develop"
 +++
 
-
-# Create a RHElement: Step 2a
 
 ## Develop a Structure
 

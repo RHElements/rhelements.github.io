@@ -2,7 +2,7 @@
 title = "Code of conduct"
 description = ""
 date = 2018-08-31T14:02:31-04:00
-weight = 20
+weight = 13
 draft = false
 bref = ""
 toc = true

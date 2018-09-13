@@ -2,15 +2,13 @@
 title = "Create a RHElement: Step 2c"
 description = ""
 date = 2018-08-31T14:02:31-04:00
-weight = 20
+weight = 7
 draft = false
 bref = ""
 toc = true
 menu = "develop"
 +++
 
-
-# Create a RHElement: Step 2c
 
 ## Write your CSS (or SASS)
 

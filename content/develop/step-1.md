@@ -1,22 +1,21 @@
 +++
-title = "Create a RHElement: Step 1"
+title = "Create an element"
 description = ""
 date = 2018-08-31T14:02:31-04:00
-weight = 20
+weight = 4
 draft = false
 bref = ""
 toc = true
 menu = "develop"
 +++
 
-
-# Create a RHElement: Step 1
+<!-- # Step 1: Scaffold an Element -->
 
 ## Prerequisites
 
 Before you begin, make sure you've followed the [Prerequisites]({{ "/get-started.html#prerequisites" | relative_url }}) in [Getting Started]({{ "/docs/get-started.html" | relative_url }}).
 
-## Step 1: Scaffold an Element
+## The RHElement Generator
 
 Use the RHElement generator to start the scaffolding process. From the root directory of the RHElements repository, run the following command.
 

@@ -161,6 +161,10 @@ footer {
   & nav ul li a {
     color: rgba(255, 255, 255, 0.9);
   }
+  
+  small {
+    color: #fff;
+  }
 }
 
 main {
@@ -279,11 +283,11 @@ main {
   
   
   #main-toc {
-    padding: 2rem 1rem;
+    padding: 1.5rem 1rem 0 2rem;
     background-color: $rh-global--color--gray-moon;
     overflow-y: auto;
     overflow-wrap: break-word;
-    min-width: 280px;
+    min-width: 300px;
     display: none;
     
     @media (min-width: 768px) {
@@ -298,10 +302,6 @@ main {
   #content {
     padding: 2rem 2rem 0;
     margin-right: 2rem;
-    
-    // @media (min-width: 1200px) {
-    //   max-width: 2500px;
-    // }
     
     #posts {
       max-width: 100%;

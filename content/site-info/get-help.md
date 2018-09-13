@@ -1,11 +1,11 @@
 +++
-title = "Questions?"
+title = "Get Help"
 description = ""
 date = 2018-08-31T14:02:31-04:00
-weight = 20
+weight = 14
 draft = false
 bref = ""
-toc = true
+toc = false
 menu = "info"
 +++
 

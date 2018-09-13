@@ -5,11 +5,62 @@
 
 <article style="display: flex; flex-direction: row;">
   
-  <section id="main-toc">
-    <ul class="toc-desktop">
-      {{ range .Paginator.Pages.ByWeight }} {{ partial "page-summary" . }} {{ end }}
-    </ul>
-  </section>
+  <nav id="main-toc">
+    <!-- <ul class="toc-desktop">
+      {{ range .Site.Pages }} {{ partial "page-summary" . }} {{ end }}
+    </ul> -->
+    
+    <!-- <ul>
+      {{ range .Site.Pages }}
+          <li>
+              <a href="{{.Permalink}}">{{.Title}}</a>
+              <ul>
+                {{ range .Pages }}
+                    <li>
+                        <a href="{{.Permalink}}">{{.Title}}</a>
+                    </li>
+                {{ end }}
+              </ul>
+          </li>
+      {{ end }}
+    </ul> -->
+    
+    <nav class="sidebar-nav">
+      <h3>Get Started</h3>
+      <ul>
+        {{ range where .Site.RegularPages "Params.menu" "start" }}
+          <li>
+            <a href="{{ .URL }}" title="{{ .Title }}">
+              {{ .Name }}
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+      <h3>Develop</h3>
+      <ul>
+        {{ range where .Site.RegularPages "Params.menu" "develop" }}
+          <li>
+            <a href="{{ .URL }}" title="{{ .Title }}">
+              {{ .Name }}
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+      <h3>Theme</h3>
+      <ul>
+        {{ range where .Site.RegularPages "Params.menu" "theme" }}
+          <li>
+            <a href="{{ .URL }}" title="{{ .Title }}">
+              {{ .Name }}
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+  
+    </nav>
+    
+    
+  </nav>
 
   <section id="content" style="">
     <header id="hero" class="page-header">
@@ -26,9 +77,6 @@
   <aside class="page-toc">
     <h3>Contents</h3>
     {{ partial "toc" .}}
-    <!-- <ul class="guide">
-      {{ range .Paginator.Pages.ByWeight }} {{ partial "page-summary" . }} {{ end }}
-    </ul> -->
   </aside>
 </article>
 

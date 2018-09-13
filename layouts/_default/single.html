@@ -3,26 +3,35 @@
 
 {{ define "main" }}
 
-<article class="rh-l-grid">
-  <section id="left-toc">
-    <ul>
-      <li>test</li>
-      <li>test</li>
-      <li>test</li>
-      <li>test</li>
+<article style="display: flex; flex-direction: row;">
+  
+  <section id="main-toc">
+    <!-- <h3>Get Started</h3>
+    <ul class="toc-desktop">
+      {{ range .Site.RegularPages }} {{ partial "page-summary" . }} {{ end }}
     </ul>
+    <h3>Develop</h3>
+    <h3>Theme</h3> -->
+    
+    {{ .TableOfContents }}
+  </section>
+  
+  <section id="content" style="">
+    <header id="hero" class="page-header">
+      <h1> {{.Params.title }}</h1>
+      <!-- <p>{{.Params.description}}</p> -->
+    </header>
+    
+    <ul id="posts">
+
+     {{ .Content }}
+     
+    </ul>
+
   </section>
 
-  <header id="hero" class="wrap">
-    <h1>{{.Title }}</h1>
-    <p>{{.Params.description}}</p>
-  </header>
-
-  <article class="content-body">
-    <ul id="posts"> {{ .Content }}</ul>
-  </article>
-
-  <aside class="list-toc">
+  <aside class="page-toc">
+    <h3>Contents</h3>
     {{ partial "toc" .}}
   </aside>
 </article>
