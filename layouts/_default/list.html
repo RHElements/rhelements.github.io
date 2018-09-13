@@ -6,60 +6,37 @@
 <article style="display: flex; flex-direction: row;">
   
   <nav id="main-toc">
-    <!-- <ul class="toc-desktop">
-      {{ range .Site.Pages }} {{ partial "page-summary" . }} {{ end }}
-    </ul> -->
     
-    <!-- <ul>
-      {{ range .Site.Pages }}
-          <li>
-              <a href="{{.Permalink}}">{{.Title}}</a>
-              <ul>
-                {{ range .Pages }}
-                    <li>
-                        <a href="{{.Permalink}}">{{.Title}}</a>
-                    </li>
-                {{ end }}
-              </ul>
-          </li>
+    <h3>Get Started</h3>
+    <ul>
+      {{ range where .Site.RegularPages "Params.menu" "start" }}
+        <li>
+          <a href="{{ .URL }}" title="{{ .Title }}">
+            {{ .Name }}
+          </a>
+        </li>
       {{ end }}
-    </ul> -->
-    
-    <nav class="sidebar-nav">
-      <h3>Get Started</h3>
-      <ul>
-        {{ range where .Site.RegularPages "Params.menu" "start" }}
-          <li>
-            <a href="{{ .URL }}" title="{{ .Title }}">
-              {{ .Name }}
-            </a>
-          </li>
-        {{ end }}
-      </ul>
-      <h3>Develop</h3>
-      <ul>
-        {{ range where .Site.RegularPages "Params.menu" "develop" }}
-          <li>
-            <a href="{{ .URL }}" title="{{ .Title }}">
-              {{ .Name }}
-            </a>
-          </li>
-        {{ end }}
-      </ul>
-      <h3>Theme</h3>
-      <ul>
-        {{ range where .Site.RegularPages "Params.menu" "theme" }}
-          <li>
-            <a href="{{ .URL }}" title="{{ .Title }}">
-              {{ .Name }}
-            </a>
-          </li>
-        {{ end }}
-      </ul>
-  
-    </nav>
-    
-    
+    </ul>
+    <h3>Develop</h3>
+    <ul>
+      {{ range where .Site.RegularPages "Params.menu" "develop" }}
+        <li>
+          <a href="{{ .URL }}" title="{{ .Title }}">
+            {{ .Name }}
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+    <h3>Theme</h3>
+    <ul>
+      {{ range where .Site.RegularPages "Params.menu" "theme" }}
+        <li>
+          <a href="{{ .URL }}" title="{{ .Title }}">
+            {{ .Name }}
+          </a>
+        </li>
+      {{ end }}
+    </ul>
   </nav>
 
   <section id="content" style="">
