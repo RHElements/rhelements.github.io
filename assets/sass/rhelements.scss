@@ -31,6 +31,10 @@ p {
   letter-spacing: .1px;
 }
 
+table {
+  margin-bottom: 2.5rem;
+}
+
 
 ////////////////////////////////////
 ///  Global CSS - Layout
@@ -332,6 +336,8 @@ main {
     
     h3 {
       margin-bottom: .5rem;
+      color: #114269;
+      font-size: 1.3rem;
       
       a {
         text-decoration: none;
@@ -393,7 +399,7 @@ main {
     padding: 2.5rem 2rem 0 0;
     display: none;
     list-style-type: none;
-    width: 20vw;
+    width: 25vw;
     margin-left: auto;
     height: max-content;
     padding-left: 1rem;
@@ -411,14 +417,13 @@ main {
     
     .js-toc .toc-list {
       margin: 0;
-      // list-style-type: none;
-      padding-left: .8rem;
+      margin-left: -5px;
+      list-style-type: none;
       
       li {
-        margin-bottom: .3rem;
-        list-style-image: url(/img/logo/svg/rhelements-icon-black.svg);
-        background-size: contain;
-        padding-left: .5rem;
+        margin-bottom: .6rem;
+        background: url(/img/logo/svg/rhelements-icon-black.svg) 0 47% no-repeat;
+        padding-left: 2.5rem;
         
         a {
           font-size: 1rem;
