@@ -6,46 +6,47 @@
 <article style="display: flex; flex-direction: row;">
   
   <nav id="main-toc">
-    
-    <h3><a href="/get-started">Get Started</a></h3>
-    <ul>
-      {{ range where .Site.RegularPages "Params.menu" "start" }}
-        <li>
-          <a href="{{ .URL }}" title="{{ .Title }}">
-            {{ .Name }}
-          </a>
-        </li>
-      {{ end }}
-    </ul>
-    <h3><a href="/Develop">Develop</a></h3>
-    <ul>
-      {{ range where .Site.RegularPages "Params.menu" "develop" }}
-        <li>
-          <a href="{{ .URL }}" title="{{ .Title }}">
-            {{ .Name }}
-          </a>
-        </li>
-      {{ end }}
-    </ul>
-    <h3><a href="/theme">Theme</a></h3>
-    <ul>
-      {{ range where .Site.RegularPages "Params.menu" "theme" }}
-        <li>
-          <a href="{{ .URL }}" title="{{ .Title }}">
-            {{ .Name }}
-          </a>
-        </li>
-      {{ end }}
-    </ul>
-    <!-- Figure out the name for this -->
-    <h3>Contact</h3>
-    <ul>
-      {{ range .Site.Menus.extra }} 
-        <li>
-          <a href="{{ .URL }}">{{ .Name }}</a>
-        </li>
-      {{ end }}  
-    </ul>
+    <section class="inner-toc">
+      <h3><a href="/get-started">Get Started</a></h3>
+      <ul>
+        {{ range where .Site.RegularPages "Params.menu" "start" }}
+          <li>
+            <a href="{{ .URL }}" title="{{ .Title }}">
+              {{ .Name }}
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+      <h3><a href="/Develop">Develop</a></h3>
+      <ul>
+        {{ range where .Site.RegularPages "Params.menu" "develop" }}
+          <li>
+            <a href="{{ .URL }}" title="{{ .Title }}">
+              {{ .Name }}
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+      <h3><a href="/theme">Theme</a></h3>
+      <ul>
+        {{ range where .Site.RegularPages "Params.menu" "theme" }}
+          <li>
+            <a href="{{ .URL }}" title="{{ .Title }}">
+              {{ .Name }}
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+      <!-- Figure out the name for this -->
+      <h3>Contact</h3>
+      <ul>
+        {{ range .Site.Menus.extra }} 
+          <li>
+            <a href="{{ .URL }}">{{ .Name }}</a>
+          </li>
+        {{ end }}  
+      </ul>
+    </section>
   </nav>
   
   <section id="content" style="">

@@ -315,16 +315,19 @@ main {
   }
   
   #main-toc {
-    padding: 2.5rem 1rem 0 2.5rem;
+    padding: 2.5rem 1rem 2.5rem 2.5rem;
     background-color: $rh-global--color--gray-moon;
-    overflow-y: auto;
-    overflow-wrap: break-word;
     min-width: 300px;
     min-height: 85vh;
     display: none;
     
     @media (min-width: 768px) {
       display: block;
+    }
+    
+    .inner-toc {
+      position: sticky;
+      top: 20px;
     }
     
     h3 {
