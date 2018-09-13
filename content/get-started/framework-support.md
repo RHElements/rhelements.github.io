@@ -1,6 +1,6 @@
 +++
 title = "Framework Support"
-description = ""
+description = "Our mission is to create components that work with any of the JavaScript frameworks."
 date = 2018-08-31T14:02:31-04:00
 weight = 2
 draft = false
@@ -10,9 +10,7 @@ menu = "start"
 +++
 
 
-# Framework Support
-
-One of the goals of RHElements is to create web components that will work with any number of javascript frameworks. RHElements are built on top of the [Custom Elements v1 spec](https://w3c.github.io/webcomponents/spec/custom/) so they should just work. There are some caveats, but we'll get to those later.
+Every RHElement is built on top of the [Custom Elements v1 spec](https://w3c.github.io/webcomponents/spec/custom/). There are some caveats, but we'll get into those later.
 
 ## Supported and Tested Frameworks
 

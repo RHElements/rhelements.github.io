@@ -4,8 +4,32 @@
 @import "typography";
 
 
-// TODO: 
-//  - Split CSS into logical files
+////////////////////////////////////
+///  Global CSS - Site Design
+//////////////////////////////////
+
+* {
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+a:hover,
+a:focus {
+  color: #06c;
+}
+
+#action-buttons {
+  
+  a, button, .button {
+    margin: 0 .5rem;
+  }
+}
+
+p {
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: .1px;
+}
 
 
 ////////////////////////////////////
@@ -262,28 +286,35 @@ main {
   ///  Single & List - Content
   //////////////////////////////////
   
-  #hero.page-header {
-    // margin: 2rem 0;
+  .page-header {
+    margin-bottom: 1.3rem;
     padding: 0;
     
     h1 {
       max-width: none;
-      margin-bottom: 2rem;
-      font-size: 3rem;
-      font-weight: 800;
+      margin-bottom: .8rem;
+      font-size: 2rem;
+      letter-spacing: .7px;
+      font-weight: 600;
       text-align: left;
       line-height: normal;
       
       @media (min-width: 768px) {
-        font-size: 3.5rem;
+        font-size: 3rem;
+        line-height: 1;
       }
+    }
+    
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.55rem;
+      line-height: 1.3;
+      color: $rh-global--color--gray-umbra;
     }
   }
   
-  
-  
   #main-toc {
-    padding: 1.5rem 1rem 0 2rem;
+    padding: 2.5rem 1rem 0 2.5rem;
     background-color: $rh-global--color--gray-moon;
     overflow-y: auto;
     overflow-wrap: break-word;
@@ -301,11 +332,11 @@ main {
   }
   
   #content {
-    padding: 1.5rem 2rem 0;
-    margin-right: 2rem;
+    padding: 2.5rem 2.5rem 0;
     
     @media (min-width: 1200px) {
       max-width: 55vw;
+      margin-right: 2rem;
     }
     
     #posts {
@@ -315,27 +346,30 @@ main {
       text-align: left;
       
       h2 {
-        margin-top: 3rem;
+        margin-top: 2.5rem;
         margin-bottom: 1.4rem;
         font-size: 2rem;
         font-weight: 200;
         letter-spacing: 1px;
       }
       
-      h2:first-child {
-        margin-top: 0;
+      ul {
+        margin-bottom: 2rem;
+        
+        li {
+          margin-bottom: .5rem;
+        }
       }
     }
   }
 
 
   .page-toc {
-    margin-top: 2rem;
+    padding: 2.5rem 2rem 0 0;
     display: none;
     list-style-type: none;
     width: 20vw;
     margin-left: auto;
-    
     height: max-content;
     padding-left: 1rem;
     
@@ -345,20 +379,21 @@ main {
     
     h3 {
       margin-bottom: .8rem;
-      font-size: 1rem;
+      font-size: 1.2rem;
       font-weight: bold;
-      color: #005a7a;
-      text-transform: uppercase;
+      color: $rh-global--color--purple-rain;
     }
     
     .js-toc .toc-list {
       margin: 0;
-      list-style-type: none;
-      // border-left: 3px solid black;
-      // padding-left: 1rem;
+      // list-style-type: none;
+      padding-left: .8rem;
       
       li {
         margin-bottom: .3rem;
+        list-style-image: url(/img/logo/svg/rhelements-icon-black.svg);
+        background-size: contain;
+        padding-left: .5rem;
         
         a {
           font-size: 1rem;
@@ -366,32 +401,4 @@ main {
       }
     }
   }
-}
-
-
-////////////////////////////////////
-///  Global CSS - Site Design
-//////////////////////////////////
-
-* {
-  -webkit-font-smoothing: subpixel-antialiased;
-}
-
-a:hover,
-a:focus {
-  color: #06c;
-}
-
-#action-buttons {
-  
-  a, button, .button {
-    margin: 0 .5rem;
-  }
-}
-
-p {
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
-  font-weight: 400;
-  letter-spacing: .1px;
 }

@@ -7,7 +7,7 @@
   
   <nav id="main-toc">
     
-    <h3>Get Started</h3>
+    <h3><a href="/get-started">Get Started</a></h3>
     <ul>
       {{ range where .Site.RegularPages "Params.menu" "start" }}
         <li>
@@ -17,7 +17,7 @@
         </li>
       {{ end }}
     </ul>
-    <h3>Develop</h3>
+    <h3><a href="/Develop">Develop</a></h3>
     <ul>
       {{ range where .Site.RegularPages "Params.menu" "develop" }}
         <li>
@@ -27,7 +27,7 @@
         </li>
       {{ end }}
     </ul>
-    <h3>Theme</h3>
+    <h3><a href="/theme">Theme</a></h3>
     <ul>
       {{ range where .Site.RegularPages "Params.menu" "theme" }}
         <li>
@@ -38,7 +38,7 @@
       {{ end }}
     </ul>
     <!-- Figure out the name for this -->
-    <h3>RHElements</h3> 
+    <h3>Contact</h3>
     <ul>
       {{ range .Site.Menus.extra }} 
         <li>
@@ -49,9 +49,9 @@
   </nav>
   
   <section id="content" style="">
-    <header id="hero" class="page-header">
+    <header class="page-header">
       <h1> {{.Params.title }}</h1>
-      <!-- <p>{{.Params.description}}</p> -->
+      <p>{{.Params.description}}</p>
     </header>
     
     <ul id="posts">
