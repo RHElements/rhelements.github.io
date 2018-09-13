@@ -9,27 +9,36 @@ toc = true
 +++
 
 
-## Guidelines for building a RHElement
+### UI Colors
 
-1. A RHElement should be easy to understand. If it's challenging for rocket scientists, can it be split up into simpler pieces?
-2. A component can only be 1 of 2 types: content or container. 
-    - If content, then it has typography styles
-    - If container, then it has surface styles and padding, no typography styles!
-3. Context agnostic
-    - A RHElement should “just work” when you drop it onto any page (provided the proper polyfills are there). It should have ALL the styles it needs
-
-
-
-
-
-## Color naming conventions
-
-A UI uses color to convey:
+A user interface uses color to convey:
 
  - Feedback: Error and success states
  - Information: Charts, graphs, and wayfinding elements
  - Hierarchy: Showing structured order through color and typography
 
-Common colors in a design system include 1–3 primaries that represent your brand. If none of these work well as a link and button color, then you may have an extra color for that as well. It’s a good idea to use the same color for links and button backgrounds as it makes it easier for users to recognize interactive elements.
+We've exposed 3 color variants for this design system to represent your brand:
 
-You’ll likely have neutrals for general UI backgrounds and borders—usually grays. And finally, you’ll have colors for states such as error, warning, and success. Group these colors to see how well they work together and refine as needed.
+ - Base
+ - Complement
+ - Accent
+
+These colors are used throughout RHElements, but accent is the color which should stand out the most. For example, if your brand colors are navy, orange, and medium gray, you'll want to set orange as the accent color. You'll see it appear on primary level call-to-action buttons and other elements that need to stand out.
+
+If you are overriding these colors, you can do so my changing the CSS variables, like this:
+
+
+	:root {
+	  --rh-color--ui-base:               #030070;
+	  --rh-color--ui-base--hover:        #010047;
+	  --rh-color--ui-base--text:         #ffffff;    // what color text is most visible on this background color?
+	  --rh-color--ui-base--text--hover:  #eeeeee;
+	}
+
+It's also a good idea to choose some neutral colors for general UI backgrounds and borders—usually grays. And finally, you’ll have colors for states such as error, warning, and success. Group these colors to see how well they work together and refine as needed.
+
+
+Surface color encompass any “surface” (whether background or not) that are typically part of container-type elements, like cards or bands. These colors should be harmonious with your corporate style guide (if you have one), but they may not necessarily be your company’s primary brand colors. Pick colors that provide a good user experience, e.g. color contrast.
+
+You can find a list of all the system colors here:
+https://github.com/RHElements/rhelements/blob/master/elements/rh-sass/variables/_colors.scss
