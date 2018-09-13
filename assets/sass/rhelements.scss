@@ -56,7 +56,7 @@ header {
       margin-right: 0;
       
       a {
-        background: url(/img/logo/png/rhelements-icon-blue.png) no-repeat 0 50%;
+        background: url(/img/logo/png/rhelements-icon-red.png) no-repeat 0 50%;
         background-size: 65px;
         padding: 2rem 2rem 2rem 3.6rem;
         font-size: 1.4rem;
@@ -212,7 +212,7 @@ main {
         
         .hero-logo {
           width: 100px;
-          margin-right: 18px;
+          object-fit: none;
           display: none;
           
           @media (min-width: 992px) {
