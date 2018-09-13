@@ -288,6 +288,7 @@ main {
     overflow-y: auto;
     overflow-wrap: break-word;
     min-width: 300px;
+    height: 100vh;
     display: none;
     
     @media (min-width: 768px) {
