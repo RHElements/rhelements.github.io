@@ -8,6 +8,17 @@ bref = ""
 toc = true
 +++
 
+<!-- # Guidelines -->
+
+## Guidelines for building a RHElement
+
+1. A RHElement should be easy to understand. If it's challenging for rocket scientists, can it be split up into simpler pieces?
+2. A component can only be 1 of 2 types: content or container. 
+    - If content, then it has typography styles
+    - If container, then it has surface styles and padding, no typography styles!
+3. Context agnostic
+    - A RHElement should “just work” when you drop it onto any page (provided the proper polyfills are there). It should have ALL the styles it needs
+
 ## Prerequisites
 
 Clone the [RHElements/rhelements](https://github.com/RHElements/rhelements) and run the install command from the root of the repository.
