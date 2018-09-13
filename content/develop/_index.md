@@ -1,6 +1,6 @@
 +++
 title = "Develop"
-description = ""
+description = "Build and create reusable web components."
 date = 2018-08-31T14:02:31-04:00
 weight = 20
 draft = false
@@ -18,9 +18,6 @@ toc = true
     - If container, then it has surface styles and padding, no typography styles!
 3. Context agnostic
     - A RHElement should “just work” when you drop it onto any page (provided the proper polyfills are there). It should have ALL the styles it needs
-
-
-<!-- # Develop -->
 
 ## Prerequisites
 

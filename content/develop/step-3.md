@@ -2,15 +2,13 @@
 title = "Create a RHElement: Step 3"
 description = ""
 date = 2018-08-31T14:02:31-04:00
-weight = 20
+weight = 9
 draft = false
 bref = ""
 toc = true
 menu = "develop"
 +++
 
-
-# Create a RHElement: Step 3
 
 ## Write tests
 
@@ -219,7 +217,7 @@ npm test
 
 Here is the command line output:
 
-![test output]({{ "assets/images/test-output.png" | relative_url }})
+![test output](/test-output.png)
 
 Nice! All four tests are working in Chrome and Firefox.
 
@@ -229,4 +227,4 @@ That's it for testing, but you can also set up continuous integration on [Travis
 
 Now that we've created our `rh-cool-element` and all of our code passes, the final step is to publish and share your component on npm!
 
-[Move to Step 4: Publish](step-4.html)
+[Move to Step 4: Publish](../step-4)

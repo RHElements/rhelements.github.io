@@ -1,22 +1,21 @@
 +++
-title = "Create a RHElement: Step 1"
+title = "Create a RHElement"
 description = ""
 date = 2018-08-31T14:02:31-04:00
-weight = 20
+weight = 4
 draft = false
 bref = ""
 toc = true
 menu = "develop"
 +++
 
-
-# Create a RHElement: Step 1
+<!-- # Step 1: Scaffold an Element -->
 
 ## Prerequisites
 
 Before you begin, make sure you've followed the [Prerequisites]({{ "/get-started.html#prerequisites" | relative_url }}) in [Getting Started]({{ "/docs/get-started.html" | relative_url }}).
 
-## Step 1: Scaffold an Element
+## The RHElement Generator
 
 Use the RHElement generator to start the scaffolding process. From the root directory of the RHElements repository, run the following command.
 
@@ -42,7 +41,7 @@ The generator will ask you a series of questions to set up your project.
 
 After answering the questions, you'll see something like this:
 
-![npm run new command]({{ "assets/images/npm-run-new.png" | relative_url }}){:width="500px"}
+![npm run new command](/npm-run-new.png)
 
 Once that's done, switch directories to the element you just created. We'll cd into the rh-cool-element directory.
 
@@ -52,4 +51,4 @@ cd elements/rh-cool-element
 
 Open your code editor to view the structure of the element. It's important to note the `/src`, `/demo` and `/test` directories and the rh-cool-element.js and rh-cool-element.compiled.js files. The `/src` directory is reserved for development and you can write tests in `/test` directory. Finally, the `/demo` directory lets you preview your element locally using the rh-cool-element.js and rh-cool-element.umd.js files.
 
-[Move to Step 2: Develop (Structure)](step-2a.html)
+[Move to Step 2: Develop (Structure)](../step-2a/)

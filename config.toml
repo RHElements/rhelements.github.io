@@ -49,3 +49,10 @@ disableFastRender = true
     name = "Help"
     weight = 500
     url = "/site-info/get-help"
+    
+    
+[imaging]
+  resampleFilter = "box"
+  quality = 75
+  # Valid values are Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight
+  anchor = "smart"

@@ -2,15 +2,13 @@
 title = "Create a RHElement: Step 2a"
 description = ""
 date = 2018-08-31T14:02:31-04:00
-weight = 20
+weight = 5
 draft = false
 bref = ""
 toc = true
 menu = "develop"
 +++
 
-
-# Create a RHElement: Step 2a
 
 ## Develop a Structure
 
@@ -30,7 +28,7 @@ npm start
 
 This will start a simple HTTP server that reloads the browser as you update your element.
 
-![npm start command]({{ "assets/images/rh-cool-element-start.png" | relative_url }}){:width="500px"}
+![npm start command](/rh-cool-element-start.png)
 
 Navigate to `http://localhost:1234/elements/rh-cool-element/demo/` to view your element.
 
@@ -109,4 +107,4 @@ For questions on how Custom Elements work, or if you want to learn the basics of
 
 Now that our dev server is running and we have our element's structure, let's make it actually do something.
 
-[Move to Step 2: Develop (HTML)](step-2b.html)
+[Move to Step 2: Develop (HTML)](../step-2b)

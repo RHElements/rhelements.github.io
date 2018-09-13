@@ -1,6 +1,6 @@
 +++
 title = "Theme"
-description = ""
+description = "Use our beautifully designed theme, or modify it to your needs."
 date = 2018-08-31T14:02:31-04:00
 weight = 20
 draft = false
@@ -8,7 +8,9 @@ bref = ""
 toc = true
 +++
 
+
 ## Color Variables
+## Work In Progress
 
 Looking for values fast? You can find a [list of all the system colors here](https://github.com/RHElements/rhelements/blob/master/elements/rh-sass/variables/_colors.scss)
 
