@@ -23,24 +23,24 @@ a:focus {
     margin: 0 .5rem;
     
     &.primary {
-      background-color: lighten(#e1380c, 10%);
+      background-color: lighten(#0477a4, 8%);
     }
     
     &.primary:hover,
     &.primary:focus {
-      background-color: darken(#e1380c, 8%);
+      background-color: darken(#0477a4, 5%);
     }
     
     &.outline {
-      border-color: #e1380c;
-      color: #e1380c;
+      border-color: lighten(#0477a4, 8%);
+      color: lighten(#0477a4, 8%);
     }
     
     &.outline:hover,
     &.outline:focus {
       background-color: $rh-global--color--gray-gainsboro;
-      border-color: darken(#e1380c, 8%);
-      color: darken(#e1380c, 8%);
+      border-color: darken(#0477a4, 5%);
+      color: darken(#0477a4, 5%);
     }
   }
 }
@@ -53,7 +53,12 @@ p {
 }
 
 table {
-  margin-bottom: 2.5rem;
+  margin: 2rem 0;
+}
+
+pre {
+  border: 1px solid rgba(17,17,19,.1);
+  background-color: #f8f8f8;
 }
 
 
@@ -324,8 +329,9 @@ main {
   //////////////////////////////////
   
   .page-header {
-    margin-bottom: 1.5rem;
-    padding: 0;
+    margin-bottom: 2rem;
+    padding-bottom: .5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
     
     h1 {
       max-width: none;
