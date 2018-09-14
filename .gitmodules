@@ -1,4 +1,0 @@
-[submodule "public/rhelements.github.io"]
-	path = public/rhelements.github.io
-	url = git@github.com:rhelements/rhelements.github.io.git
-	branch = master
