@@ -1,8 +1,8 @@
 +++
-title = "Create a RHElement: Step 2d"
+title = "Integrate your JavaScript"
 description = ""
 date = 2018-08-31T14:02:31-04:00
-weight = 20
+weight = 8
 draft = false
 bref = ""
 toc = true
@@ -10,9 +10,6 @@ menu = "develop"
 +++
 
 
-# Create a RHElement: Step 2d
-
-## Integrate your JavaScript
 
 In this step, we will:
 - Add a click listener to the follow button
@@ -63,7 +60,7 @@ Please note the underscore before the method name. This is a convention you'll n
 
 After saving your files, the demo page will refresh and you'll notice the start of your button interactivity.
 
-![demo page js click setup step]({{ "assets/images/demo-page-js-click-setup-step.png" | relative_url }}){:width="500px"}
+![demo page js click setup step](/demo-page-js-click-setup-step.png)
 
 Now that the click handler is set up, let's set a following state to keep track of whether or not you're following that user. 
 
@@ -115,7 +112,7 @@ _clickHandler() {
 
 When we click the follow button now, you'll notice the `following` attribute set and unset as we toggle the button.
 
-![demo page js attribute changed step]({{ "assets/images/demo-page-js-attribute-change-step.png" | relative_url }}){:width="500px"}
+![demo page js attribute changed step](/demo-page-js-attribute-change-step.png)
 
 ## Observed Attributes
 
@@ -145,7 +142,7 @@ If the changed attribute is `following`, the button text will update based on ou
 
 The UI will look like this when we click the follow button:
 
-![demo page js attribute changed step]({{ "assets/images/demo-page-js-follow-attribute-changed-step.png" | relative_url }}){:width="500px"}
+![demo page js attribute changed step](/demo-page-js-follow-attribute-changed-step.png)
 
 Next, we add a `photo-url` attribute to pass in a profile image. Once again, we'll use the `observedAttributes` and the `attributeChangedCallback` to handle the work. We can add a profile image with only a few updates!
 
@@ -213,7 +210,7 @@ We can also modify `/src/rh-cool-element.scss` to adjust the background-size pro
 
 The final result should look like this:
 
-![demo page js profile pic step]({{ "assets/images/demo-page-js-profile-pic-step.png" | relative_url }}){:width="500px"}
+![demo page js profile pic step](/demo-page-js-profile-pic-step.png)
 
 Great! You're almost there.
 
@@ -305,4 +302,4 @@ RHElement.create(RhCoolElement);
 
 Now that our code works, we should create tests to ensure our element works as we iterate on it in the future.
 
-[Move to Step 3: Test](step-3.html)
+[Move to Step 3: Test](../step-3)

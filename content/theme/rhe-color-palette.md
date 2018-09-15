@@ -1,20 +1,18 @@
 +++
-title = "Theming a new component"
+title = "RHElements color palette"
 description = ""
 date = 2018-09-15T14:02:31-04:00
-weight = 20
+weight = 5
 draft = false
 bref = ""
 toc = true
-menu = "info"
+menu = "theme"
 +++
 
 
-## Applying color themes to RHElements
+Looking for values fast? You can find a <a href="https://github.com/RHElements/rhelements/blob/master/elements/rh-sass/variables/_colors.scss" target="_blank">list of all the system colors here</a>.
 
-Looking for values fast? You can find a [list of all the system colors here](https://github.com/RHElements/rhelements/blob/master/elements/rh-sass/variables/_colors.scss)
-
-### UI Colors
+## UI Colors
 
 A user interface uses color to convey:
 
@@ -36,7 +34,7 @@ If you are overriding these colors, you can do so my changing the CSS variables,
 	:root {
 	  --rh-color--ui-base:               #030070;
 	  --rh-color--ui-base--hover:        #010047;
-	  --rh-color--ui-base--text:         #ffffff;    // what color text is most visible on this background color?
+	  --rh-color--ui-base--text:         #ffffff;
 	  --rh-color--ui-base--text--hover:  #eeeeee;
 	}
 
@@ -44,7 +42,7 @@ If you are overriding these colors, you can do so my changing the CSS variables,
 UI colors are meant to provide basic colors for ubiquitous page elements like links and body text. You may choose to set the value of a link color to something in your brand, but it is not required, and these colors should provide a good user experience. Pick colors that provide a good user experience, e.g. color contrast.
 
 
-### Surface Colors
+## Surface Colors
 
 It's also a good idea to choose some neutral colors for general UI backgrounds and borders—usually grays. Surface color encompass any "surface" that are typically part of container-type elements, like cards or bands. These colors should be harmonious with your corporate style guide (if you have one), but they may not necessarily be your company’s primary brand colors. 
 
@@ -58,7 +56,7 @@ It's also a good idea to choose some neutral colors for general UI backgrounds a
 	}
 
 
-### Feedback Colors
+## Feedback Colors
 
 And finally, you’ll have colors for states such as error, warning, and success. Group these colors to see how well they work together and refine as needed.
 
@@ -66,32 +64,6 @@ And finally, you’ll have colors for states such as error, warning, and success
 	    --rh-color--feedback--critical:                 $rh-color--red-600 !default;
 	    --rh-color--feedback--critical--lightest:       $rh-color--red-50 !default;
 	    --rh-color--feedback--critical--darkest:        $rh-color--red-800 !default;
-	}
-
-
-
-## Building RHElements with theme vars
-
-
-
-	:host {
-	  --rh-cta--main:                     #{rh-var(ui-link)};
-	  --rh-cta--main--hover:              #{rh-var(ui-link--hover)};
-	  --rh-cta--main--focus:              #{rh-var(ui-link--focus)};
-	  --rh-cta--main--visited:            #{rh-var(ui-link--visited)};
-	  --rh-cta--aux:                      transparent;
-	  --rh-cta--aux--hover:               transparent;
-	}
-
-
-CTA component resets the local variables to match those of the theme variables. That way when someone adds the attribute color="complement", the theme
-
-
-	:host([color="complement"]) {
-	  --rh-cta--main:        #{rh-var(ui-complement)} !important;
-	  --rh-cta--main--hover: #{rh-var(ui-complement--hover)} !important;
-	  --rh-cta--aux:         #{rh-var(ui-complement--text)} !important;
-	  --rh-cta--aux--hover:  #{rh-var(ui-complement--text--hover)} !important;
 	}
 
 

@@ -1,8 +1,8 @@
 +++
-title = "Create a RHElement: Step 2c"
+title = "Write your CSS (or Sass)"
 description = ""
 date = 2018-08-31T14:02:31-04:00
-weight = 20
+weight = 7
 draft = false
 bref = ""
 toc = true
@@ -10,9 +10,6 @@ menu = "develop"
 +++
 
 
-# Create a RHElement: Step 2c
-
-## Write your CSS (or SASS)
 
 We want the `rh-cool-element` to have a profile photo, a username, and a follow button. Right now, it only contains the HTML structure, but we can style our element by updating our Sass (or CSS) to make it look the way we want.
 
@@ -64,7 +61,8 @@ button {
 
 After saving and viewing our demo page, our profile element looks much better.
 
-![demo page css step]({{ "assets/images/demo-page-css-step.png" | relative_url }}){:width="500px"}
+![Demo Page CSS](/demo-page-css-step.png)
+
 
 A couple of things to note: 
 1. The `:host` selector sets the styles of the container element `<rh-cool-element>`. 
@@ -130,8 +128,10 @@ button {
 RHElement.create(RhCoolElement);
 ```
 
-You'll notice <style> contains everything we just wrote in our Sass file. Sass variables will also compiled their values and get included in the changes above.
+You'll notice ```<style>``` contains everything we just wrote in our Sass file. Sass variables will also compiled their values and get included in the changes above.
 
 Now that our `rh-cool-element` is more appealing, we'll add the follow button's interaction and fill in the profile photo. We can accomplish both of these tasks by updating the `/src/rh-cool-element.js` file.
 
-[Move to Step 2: Develop (Javascript)](step-2d.html)
+<a href="/theme/rhe-color">Learn more about applying theme colors here.</a>
+
+[Move to Step 2: Develop (Javascript)](../step-2d)

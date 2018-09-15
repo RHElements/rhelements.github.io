@@ -1,18 +1,17 @@
 +++
 title = "Polyfills"
-description = ""
+description = "Add polyfills to support all of the major browsers."
 date = 2018-08-31T14:02:31-04:00
-weight = 20
+weight = 3
 draft = false
 bref = ""
 toc = true
 menu = "start"
 +++
 
-
-Since all browsers don't support ES6 modules, custom elements, shadow DOM, and
-custom CSS variables yet, we need to add a few polyfills to make everything
-work across all the browsers that we support.
+Some browsers do not support ES6 modules, custom elements, shadow DOM, and
+custom CSS variables yet. We'll need to add some polyfills to make everything
+work in our supported browsers.
 
 The easiest way to get everything working is to add the following polyfills to
 the head of your document.

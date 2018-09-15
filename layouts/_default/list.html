@@ -5,15 +5,54 @@
 
 <article style="display: flex; flex-direction: row;">
   
-  <section id="main-toc">
-    <ul class="toc-desktop">
-      {{ range .Paginator.Pages.ByWeight }} {{ partial "page-summary" . }} {{ end }}
-    </ul>
-  </section>
+  <nav id="main-toc">
+    <section class="inner-toc">
+      <h3><a href="/get-started">Get Started</a></h3>
+      <ul>
+        {{ range where .Site.RegularPages "Params.menu" "start" }}
+          <li>
+            <a href="{{ .URL }}" title="{{ .Title }}">
+              {{ .Name }}
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+      <h3><a href="/Develop">Develop</a></h3>
+      <ul>
+        {{ range where .Site.RegularPages "Params.menu" "develop" }}
+          <li>
+            <a href="{{ .URL }}" title="{{ .Title }}">
+              {{ .Name }}
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+      <h3><a href="/theme">Theme</a></h3>
+      <ul>
+        {{ range where .Site.RegularPages "Params.menu" "theme" }}
+          <li>
+            <a href="{{ .URL }}" title="{{ .Title }}">
+              {{ .Name }}
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+      <!-- Figure out the name for this -->
+      <h3>Contact</h3>
+      <ul>
+        {{ range .Site.Menus.extra }} 
+          <li>
+            <a href="{{ .URL }}">{{ .Name }}</a>
+          </li>
+        {{ end }}  
+      </ul>
+    </section>
+  </nav>
 
   <section id="content" style="">
-    <header id="hero" class="page-header">
+    <header class="page-header">
       <h1> {{.Params.title }}</h1>
+      <p>{{.Params.description}}</p>
     </header>
     
     <ul id="posts">
@@ -26,9 +65,6 @@
   <aside class="page-toc">
     <h3>Contents</h3>
     {{ partial "toc" .}}
-    <!-- <ul class="guide">
-      {{ range .Paginator.Pages.ByWeight }} {{ partial "page-summary" . }} {{ end }}
-    </ul> -->
   </aside>
 </article>
 

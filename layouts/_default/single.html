@@ -3,26 +3,68 @@
 
 {{ define "main" }}
 
-<article class="rh-l-grid">
-  <section id="left-toc">
-    <ul>
-      <li>test</li>
-      <li>test</li>
-      <li>test</li>
-      <li>test</li>
+<article style="display: flex; flex-direction: row;">
+  
+  <nav id="main-toc">
+    <section class="inner-toc">
+      <h3><a href="/get-started">Get Started</a></h3>
+      <ul>
+        {{ range where .Site.RegularPages "Params.menu" "start" }}
+          <li>
+            <a href="{{ .URL }}" title="{{ .Title }}">
+              {{ .Name }}
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+      <h3><a href="/Develop">Develop</a></h3>
+      <ul>
+        {{ range where .Site.RegularPages "Params.menu" "develop" }}
+          <li>
+            <a href="{{ .URL }}" title="{{ .Title }}">
+              {{ .Name }}
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+      <h3><a href="/theme">Theme</a></h3>
+      <ul>
+        {{ range where .Site.RegularPages "Params.menu" "theme" }}
+          <li>
+            <a href="{{ .URL }}" title="{{ .Title }}">
+              {{ .Name }}
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+      <!-- Figure out the name for this -->
+      <h3>Contact</h3>
+      <ul>
+        {{ range .Site.Menus.extra }} 
+          <li>
+            <a href="{{ .URL }}">{{ .Name }}</a>
+          </li>
+        {{ end }}  
+      </ul>
+    </section>
+  </nav>
+  
+  <section id="content" style="">
+    <header class="page-header">
+      <h1> {{.Params.title }}</h1>
+      <p>{{.Params.description}}</p>
+    </header>
+    
+    <ul id="posts">
+
+     {{ .Content }}
+     
     </ul>
+
   </section>
 
-  <header id="hero" class="wrap">
-    <h1>{{.Title }}</h1>
-    <p>{{.Params.description}}</p>
-  </header>
-
-  <article class="content-body">
-    <ul id="posts"> {{ .Content }}</ul>
-  </article>
-
-  <aside class="list-toc">
+  <aside class="page-toc">
+    <h3>Page Contents</h3>
     {{ partial "toc" .}}
   </aside>
 </article>
