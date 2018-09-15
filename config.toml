@@ -29,9 +29,9 @@ disableFastRender = true
   ]
 
 [[menu.main]]
-    name = "Get Started"
+    name = "Getting Started"
     weight = 100
-    url = "/get-started/"
+    url = "/getting-started/"
 [[menu.main]]
     name = "Develop"
     weight = 200

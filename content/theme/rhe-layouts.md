@@ -15,45 +15,10 @@ menu = "theme"
 <link rel="stylesheet" type="text/css" href="../../cp-themeset/cp-themeset.css">
 
 <style>
-main {
-  padding: 32px;
-  background: #e7e7e7;
-}
-
-header h1 {
-  margin-top: 0;
-}
-
-section {
-  margin: 32px 0;
-}
-
-section section {
-  padding: 32px;
-  background: #fff;
-  box-shadow: 0 1px 3px rgba(0,0,0,.2);
-}
-
-section section > h3 {
-  margin-top: 0;
-}
-
-section section > h4 {
-  margin-top: 32px;
-}
-
-pre {
-  padding: 8px;
-  /* border: 1px solid #dedede; */
-}
 
 .rhe-l-grid > * {
   background: #e0d7ee;
   padding: 8px;
-}
-
-:not(pre)>code[class*=language-], pre[class*=language-] {
-  background: #f2f2f2;
 }
 </style>
 

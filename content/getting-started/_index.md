@@ -1,5 +1,5 @@
 +++
-title = "Get Started"
+title = "Getting Started"
 description = "Create your own bulletproof web component."
 date = 2018-08-31T14:02:31-04:00
 weight = 20
