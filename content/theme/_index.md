@@ -8,7 +8,7 @@ bref = ""
 toc = true
 +++
 
-## Color Variables
+## Applying color themes to RHElements
 
 Looking for values fast? You can find a [list of all the system colors here](https://github.com/RHElements/rhelements/blob/master/elements/rh-sass/variables/_colors.scss)
 
@@ -68,6 +68,29 @@ And finally, you’ll have colors for states such as error, warning, and success
 
 
 
-## Color overrides per component
+## Building RHElements with theme vars
 
-TBD
+
+
+	:host {
+	  --rh-cta--main:                     #{rh-var(ui-link)};
+	  --rh-cta--main--hover:              #{rh-var(ui-link--hover)};
+	  --rh-cta--main--focus:              #{rh-var(ui-link--focus)};
+	  --rh-cta--main--visited:            #{rh-var(ui-link--visited)};
+	  --rh-cta--aux:                      transparent;
+	  --rh-cta--aux--hover:               transparent;
+	}
+
+
+CTA component resets the local variables to match those of the theme variables. That way when someone adds the attribute color="complement", the theme
+
+
+	:host([color="complement"]) {
+	  --rh-cta--main:        #{rh-var(ui-complement)} !important;
+	  --rh-cta--main--hover: #{rh-var(ui-complement--hover)} !important;
+	  --rh-cta--aux:         #{rh-var(ui-complement--text)} !important;
+	  --rh-cta--aux--hover:  #{rh-var(ui-complement--text--hover)} !important;
+	}
+
+
+
