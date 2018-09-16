@@ -15,9 +15,11 @@ Every RHElement is built to automatically utilize the colors defined in the pale
 
 Often components will make decisions about how to best utilize those colors, which is "baked in". For example, a standard CTA, or call-to-action component, uses the standard link color in its default state. But, if you set the `priority` attribute value to `primary`, the CTA will make use of the accent color from the palette. 
 
+
 	<rh-cta priority="primary">
 		<a href="#">Primary</a>
 	</rh-cta>
+
 
 This is because the accent color should be the brightest and boldest, and the primary call-to-action should be the most attention-grabbing item on the page. 
 
