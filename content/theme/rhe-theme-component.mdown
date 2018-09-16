@@ -29,8 +29,6 @@ To remedy this, there is a special function within rh-sass that makes it easier 
     }
 
 
-
-
 ## Local component variables
 
 In some cases, like the CTA (call-to-action) component, you might need to define a background color and a text color, as well as hover, focus, and visited states. That's a lot of colors! For this reason, it might be useful to create local variables for that particular component, and then redefine the values when different attributes come into play. Let's see an example, noticing the usage of the `rh-var` function:
@@ -51,15 +49,15 @@ The CTA component CSS will make use of these variables by setting the link color
 	    border-color: var( --rh-cta--main );
 	    background:   var( --rh-cta--main );
 	    color:        var( --rh-cta--aux );
-	  }
+	}
 
 Because the CTA component allows for palette color overrides such as `color="completement"`, it will simply reset the value of these local variables to match those of the palette variables. That way when someone using this component adds the attribute `color="complement"`to the CTA, the completement color is applied. These properties are also marked as important so that they always win over other condidions such as `on="dark"`.
 
 	:host([color="complement"]) {
-	  --rh-cta--main:        #{rh-var( ui-complement )} !important;
-	  --rh-cta--main--hover: #{rh-var( ui-complement--hover )} !important;
-	  --rh-cta--aux:         #{rh-var( ui-complement--text )} !important;
-	  --rh-cta--aux--hover:  #{rh-var( ui-complement--text--hover )} !important;
+	    --rh-cta--main:        #{rh-var( ui-complement )} !important;
+	    --rh-cta--main--hover: #{rh-var( ui-complement--hover )} !important;
+	    --rh-cta--aux:         #{rh-var( ui-complement--text )} !important;
+	    --rh-cta--aux--hover:  #{rh-var( ui-complement--text--hover )} !important;
 	}
 
 

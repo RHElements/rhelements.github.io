@@ -47,11 +47,15 @@ a:focus {
 }
 
 p {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
   font-size: 1.3rem;
   font-weight: 400;
   letter-spacing: .1px;
   line-height: 1.58;
+}
+
+p ~ p {
+  margin-top: 1.5rem;
 }
 
 table {
@@ -432,18 +436,26 @@ main {
       }
       
       ul, ol {
-        margin-bottom: 2rem;
+        margin: 1rem 2rem;
         font-size: 1.2rem;
         
         li {
-          margin-bottom: .5rem;
+          margin-bottom: 0;
           
           ul, ol {
             margin-bottom: 0;
+            li {
+              margin-top: .25rem;
+            }
+            li~li {
+              margin-top: .5rem;
+            }
           }
         }
+        li~li {
+          margin-top: 1.1rem;
+        }
       }
-      
       img {
         padding: .5rem 0 1rem 0;
       }
