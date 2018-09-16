@@ -1,23 +1,13 @@
 +++
-title = "Development Overview"
-description = "Build and create reusable web components."
+title = "Setup"
+description = "Create your own bulletproof web component."
 date = 2018-08-31T14:02:31-04:00
-weight = 20
+weight = 1
 draft = false
 bref = ""
 toc = true
+menu = "develop"
 +++
-
-<!-- # Guidelines -->
-
-## Guidelines for building a RHElement
-
-1. A RHElement should be easy to understand. If it's challenging for rocket scientists, can it be split up into simpler pieces?
-2. A component can only be 1 of 2 types: content or container. 
-    - If content, then it has typography styles
-    - If container, then it has surface styles and padding, no typography styles!
-3. Context agnostic
-    - A RHElement should “just work” when you drop it onto any page (provided the proper polyfills are there). It should have ALL the styles it needs
 
 ## Prerequisites
 
@@ -85,4 +75,4 @@ We've been publishing our RHElements to npm under the [RHElements organization](
 
 Now that we have everything set up, let's create a RHElement together.
 
-[Create a RHElement](/step-1.html)
+[Create a RHElement](/docs/create-a-rhelement/step-1.html)
