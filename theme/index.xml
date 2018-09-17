@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Theme on RHElements</title>
-    <link>rhelements.github.io/theme/</link>
+    <link>/theme/</link>
     <description>Recent content in Theme on RHElements</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 31 Aug 2018 14:02:31 -0400</lastBuildDate>
     
-	<atom:link href="rhelements.github.io/theme/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/theme/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Create a themed RHElement</title>
-      <link>rhelements.github.io/theme/rhe-theme-component/</link>
+      <link>/theme/rhe-theme-component/</link>
       <pubDate>Sat, 15 Sep 2018 14:02:31 -0400</pubDate>
       
-      <guid>rhelements.github.io/theme/rhe-theme-component/</guid>
+      <guid>/theme/rhe-theme-component/</guid>
       <description>When applying colors to your new component, it&amp;rsquo;s important to reference CSS variables from the RHElements palette. This way people using the components will be able to update all of them at once by changing the value of those palette variables.
 It&amp;rsquo;s also important for all CSS variables to have fallback values, but then the code can become difficult to read and manage, since you now must input two colors (the variable of choice and the fallback):</description>
     </item>
     
     <item>
       <title>RHElements color palette</title>
-      <link>rhelements.github.io/theme/rhe-color-palette/</link>
+      <link>/theme/rhe-color-palette/</link>
       <pubDate>Sat, 15 Sep 2018 14:02:31 -0400</pubDate>
       
-      <guid>rhelements.github.io/theme/rhe-color-palette/</guid>
+      <guid>/theme/rhe-color-palette/</guid>
       <description>Looking for values fast? You can find a list of all the system colors here.
 UI Colors A user interface uses color to convey:
  Feedback: Error and success states Information: Charts, graphs, and wayfinding elements Hierarchy: Showing structured order through color and typography  We&amp;rsquo;ve exposed 3 color variants for this design system to represent your brand:
@@ -35,10 +35,10 @@ UI Colors A user interface uses color to convey:
     
     <item>
       <title>RH Layouts</title>
-      <link>rhelements.github.io/theme/rhe-layouts/</link>
+      <link>/theme/rhe-layouts/</link>
       <pubDate>Fri, 31 Aug 2018 14:02:31 -0400</pubDate>
       
-      <guid>rhelements.github.io/theme/rhe-layouts/</guid>
+      <guid>/theme/rhe-layouts/</guid>
       <description>.rhe-l-grid  * { background: #e0d7ee; padding: 8px; }    Grid  Pure Grid Item Item Item Item Item  Code &amp;lt;div class=&#34;rhe-l-grid rhe-m-gutters rhe-m-all-6-col rhe-m-all-4-col-on-md rhe-m-all-3-col-on-lg&#34;&amp;gt; &amp;lt;div&amp;gt;Item&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;Item&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;Item&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;Item&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;Item&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt;   Bootstrap-style Columns Default Item rhe-m-2-col rhe-m-10-col rhe-m-4-col rhe-m-4-col rhe-m-4-col rhe-m-6-col rhe-m-3-col-on-md rhe-m-6-col rhe-m-3-col-on-md rhe-m-startat-7-col-on-md rhe-m-6-col rhe-m-3-col-on-md  Code &amp;lt;div class=&#34;rhe-l-grid rhe-m-gutters&#34;&amp;gt; &amp;lt;div class=&#34;rhe-l-grid__item&#34;&amp;gt;Default Item&amp;lt;/div&amp;gt; &amp;lt;div class=&#34;rhe-l-grid__item rhe-m-2-col&#34;&amp;gt;&amp;lt;code&amp;gt;rhe-m-2-col&amp;lt;/code&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div class=&#34;rhe-l-grid__item rhe-m-10-col&#34;&amp;gt;&amp;lt;code&amp;gt;rhe-m-10-col&amp;lt;/code&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div class=&#34;rhe-l-grid__item rhe-m-4-col&#34;</description>
     </item>
     
