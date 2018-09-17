@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta name="generator" content="Hugo 0.47.1" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Create a themed RHElement </title>
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  <meta name="author" content="RHElements">
+
+
+  <meta property="og:title" content="Create a themed RHElement" />
+<meta property="og:description" content="When applying colors to your new component, it&rsquo;s important to reference CSS variables from the RHElements palette. This way people using the components will be able to update all of them at once by changing the value of those palette variables.
+It&rsquo;s also important for all CSS variables to have fallback values, but then the code can become difficult to read and manage, since you now must input two colors (the variable of choice and the fallback):" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="rhelements.github.io/theme/rhe-theme-component/" /><meta property="article:published_time" content="2018-09-15T14:02:31-04:00"/>
+<meta property="article:modified_time" content="2018-09-15T14:02:31-04:00"/>
+  
+
+
+
+
+  
+  
+  
+  
+
+  <link rel="canonical" href="rhelements.github.io/theme/rhe-theme-component/">  
+
+  <link rel="shortcut icon" href="./img/favicons/favicon.ico">
+
+
+  <link href="/rhelements.github.io/css/font.css" rel="stylesheet" type="text/css">
+  <link href="/rhelements.github.io/css/kube.min.css" rel="stylesheet" type="text/css">
+  <link href="/rhelements.github.io/css/kube.legenda.css" rel="stylesheet" type="text/css">
+  <link href="/rhelements.github.io/css/highlight.css" rel="stylesheet" type="text/css">
+  <link href="/rhelements.github.io/css/master.css" rel="stylesheet" type="text/css">
+  <link href="/rhelements.github.io/css/kube.demo.css" rel="stylesheet" type="text/css">
+  
+  
+  
+  <link rel="stylesheet" href="/rhelements.github.io/src/sass/kube.min.8178dadef12d827c64aa3d80bb0ab512476e83a712fabbcab18e68c4761711fe.css">
+  
+ 
+
+  <script src="/rhelements.github.io/js/jquery-2.1.4.min.js" type="text/javascript">
+  </script>
+
+  <script type="text/javascript" src="/rhelements.github.io/js/tocbot.min.js"></script>
+</head>
+
+
+<body class="page-kube">
+  <header> 
+<div class="show-sm" id="top-sm">
+  <div id="nav-toggle-box">
+    <div id="nav-toggle-brand">
+      <section id="top-brand">
+        <a href="/" title="home"><span>RH</span>Elements</a>
+      </section>
+    </div>
+    <a data-component="offcanvas" data-target="#mobile-toc" href="#" id="nav-toggle"><i class="kube-menu"></i></a>
+  </div>
+</div>
+<div class="hide-sm" id="top">
+  <section id="top-brand">
+    <a href="/" title="home"><span>RH</span>Elements</a>
+  </section>
+  <nav id="top-nav-main">
+    <ul>
+     
+     
+  <li><a href="rhelements.github.io/getting-started/" >Getting Started</a></li>
+  
+  <li><a href="rhelements.github.io/develop/" >Develop</a></li>
+  
+  <li><a href="rhelements.github.io/theme/" >Theme</a></li>
+  
+    </ul>
+  </nav>
+  <nav id="top-nav-extra"> 
+    <ul>
+       
+        <li>
+          <a href="rhelements.github.io/site-info/community">Community</a>
+        </li>
+       
+        <li>
+          <a href="rhelements.github.io/site-info/get-help">Help</a>
+        </li>
+        
+    </ul>
+  </nav>
+</div>
+
+<section id="mobile-toc" class="hide">
+  <ul>
+    
+     
+    
+      <li> 
+        <a href="rhelements.github.io/getting-started/">Getting Started</a>
+        
+      </li>
+    
+      <li> 
+        <a href="rhelements.github.io/develop/">Develop</a>
+        
+      </li>
+    
+      <li> 
+        <a href="rhelements.github.io/theme/">Theme</a>
+        
+      </li>
+    
+  </ul>
+  
+</section>
+ </header>
+  <main>
+
+<article style="display: flex; flex-direction: row;">
+  
+  <nav id="main-toc">
+    <section class="inner-toc">
+      <h3><a href="/getting-started">Getting Started</a></h3>
+      <ul>
+        
+          <li>
+            <a href="rhelements.github.io/getting-started/browser-support/" title="Browser Support">
+              Browser Support
+            </a>
+          </li>
+        
+          <li>
+            <a href="rhelements.github.io/getting-started/framework-support/" title="Framework Support">
+              Framework Support
+            </a>
+          </li>
+        
+          <li>
+            <a href="rhelements.github.io/getting-started/polyfills/" title="Polyfills">
+              Polyfills
+            </a>
+          </li>
+        
+      </ul>
+      <h3><a href="/develop">Develop</a></h3>
+      <ul>
+        
+          <li>
+            <a href="rhelements.github.io/develop/step-1a/" title="Setup">
+              Setup
+            </a>
+          </li>
+        
+          <li>
+            <a href="rhelements.github.io/develop/step-1b/" title="Create a RHElement">
+              Create a RHElement
+            </a>
+          </li>
+        
+          <li>
+            <a href="rhelements.github.io/develop/step-2a/" title="Develop a Structure">
+              Develop a Structure
+            </a>
+          </li>
+        
+          <li>
+            <a href="rhelements.github.io/develop/step-2b/" title="Write your HTML">
+              Write your HTML
+            </a>
+          </li>
+        
+          <li>
+            <a href="rhelements.github.io/develop/step-2c/" title="Write your CSS (or Sass)">
+              Write your CSS (or Sass)
+            </a>
+          </li>
+        
+          <li>
+            <a href="rhelements.github.io/develop/step-2d/" title="Integrate your JavaScript">
+              Integrate your JavaScript
+            </a>
+          </li>
+        
+          <li>
+            <a href="rhelements.github.io/develop/step-3/" title="Write tests">
+              Write tests
+            </a>
+          </li>
+        
+          <li>
+            <a href="rhelements.github.io/develop/step-4/" title="Publish">
+              Publish
+            </a>
+          </li>
+        
+      </ul>
+      <h3><a href="/theme">Theme</a></h3>
+      <ul>
+        
+          <li>
+            <a href="rhelements.github.io/theme/rhe-theme-component/" title="Create a themed RHElement">
+              Create a themed RHElement
+            </a>
+          </li>
+        
+          <li>
+            <a href="rhelements.github.io/theme/rhe-color-palette/" title="RHElements color palette">
+              RHElements color palette
+            </a>
+          </li>
+        
+          <li>
+            <a href="rhelements.github.io/theme/rhe-layouts/" title="RH Layouts">
+              RH Layouts
+            </a>
+          </li>
+        
+      </ul>
+      
+      <h3>Contact</h3>
+      <ul>
+         
+          <li>
+            <a href="rhelements.github.io/site-info/community">Community</a>
+          </li>
+         
+          <li>
+            <a href="rhelements.github.io/site-info/get-help">Help</a>
+          </li>
+          
+      </ul>
+    </section>
+  </nav>
+  
+  <section id="content" style="">
+    <header class="page-header">
+      <h1> Create a themed RHElement</h1>
+      <p></p>
+    </header>
+    
+    <ul id="posts">
+
+     
+
+<p>When applying colors to your new component, it&rsquo;s important to reference CSS variables from the <a href="https://github.com/RHElements/rhelements/blob/master/elements/rh-sass/variables/_colors.scss" target="_blank">RHElements palette</a>. This way people using the components will be able to update all of them at once by changing the value of those palette variables.</p>
+
+<p>It&rsquo;s also important for all CSS variables to have fallback values, but then the code can become difficult to read and manage, since you now must input two colors (the variable of choice and the fallback):</p>
+
+<pre><code class="language-css">.rh-sad-component {
+    color:              var(--rh-theme--color--ui-link, #99ccff);
+    backgground-color:  var(--rh-theme--color--ui-accent, #fe460d);
+}
+</code></pre>
+
+<h2 id="rh-var-function">rh-var function</h2>
+
+<p>To remedy this, there is a special function within rh-sass that makes it easier to apply color to components! When you make use of it, be sure to wrap it in the interpolation syntax <code>#{ }</code> so that when the Sass is compiled, it will print the CSS variable name and a hex color fallback. You can also omit the <code>rh-color--</code> from the beginning of the color for simplicity&rsquo;s sake:</p>
+
+<pre><code class="language-css">.rh-happy-component {
+    color:             #{rh-var( ui-complement )};
+    backgground-color: #{rh-var( surface--lightest )};
+}
+</code></pre>
+
+<h2 id="local-component-variables">Local component variables</h2>
+
+<p>In some cases, like the CTA (call-to-action) component, you might need to define a background color and a text color, as well as hover, focus, and visited states. That&rsquo;s a lot of colors! For this reason, it might be useful to create local variables for that particular component, and then redefine the values when different attributes come into play. Let&rsquo;s see an example, noticing the usage of the <code>rh-var</code> function:</p>
+
+<pre><code class="language-css">:host {
+    --rh-cta--main:                     #{rh-var( ui-link )};
+    --rh-cta--main--hover:              #{rh-var( ui-link--hover )};
+    --rh-cta--main--focus:              #{rh-var( ui-link--focus )};
+    --rh-cta--main--visited:            #{rh-var( ui-link--visited )};
+    --rh-cta--aux:                      transparent;
+    --rh-cta--aux--hover:               transparent;
+}
+
+</code></pre>
+
+<p>The CTA component CSS will make use of these variables by setting the link color using <code>rh-cta--main</code> and the background color of the button using <code>rh-cta--aux</code>, like so:</p>
+
+<pre><code class="language-css">::slotted(a) {
+    border-color: var( --rh-cta--main );
+    background:   var( --rh-cta--main );
+    color:        var( --rh-cta--aux );
+}
+</code></pre>
+
+<p>Because the CTA component allows for palette color overrides such as <code>color=&quot;completement&quot;</code>, it will simply reset the value of these local variables to match those of the palette variables. That way when someone using this component adds the attribute <code>color=&quot;complement&quot;</code>to the CTA, the completement color is applied. These properties are also marked as important so that they always win over other condidions such as <code>on=&quot;dark&quot;</code>.</p>
+
+<pre><code class="language-css">:host([color=&quot;complement&quot;]) {
+    --rh-cta--main:        #{rh-var( ui-complement )} !important;
+    --rh-cta--main--hover: #{rh-var( ui-complement--hover )} !important;
+    --rh-cta--aux:         #{rh-var( ui-complement--text )} !important;
+    --rh-cta--aux--hover:  #{rh-var( ui-complement--text--hover )} !important;
+}
+</code></pre>
+
+     
+    </ul>
+
+  </section>
+
+  <aside class="page-toc">
+    <h3>Page Contents</h3>
+    
+
+<div class="js-toc">
+  
+</div>
+
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded",
+function(){
+tocbot.init({
+
+tocSelector: '.js-toc',
+
+contentSelector: '#posts',
+
+headingSelector: 'h2'
+})
+}
+);
+</script>
+
+
+  </aside>
+</article>
+
+</main>
+  <footer> 
+  
+
+<nav>
+  <ul>
+    <li><span>RHElements</span></li>
+    <li>
+      <a href="/get-started">Get Started</a>
+    </li>
+    <li>
+      <a href="/develop">Develop</a>
+    </li>
+      <li>
+      <a href="/theme">Theme</a>
+    </li>
+    <li>
+      <a href="/community">Community</a>
+    </li>
+  </ul>
+</nav>
+<small>&copy; Licence MIT.</small> 
+</footer>
+
+
+  <script src="/rhelements.github.io/js/kube.min.js" type="text/javascript">
+  </script>
+  
+</body>
+
+</html>
