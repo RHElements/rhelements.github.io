@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Site-infos on RHElements</title>
-    <link>https://rhelements.github.io/site-info/</link>
-    <description>Recent content in Site-infos on RHElements</description>
+    <title>Info on RHElements</title>
+    <link>https://rhelements.github.io/tags/info/</link>
+    <description>Recent content in Info on RHElements</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="https://rhelements.github.io/site-info/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://rhelements.github.io/tags/info/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -21,6 +21,15 @@ Our Standards Examples of behavior that contributes to creating a positive envir
     </item>
     
     <item>
+      <title>Get Help</title>
+      <link>https://rhelements.github.io/site-info/get-help/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rhelements.github.io/site-info/get-help/</guid>
+      <description>Drop us a line at rhelements@redhat.com</description>
+    </item>
+    
+    <item>
       <title>Join the Community</title>
       <link>https://rhelements.github.io/site-info/community/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -29,15 +38,6 @@ Our Standards Examples of behavior that contributes to creating a positive envir
       <description>Contribute to RHElements How to Report a Bug Think you found a bug? Please check the list of open issues to see if your bug has already been reported. If it hasn&amp;rsquo;t please submit a new issue.
 How to Suggest a Feature or Enhancement Open an issue which describes the feature you would like to see, why you want it, how it should work, etc.
 Bootstrapping Your Local Development Environment npm install  Running Tests npm test  Code of Conduct This project is governed by the Contributor Covenant Code of Conduct.</description>
-    </item>
-    
-    <item>
-      <title>Get Help</title>
-      <link>https://rhelements.github.io/site-info/get-help/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://rhelements.github.io/site-info/get-help/</guid>
-      <description>Drop us a line at rhelements@redhat.com</description>
     </item>
     
   </channel>

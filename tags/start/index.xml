@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Getting Started on RHElements</title>
-    <link>https://rhelements.github.io/getting-started/</link>
-    <description>Recent content in Getting Started on RHElements</description>
+    <title>Start on RHElements</title>
+    <link>https://rhelements.github.io/tags/start/</link>
+    <description>Recent content in Start on RHElements</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="https://rhelements.github.io/getting-started/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://rhelements.github.io/tags/start/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -29,6 +29,18 @@
       <description>Supported and Tested Frameworks If a framework isn&amp;rsquo;t listed below, it doesn&amp;rsquo;t mean that RHElements won&amp;rsquo;t work with that framework. Chances are that RHElements will work, it&amp;rsquo;s just that we aren&amp;rsquo;t explicitly testing against that framework.
  AngularJS Angular React Vue  Every RHElement is built on top of the Custom Elements v1 spec. There are some caveats, but we&amp;rsquo;ll get into those later.
 Framework Integration We&amp;rsquo;re working on writing a few guides that will demonstrate how to incorporate RHElements into certain frameworks.</description>
+    </item>
+    
+    <item>
+      <title>Getting Started</title>
+      <link>https://rhelements.github.io/getting-started/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rhelements.github.io/getting-started/</guid>
+      <description>1. Install RHElements Use NPM (Node Package Manager) to install the whole RHElements library or a handful of individual RHElements.
+npm install --save @rhelements/rh-card  Or, utilize the Red Hat asset library! When it exists!
+2. Include RHElements on a page You have some options:
+ Load JavaScript modules via script tag: script type=&amp;quot;module&amp;quot;  Downloads all of the dependencies on its own Only supported in modern browsers  Include the RHElement and its dependencies on the page(s) or within the app.</description>
     </item>
     
     <item>
